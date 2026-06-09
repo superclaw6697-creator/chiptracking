@@ -95,13 +95,15 @@ function aggregateDay(rows) {
     });
   }
   topForeign.sort((a, b) => b.net - a.net);
+  const topForeignSellers = [...topForeign].sort((a, b) => a.net - b.net).filter(f => f.net < 0);
   return {
-    foreign_buy:      Math.round(f_buy_vol  / 1000),
-    foreign_buy_avg:  f_buy_vol  ? +(f_buy_amt  / f_buy_vol ).toFixed(2) : 0,
-    foreign_sell:     Math.round(f_sell_vol / 1000),
-    foreign_sell_avg: f_sell_vol ? +(f_sell_amt / f_sell_vol).toFixed(2) : 0,
-    foreign_net:      Math.round((f_buy_vol - f_sell_vol) / 1000),
-    top_foreign:      topForeign.slice(0, 10),
+    foreign_buy:           Math.round(f_buy_vol  / 1000),
+    foreign_buy_avg:       f_buy_vol  ? +(f_buy_amt  / f_buy_vol ).toFixed(2) : 0,
+    foreign_sell:          Math.round(f_sell_vol / 1000),
+    foreign_sell_avg:      f_sell_vol ? +(f_sell_amt / f_sell_vol).toFixed(2) : 0,
+    foreign_net:           Math.round((f_buy_vol - f_sell_vol) / 1000),
+    top_foreign:           topForeign.filter(f => f.net > 0).slice(0, 10),
+    top_foreign_sellers:   topForeignSellers.slice(0, 10),
   };
 }
 

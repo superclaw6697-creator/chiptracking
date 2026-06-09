@@ -154,7 +154,7 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>當日買均價</th><th>累計買均價</th><th>最大外資</th></tr>
+            <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>當日買均價</th><th>累計買均價</th><th>最大買外資</th><th>最大賣外資</th></tr>
           </thead>
           <tbody id="tableBody"></tbody>
         </table>
@@ -338,9 +338,16 @@ function renderView(fromDate, toDate) {
             afterBody(ctx) {
               const date = ctx[0]?.label;
               const c = chipMap[date];
-              if (!c?.top_foreign?.length) return [];
-              const lines = ['','── 外資分點 ──'];
-              c.top_foreign.slice(0,5).forEach(f => lines.push(`${f.name}  淨${f.net>=0?'+':''}${f.net}張  買均${f.buy_avg}`));
+              if (!c?.top_foreign?.length && !c?.top_foreign_sellers?.length) return [];
+              const lines = [];
+              if (c.top_foreign?.length) {
+                lines.push('','── 買超外資 ──');
+                c.top_foreign.slice(0,3).forEach(f => lines.push(`${f.name}  +${f.net}張  均${f.buy_avg}`));
+              }
+              if (c.top_foreign_sellers?.length) {
+                lines.push('','── 賣超外資 ──');
+                c.top_foreign_sellers.slice(0,3).forEach(f => lines.push(`${f.name}  ${f.net}張  均${f.sell_avg}`));
+              }
               return lines;
             }
           }
@@ -373,7 +380,8 @@ function renderView(fromDate, toDate) {
     const prevClose = prevDate ? priceMap[prevDate]?.close : null;
     const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : '—';
     const chgCls = chg !== '—' ? (chg >= 0 ? 'pos' : 'neg') : '';
-    const topF = c?.top_foreign?.[0];
+    const topF  = c?.top_foreign?.[0];
+    const topFS = c?.top_foreign_sellers?.[0];
     const cv = cumMap[date], ca = cumBuyAvgMap[date];
     return `<tr>
       <td>${date}</td>
@@ -383,7 +391,8 @@ function renderView(fromDate, toDate) {
       <td class="${cv != null ? (cv >= 0 ? 'pos' : 'neg') : ''}">${cv != null ? (cv >= 0 ? '+' : '') + cv : '—'}</td>
       <td>${c?.foreign_buy_avg || '—'}</td>
       <td style="color:#f59e0b;font-weight:600">${ca ?? '—'}</td>
-      <td style="font-size:11px;color:var(--text3)">${topF ? `${topF.name} ${topF.net >= 0 ? '+' : ''}${topF.net}張` : '—'}</td>
+      <td style="font-size:11px;color:var(--red)">${topF  ? `${topF.name} +${topF.net}張`  : '—'}</td>
+      <td style="font-size:11px;color:var(--green)">${topFS ? `${topFS.name} ${topFS.net}張` : '—'}</td>
     </tr>`;
   }).join('');
 
@@ -393,8 +402,10 @@ function renderView(fromDate, toDate) {
     const prevClose = prevDate ? priceMap[prevDate]?.close : null;
     const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : null;
     const chgCls = chg !== null ? (chg >= 0 ? 'up' : 'down') : '';
-    const net = c?.foreign_net;
-    const top3 = c?.top_foreign?.slice(0,3).map(f => `${f.name} ${f.net>=0?'+':''}${f.net}張`).join('　') || '—';
+    const net  = c?.foreign_net;
+    const top3 = c?.top_foreign?.slice(0,3).map(f => `${f.name} +${f.net}張`).join('　') || '—';
+    const topSell = c?.top_foreign_sellers?.[0];
+    const topSellStr = topSell ? `${topSell.name} ${topSell.net}張` : '—';
     return `<div class="mcard">
       <div class="mcard-top">
         <div class="mcard-date">${date}</div>
@@ -421,7 +432,8 @@ function renderView(fromDate, toDate) {
           <div class="sval" style="color:#f59e0b">${cumBuyAvgMap[date] ?? '—'}</div>
         </div>
       </div>
-      <div class="mcard-broker">主力外資：${top3}</div>
+      <div class="mcard-broker">買超：${top3}</div>
+      <div class="mcard-broker" style="color:var(--green)">賣超：${topSellStr}</div>
     </div>`;
   }).join('');
 }
