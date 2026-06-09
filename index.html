@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外資籌碼追蹤</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1117; --bg2: #1a1d27; --bg3: #242736; --border: #2e3347;
+    --accent: #4f7fff;
+    --green: #22c55e; --red: #ef4444; --yellow: #f59e0b;
+    --text: #e2e8f0; --text2: #94a3b8; --text3: #64748b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  header h1 { font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+  .search { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+  .search input { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 14px; width: 100px; }
+  .search input:focus { outline: none; border-color: var(--accent); }
+  .search button { padding: 6px 16px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 14px; font-weight: 600; }
+  .search button:hover { background: #3d6de8; }
+  main { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  @media (max-width: 640px) { .summary-cards { grid-template-columns: repeat(2, 1fr); } }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  .card .label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .card .value { font-size: 22px; font-weight: 700; }
+  .card .sub   { font-size: 12px; color: var(--text3); margin-top: 4px; }
+  .up   { color: var(--red); }
+  .down { color: var(--green); }
+
+  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .chart-box h2 { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 16px; text-transform: uppercase; letter-spacing: .06em; }
+  .chart-wrap { position: relative; height: 320px; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 40px; }
+  thead { background: var(--bg3); }
+  th, td { padding: 10px 14px; text-align: right; font-size: 13px; border-bottom: 1px solid var(--border); }
+  th { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+  th:first-child, td:first-child { text-align: left; }
+  tbody tr:hover { background: var(--bg3); }
+  .pos { color: var(--red); font-weight: 600; }
+  .neg { color: var(--green); font-weight: 600; }
+
+  #status { text-align: center; color: var(--text3); padding: 60px 20px; line-height: 1.8; }
+  #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 13px; color: var(--text2); }
+</style>
+</head>
+<body>
+<header>
+  <h1>📊 外資籌碼追蹤</h1>
+  <div class="search">
+    <input id="stockInput" type="text" value="2312" placeholder="股票代號" onkeydown="if(event.key==='Enter')loadStock()">
+    <button onclick="loadStock()">查詢</button>
+  </div>
+</header>
+
+<main>
+  <div id="status">載入中...</div>
+  <div id="content" style="display:none">
+    <div class="summary-cards">
+      <div class="card"><div class="label">股票</div><div class="value" id="s-stock">—</div><div class="sub" id="s-range">—</div></div>
+      <div class="card"><div class="label">最新收盤</div><div class="value" id="s-close">—</div><div class="sub" id="s-chg">—</div></div>
+      <div class="card"><div class="label">期間外資累計淨買</div><div class="value" id="s-net">—</div><div class="sub">張</div></div>
+      <div class="card"><div class="label">外資買入均價 (VWAP)</div><div class="value" id="s-avg">—</div><div class="sub">元</div></div>
+    </div>
+
+    <div class="chart-box">
+      <h2>外資每日淨買張（柱）＋ 股價與買入均價（線）</h2>
+      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>外資淨買(張)</th><th>外資買均價</th><th>外資賣均價</th><th>最大外資</th></tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+let chart = null;
+
+async function loadStock() {
+  const sid = document.getElementById('stockInput').value.trim();
+  if (!sid) return;
+  const statusEl = document.getElementById('status');
+  statusEl.style.display = 'block';
+  statusEl.innerHTML = '載入中...';
+  document.getElementById('content').style.display = 'none';
+  try {
+    const res = await fetch(`data/${sid}.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error(`找不到 data/${sid}.json<br>請先執行：<code>node fetch_chip.js ${sid}</code> 並 commit data 資料夾`);
+    const data = await res.json();
+    render(data);
+    statusEl.style.display = 'none';
+  } catch(e) {
+    statusEl.innerHTML = e.message;
+  }
+}
+
+function render(data) {
+  const { stockId, startDate, endDate, prices, chips } = data;
+
+  const priceMap = {};
+  prices.forEach(p => priceMap[p.date] = p);
+  const chipMap = {};
+  chips.forEach(c => chipMap[c.date] = c);
+
+  const allDates = [...new Set([...prices.map(p=>p.date), ...chips.map(c=>c.date)])].sort();
+
+  const labels    = allDates;
+  const closeArr  = allDates.map(d => priceMap[d]?.close ?? null);
+  const netArr    = allDates.map(d => chipMap[d]?.foreign_net ?? null);
+  const buyAvgArr = allDates.map(d => chipMap[d]?.foreign_buy_avg ?? null);
+
+  document.getElementById('s-stock').textContent = stockId;
+  document.getElementById('s-range').textContent = `${startDate} ～ ${endDate}`;
+
+  const lastPrice = prices[prices.length - 1];
+  if (lastPrice) {
+    document.getElementById('s-close').textContent = lastPrice.close;
+    const prev = prices[prices.length - 2];
+    if (prev) {
+      const chg = (lastPrice.close - prev.close).toFixed(2);
+      const pct = ((lastPrice.close - prev.close) / prev.close * 100).toFixed(2);
+      const el = document.getElementById('s-chg');
+      el.textContent = `${chg >= 0 ? '+' : ''}${chg} (${pct}%)`;
+      el.className = 'sub ' + (chg >= 0 ? 'up' : 'down');
+    }
+  }
+
+  const totalNet = chips.reduce((s, c) => s + c.foreign_net, 0);
+  document.getElementById('s-net').textContent = (totalNet >= 0 ? '+' : '') + totalNet;
+  document.getElementById('s-net').className = 'value ' + (totalNet >= 0 ? 'up' : 'down');
+
+  let totalBuyAmt = 0, totalBuyVol = 0;
+  chips.forEach(c => { totalBuyAmt += c.foreign_buy_avg * c.foreign_buy * 1000; totalBuyVol += c.foreign_buy * 1000; });
+  document.getElementById('s-avg').textContent = totalBuyVol ? (totalBuyAmt / totalBuyVol).toFixed(2) : '—';
+
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('mainChart'), {
+    data: {
+      labels,
+      datasets: [
+        {
+          type: 'bar',
+          label: '外資淨買(張)',
+          data: netArr,
+          backgroundColor: netArr.map(v => v >= 0 ? 'rgba(239,68,68,0.7)' : 'rgba(34,197,94,0.7)'),
+          yAxisID: 'yNet',
+          order: 2,
+        },
+        {
+          type: 'line',
+          label: '收盤價',
+          data: closeArr,
+          borderColor: '#4f7fff',
+          backgroundColor: 'transparent',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          yAxisID: 'yPrice',
+          order: 1,
+          tension: 0.1,
+        },
+        {
+          type: 'line',
+          label: '外資買入均價',
+          data: buyAvgArr,
+          borderColor: '#f59e0b',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [5, 4],
+          pointRadius: 2,
+          yAxisID: 'yPrice',
+          order: 0,
+          tension: 0.1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        tooltip: {
+          backgroundColor: 'rgba(26,29,39,0.95)',
+          borderColor: '#2e3347',
+          borderWidth: 1,
+          callbacks: {
+            afterBody(ctx) {
+              const date = ctx[0]?.label;
+              const c = chipMap[date];
+              if (!c?.top_foreign?.length) return [];
+              const lines = ['', '── 外資分點 ──'];
+              c.top_foreign.slice(0, 5).forEach(f => {
+                lines.push(`${f.name}  淨${f.net >= 0 ? '+' : ''}${f.net}張  買均${f.buy_avg}`);
+              });
+              return lines;
+            }
+          }
+        },
+        legend: { position: 'top', labels: { color: '#94a3b8', boxWidth: 14 } },
+      },
+      scales: {
+        yNet: {
+          position: 'left',
+          title: { display: true, text: '淨買張數', color: '#64748b' },
+          grid: { color: 'rgba(46,51,71,0.8)' },
+          ticks: { color: '#64748b' },
+        },
+        yPrice: {
+          position: 'right',
+          title: { display: true, text: '價格 (元)', color: '#64748b' },
+          grid: { drawOnChartArea: false },
+          ticks: { color: '#64748b' },
+        },
+        x: { ticks: { color: '#64748b', maxRotation: 45 }, grid: { color: 'rgba(46,51,71,0.5)' } },
+      },
+    },
+  });
+
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = [...allDates].reverse().map(date => {
+    const p = priceMap[date];
+    const c = chipMap[date];
+    const prevDate = allDates[allDates.indexOf(date) - 1];
+    const prevClose = prevDate ? priceMap[prevDate]?.close : null;
+    const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : '—';
+    const chgClass = chg !== '—' ? (chg >= 0 ? 'pos' : 'neg') : '';
+    const topF = c?.top_foreign?.[0];
+    return `<tr>
+      <td>${date}</td>
+      <td>${p?.close ?? '—'}</td>
+      <td class="${chgClass}">${chg !== '—' ? (chg >= 0 ? '+' : '') + chg : '—'}</td>
+      <td class="${c ? (c.foreign_net >= 0 ? 'pos' : 'neg') : ''}">${c ? (c.foreign_net >= 0 ? '+' : '') + c.foreign_net : '—'}</td>
+      <td>${c?.foreign_buy_avg || '—'}</td>
+      <td>${c?.foreign_sell_avg || '—'}</td>
+      <td style="font-size:12px;color:var(--text3)">${topF ? `${topF.name} ${topF.net >= 0 ? '+' : ''}${topF.net}張` : '—'}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('content').style.display = 'block';
+}
+
+window.onload = () => loadStock();
+</script>
+</body>
+</html>
