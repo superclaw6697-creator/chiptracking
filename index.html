@@ -130,7 +130,7 @@
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>外資淨買(張)</th><th>外資買均價</th><th>外資賣均價</th><th>最大外資</th></tr>
+          <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>外資買均價</th><th>外資賣均價</th><th>最大外資</th></tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
@@ -237,6 +237,9 @@ function renderView(fromDate, toDate) {
   const closeArr  = dates.map(d => priceMap[d]?.close ?? null);
   const netArr    = dates.map(d => chipMap[d]?.foreign_net ?? null);
   const buyAvgArr = dates.map(d => chipMap[d]?.foreign_buy_avg ?? null);
+  // 累計淨買（從篩選起始日起算）
+  let cum = 0;
+  const cumArr = dates.map(d => { cum += chipMap[d]?.foreign_net ?? 0; return cum; });
 
   if (chart) chart.destroy();
   chart = new Chart(document.getElementById('mainChart'), {
@@ -244,9 +247,15 @@ function renderView(fromDate, toDate) {
       labels: dates,
       datasets: [
         {
-          type: 'bar', label: '外資淨買(張)', data: netArr,
+          type: 'bar', label: '當日淨買(張)', data: netArr,
           backgroundColor: netArr.map(v => v >= 0 ? 'rgba(239,68,68,0.7)' : 'rgba(34,197,94,0.7)'),
           yAxisID: 'yNet', order: 2,
+        },
+        {
+          type: 'line', label: '累計淨買(張)', data: cumArr,
+          borderColor: '#a78bfa', backgroundColor: 'transparent',
+          borderWidth: 1.5, borderDash: [3, 3], pointRadius: 0,
+          yAxisID: 'yNet', order: 3, tension: 0.1,
         },
         {
           type: 'line', label: '收盤價', data: closeArr,
@@ -290,6 +299,11 @@ function renderView(fromDate, toDate) {
   });
 
   // Table (desktop) + cards (mobile)
+  // 建立 date→cumulative map（正序累計）
+  const cumMap = {};
+  let runSum = 0;
+  dates.forEach(d => { runSum += chipMap[d]?.foreign_net ?? 0; cumMap[d] = runSum; });
+
   const rows = [...dates].reverse();
   document.getElementById('tableBody').innerHTML = rows.map(date => {
     const p = priceMap[date];
@@ -299,11 +313,13 @@ function renderView(fromDate, toDate) {
     const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : '—';
     const chgClass = chg !== '—' ? (chg >= 0 ? 'pos' : 'neg') : '';
     const topF = c?.top_foreign?.[0];
+    const cumVal = cumMap[date];
     return `<tr>
       <td>${date}</td>
       <td>${p?.close ?? '—'}</td>
       <td class="${chgClass}">${chg !== '—' ? (chg >= 0 ? '+' : '') + chg : '—'}</td>
       <td class="${c ? (c.foreign_net >= 0 ? 'pos' : 'neg') : ''}">${c ? (c.foreign_net >= 0 ? '+' : '') + c.foreign_net : '—'}</td>
+      <td class="${cumVal != null ? (cumVal >= 0 ? 'pos' : 'neg') : ''}">${cumVal != null ? (cumVal >= 0 ? '+' : '') + cumVal : '—'}</td>
       <td>${c?.foreign_buy_avg || '—'}</td>
       <td>${c?.foreign_sell_avg || '—'}</td>
       <td style="font-size:12px;color:var(--text3)">${topF ? `${topF.name} ${topF.net >= 0 ? '+' : ''}${topF.net}張` : '—'}</td>
@@ -330,8 +346,12 @@ function renderView(fromDate, toDate) {
       </div>
       <div class="mcard-body">
         <div class="mcard-stat">
-          <div class="slabel">外資淨買(張)</div>
+          <div class="slabel">當日淨買(張)</div>
           <div class="sval ${net != null ? (net >= 0 ? 'up' : 'down') : ''}">${net != null ? (net >= 0 ? '+' : '') + net : '—'}</div>
+        </div>
+        <div class="mcard-stat">
+          <div class="slabel">累計淨買(張)</div>
+          <div class="sval ${cumMap[date] >= 0 ? 'up' : 'down'}">${cumMap[date] >= 0 ? '+' : ''}${cumMap[date] ?? '—'}</div>
         </div>
         <div class="mcard-stat">
           <div class="slabel">外資買均價</div>
@@ -340,10 +360,6 @@ function renderView(fromDate, toDate) {
         <div class="mcard-stat">
           <div class="slabel">外資賣均價</div>
           <div class="sval">${c?.foreign_sell_avg || '—'}</div>
-        </div>
-        <div class="mcard-stat">
-          <div class="slabel">外資買(張)</div>
-          <div class="sval">${c?.foreign_buy ?? '—'}</div>
         </div>
       </div>
       <div class="mcard-broker">主力外資：${top3}</div>
