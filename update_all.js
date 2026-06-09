@@ -208,6 +208,7 @@ async function main() {
   }
 
   try {
+    execSync('git pull --rebase', { cwd: __dirname, stdio: 'inherit' });
     execSync('git add data/', { cwd: __dirname, stdio: 'inherit' });
     execSync(`git commit -m "data: auto-update ${dateStr}"`, { cwd: __dirname, stdio: 'inherit' });
     execSync('git push', { cwd: __dirname, stdio: 'inherit' });
