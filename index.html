@@ -126,6 +126,8 @@
   .rank-name { flex: 1; color: var(--text2); }
   .rank-buy  { color: rgba(239,68,68,0.85); font-weight: 600; text-align: right; }
   .rank-sell { color: rgba(34,197,94,0.65); font-weight: 600; text-align: right; }
+  .rank-detail-row { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-size: 11px; }
+  .rank-detail-date { color: var(--text3); width: 40px; flex-shrink: 0; }
 
   #status { text-align: center; color: var(--text3); padding: 60px 20px; line-height: 1.8; }
   #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: var(--text2); }
@@ -413,6 +415,7 @@ function renderView(fromDate, toDate) {
   // ── Table & cards ──
   // ── 跨日外資分點買賣加總排行 ──
   const brokerTotals = {};
+  const brokerDailyMap = {};   // name → [{date, net}]
   for (const d of dates) {
     const c = chipMap[d];
     if (!c) continue;
@@ -420,6 +423,8 @@ function renderView(fromDate, toDate) {
       if (!brokerTotals[f.name]) brokerTotals[f.name] = { buy: 0, sell: 0 };
       brokerTotals[f.name].buy  += f.buy  || 0;
       brokerTotals[f.name].sell += f.sell || 0;
+      if (!brokerDailyMap[f.name]) brokerDailyMap[f.name] = [];
+      brokerDailyMap[f.name].push({ date: d, net: f.net });
     }
   }
   const brokerArr = Object.entries(brokerTotals).map(([name, v]) => ({
@@ -428,15 +433,60 @@ function renderView(fromDate, toDate) {
   const top3Buy  = [...brokerArr].sort((a,b) => b.net - a.net).filter(r => r.net > 0).slice(0, 3);
   const top3Sell = [...brokerArr].sort((a,b) => a.net - b.net).filter(r => r.net < 0).slice(0, 3);
 
-  const rankRow = (r, i, cls) => `
-    <div class="rank-row">
-      <span class="rank-no">${i+1}</span>
-      <span class="rank-name">${r.name}</span>
-      <span class="${cls}">${r.net >= 0 ? '+' : ''}${r.net.toLocaleString()}張</span>
-    </div>`;
+  // 警示：買超券商近3日是否轉賣
+  const recentDates = dates.slice(-3);
+  function turnAlert(name) {
+    const days = brokerDailyMap[name] || [];
+    const recentNets = recentDates.map(d => {
+      const e = days.find(x => x.date === d);
+      return e ? e.net : null;
+    }).filter(n => n !== null);
+    if (!recentNets.length) return '';
+    const sellDays = recentNets.filter(n => n < 0).length;
+    if (sellDays >= 2) return '⚠️';        // 近3日多數轉賣
+    if (sellDays === 1 && recentNets.at(-1) < 0) return '🔄';  // 最近一日轉賣
+    return '';
+  }
 
-  document.getElementById('rankBuy').innerHTML  = top3Buy.map((r,i)  => rankRow(r,i,'rank-buy')).join('') || '<div style="color:var(--text3);font-size:12px;padding:6px 0">無買超資料</div>';
-  document.getElementById('rankSell').innerHTML = top3Sell.map((r,i) => rankRow(r,i,'rank-sell')).join('') || '<div style="color:var(--text3);font-size:12px;padding:6px 0">無賣超資料</div>';
+  // 近期逐日明細 HTML
+  function dailyDetail(name, highlightCls) {
+    const days = (brokerDailyMap[name] || []).slice(-7);
+    if (!days.length) return '<div style="color:var(--text3);font-size:11px;padding:4px 0 2px">無資料</div>';
+    return days.map(({date, net}) => {
+      const icon = net > 0 ? '🔴' : net < 0 ? '🟢' : '➡️';
+      const cls  = net > 0 ? 'rank-buy' : net < 0 ? 'rank-sell' : '';
+      return `<div class="rank-detail-row">
+        <span class="rank-detail-date">${date.slice(5)}</span>
+        <span>${icon}</span>
+        <span class="${cls}" style="min-width:52px;text-align:right">${net >= 0 ? '+' : ''}${net.toLocaleString()}張</span>
+      </div>`;
+    }).join('');
+  }
+
+  window.toggleDetail = function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const open = el.style.display === 'block';
+    el.style.display = open ? 'none' : 'block';
+    const btn = document.getElementById('btn-' + id);
+    if (btn) btn.textContent = open ? '▶' : '▼';
+  };
+
+  function rankRow(r, i, cls, showAlert) {
+    const alert = showAlert ? turnAlert(r.name) : '';
+    const uid = 'rd-' + r.name.replace(/\s/g,'_') + '-' + i;
+    return `
+    <div class="rank-row" style="flex-wrap:wrap">
+      <span class="rank-no">${i+1}</span>
+      <span class="rank-name">${r.name}${alert ? ' <span title="近期轉向警示">' + alert + '</span>' : ''}</span>
+      <span class="${cls}" style="margin-right:4px">${r.net >= 0 ? '+' : ''}${r.net.toLocaleString()}張</span>
+      <button id="btn-${uid}" onclick="toggleDetail('${uid}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:10px;padding:0 2px">▶</button>
+      <div id="${uid}" style="display:none;width:100%;padding:4px 0 2px 22px">${dailyDetail(r.name, cls)}</div>
+    </div>`;
+  }
+
+  document.getElementById('rankBuy').innerHTML  = top3Buy.map((r,i)  => rankRow(r,i,'rank-buy', true)).join('')  || '<div style="color:var(--text3);font-size:12px;padding:6px 0">無買超資料</div>';
+  document.getElementById('rankSell').innerHTML = top3Sell.map((r,i) => rankRow(r,i,'rank-sell',false)).join('') || '<div style="color:var(--text3);font-size:12px;padding:6px 0">無賣超資料</div>';
 
   // Super dominant 閾值：淨買絕對值前 20%
   const netVals  = dates.map(d => chipMap[d]?.foreign_net ?? 0);
