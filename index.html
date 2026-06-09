@@ -80,12 +80,20 @@
   tbody tr:hover { background: var(--bg3); }
   .pos { color: var(--red); font-weight: 600; }
   .neg { color: var(--green); font-weight: 600; }
+  /* 買超行：鮮紅底 + 左色條 */
+  tbody tr.row-buy  { background: rgba(239,68,68,0.07); box-shadow: inset 3px 0 0 rgba(239,68,68,0.7); }
+  tbody tr.row-buy:hover  { background: rgba(239,68,68,0.14); }
+  /* 賣超行：亮綠底 + 左色條 */
+  tbody tr.row-sell { background: rgba(34,197,94,0.07); box-shadow: inset 3px 0 0 rgba(34,197,94,0.7); }
+  tbody tr.row-sell:hover { background: rgba(34,197,94,0.14); }
   @media (max-width: 640px) { .table-wrap { display: none; } }
 
   /* ── Mobile cards ── */
   .mobile-cards { display: none; margin-bottom: 30px; }
   @media (max-width: 640px) { .mobile-cards { display: flex; flex-direction: column; gap: 8px; } }
-  .mcard { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .mcard { background: var(--bg2); border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px; padding: 12px 14px; }
+  .mcard.buy-dom  { border-left-color: var(--red);   background: rgba(239,68,68,0.06); }
+  .mcard.sell-dom { border-left-color: var(--green);  background: rgba(34,197,94,0.06); }
   .mcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
   .mcard-date { font-size: 13px; font-weight: 600; }
   .mcard-price { text-align: right; }
@@ -363,6 +371,13 @@ function renderView(fromDate, toDate) {
   });
 
   // ── Table & cards ──
+  // Super dominant 閾值：淨買絕對值前 20%
+  const netVals  = dates.map(d => chipMap[d]?.foreign_net ?? 0);
+  const sorted20 = [...netVals].map(Math.abs).filter(v=>v>0).sort((a,b)=>b-a);
+  const threshold = sorted20[Math.floor(sorted20.length * 0.2)] ?? Infinity;
+  const superBuy  = v => v > 0 && v >= threshold;
+  const superSell = v => v < 0 && Math.abs(v) >= threshold;
+
   const cumMap = {}, cumBuyAvgMap = {};
   let rs = 0, rba = 0, rbv = 0;
   dates.forEach(d => {
@@ -383,8 +398,11 @@ function renderView(fromDate, toDate) {
     const topF  = c?.top_foreign?.[0];
     const topFS = c?.top_foreign_sellers?.[0];
     const cv = cumMap[date], ca = cumBuyAvgMap[date];
-    return `<tr>
-      <td>${date}</td>
+    const net2 = c?.foreign_net ?? 0;
+    const rowCls = net2 > 0 ? 'row-buy' : net2 < 0 ? 'row-sell' : '';
+    const icon = superBuy(net2) ? ' 🔥' : superSell(net2) ? ' 💧' : '';
+    return `<tr class="${rowCls}">
+      <td>${date}${icon}</td>
       <td>${p?.close ?? '—'}</td>
       <td class="${chgCls}">${chg !== '—' ? (chg >= 0 ? '+' : '') + chg : '—'}</td>
       <td class="${c ? (c.foreign_net >= 0 ? 'pos' : 'neg') : ''}">${c ? (c.foreign_net >= 0 ? '+' : '') + c.foreign_net : '—'}</td>
@@ -406,9 +424,11 @@ function renderView(fromDate, toDate) {
     const top3 = c?.top_foreign?.slice(0,3).map(f => `${f.name} +${f.net}張`).join('　') || '—';
     const topSell = c?.top_foreign_sellers?.[0];
     const topSellStr = topSell ? `${topSell.name} ${topSell.net}張` : '—';
-    return `<div class="mcard">
+    const domCls  = net > 0 ? 'buy-dom' : net < 0 ? 'sell-dom' : '';
+    const mIcon   = superBuy(net) ? ' 🔥' : superSell(net) ? ' 💧' : '';
+    return `<div class="mcard ${domCls}">
       <div class="mcard-top">
-        <div class="mcard-date">${date}</div>
+        <div class="mcard-date">${date}${mIcon}</div>
         <div class="mcard-price">
           <div class="mcard-close">${p?.close ?? '—'}</div>
           <div class="mcard-chg ${chgCls}">${chg !== null ? (chg >= 0 ? '+' : '') + chg : '—'}</div>
