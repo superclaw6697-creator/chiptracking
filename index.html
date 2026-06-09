@@ -175,7 +175,7 @@ function toggleSidebar() {
   document.getElementById('overlay').classList.toggle('show');
 }
 
-async function loadIndex() {
+async function loadIndex(preferStock) {
   try {
     const res = await fetch(`data/index.json?t=${Date.now()}`);
     if (!res.ok) return;
@@ -187,8 +187,9 @@ async function loadIndex() {
         <div class="sname">${s.name}</div>
       </div>`
     ).join('');
-    // 載入第一支
-    if (idx.stocks.length) loadStock(idx.stocks[0].id);
+    // 優先載入 query string 指定的股票，否則第一支
+    const target = preferStock || (idx.stocks[0]?.id);
+    if (target) loadStock(target);
   } catch(e) { /* index.json 不存在也 ok */ }
 }
 
@@ -205,6 +206,7 @@ async function loadStock(sid) {
   currentId = sid;
   document.getElementById('stockInput').value = sid;
   setActiveSidebarItem(sid);
+  history.replaceState(null, '', `?stock=${sid}`);
   // 手機關閉 sidebar
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('show');
@@ -424,7 +426,16 @@ function renderView(fromDate, toDate) {
   }).join('');
 }
 
-window.onload = () => loadIndex();
+window.onload = () => {
+  const params = new URLSearchParams(location.search);
+  const qs = params.get('stock');
+  if (qs) {
+    // 先載入 index 建側欄，再直接顯示指定股票
+    loadIndex(qs);
+  } else {
+    loadIndex();
+  }
+};
 </script>
 </body>
 </html>
