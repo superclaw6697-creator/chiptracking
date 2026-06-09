@@ -14,36 +14,75 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
-  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
-  header h1 { font-size: 16px; font-weight: 700; letter-spacing: .02em; }
-  .search { display: flex; gap: 8px; margin-left: auto; align-items: center; }
-  .search input { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 14px; width: 100px; }
-  .search input:focus { outline: none; border-color: var(--accent); }
-  .search button { padding: 6px 16px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 14px; font-weight: 600; }
+
+  /* ── Header ── */
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  header h1 { font-size: 15px; font-weight: 700; white-space: nowrap; }
+  .search { display: flex; gap: 8px; margin-left: auto; align-items: center; flex-wrap: wrap; }
+  .search input[type=text] { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 14px; width: 90px; }
+  .search input[type=text]:focus { outline: none; border-color: var(--accent); }
+  .search button { padding: 6px 14px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 14px; font-weight: 600; white-space: nowrap; }
   .search button:hover { background: #3d6de8; }
-  main { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
 
-  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  main { max-width: 1100px; margin: 20px auto; padding: 0 12px; }
+
+  /* ── Summary cards ── */
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
   @media (max-width: 640px) { .summary-cards { grid-template-columns: repeat(2, 1fr); } }
-  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
-  .card .label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
-  .card .value { font-size: 22px; font-weight: 700; }
-  .card .sub   { font-size: 12px; color: var(--text3); margin-top: 4px; }
-  .up   { color: var(--red); }
-  .down { color: var(--green); }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .card .label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
+  .card .value { font-size: 20px; font-weight: 700; }
+  .card .sub   { font-size: 11px; color: var(--text3); margin-top: 3px; }
+  .up { color: var(--red); } .down { color: var(--green); }
 
-  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
-  .chart-box h2 { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 16px; text-transform: uppercase; letter-spacing: .06em; }
-  .chart-wrap { position: relative; height: 320px; }
+  /* ── Date range bar ── */
+  .date-bar { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .date-bar label { font-size: 12px; color: var(--text3); white-space: nowrap; }
+  .date-bar input[type=date] {
+    padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg3); color: var(--text); font-size: 13px;
+    color-scheme: dark;
+  }
+  .date-bar input[type=date]:focus { outline: none; border-color: var(--accent); }
+  .presets { display: flex; gap: 6px; flex-wrap: wrap; }
+  .preset-btn { padding: 4px 10px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg3); color: var(--text2); font-size: 12px; cursor: pointer; white-space: nowrap; transition: all .15s; }
+  .preset-btn:hover, .preset-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .apply-btn { padding: 5px 12px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .apply-btn:hover { background: #3d6de8; }
+  .sep { color: var(--border); }
 
-  table { width: 100%; border-collapse: collapse; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 40px; }
-  thead { background: var(--bg3); }
-  th, td { padding: 10px 14px; text-align: right; font-size: 13px; border-bottom: 1px solid var(--border); }
-  th { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+  /* ── Chart ── */
+  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  .chart-box h2 { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
+  .chart-wrap { position: relative; height: 300px; }
+  @media (max-width: 640px) { .chart-wrap { height: 220px; } }
+
+  /* ── Desktop table ── */
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 40px; }
+  table { width: 100%; border-collapse: collapse; background: var(--bg2); min-width: 560px; }
+  thead { background: var(--bg3); position: sticky; top: 0; z-index: 1; }
+  th, td { padding: 9px 12px; text-align: right; font-size: 13px; border-bottom: 1px solid var(--border); }
+  th { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
   th:first-child, td:first-child { text-align: left; }
   tbody tr:hover { background: var(--bg3); }
   .pos { color: var(--red); font-weight: 600; }
   .neg { color: var(--green); font-weight: 600; }
+  @media (max-width: 640px) { .table-wrap { display: none; } }
+
+  /* ── Mobile cards ── */
+  .mobile-cards { display: none; margin-bottom: 40px; }
+  @media (max-width: 640px) { .mobile-cards { display: flex; flex-direction: column; gap: 8px; } }
+  .mcard { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .mcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .mcard-date { font-size: 13px; font-weight: 600; }
+  .mcard-price { text-align: right; }
+  .mcard-close { font-size: 16px; font-weight: 700; }
+  .mcard-chg { font-size: 12px; margin-top: 1px; }
+  .mcard-body { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .mcard-stat { background: var(--bg3); border-radius: 6px; padding: 7px 10px; }
+  .mcard-stat .slabel { font-size: 10px; color: var(--text3); margin-bottom: 2px; }
+  .mcard-stat .sval { font-size: 14px; font-weight: 600; }
+  .mcard-broker { margin-top: 8px; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); padding-top: 7px; }
 
   #status { text-align: center; color: var(--text3); padding: 60px 20px; line-height: 1.8; }
   #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 13px; color: var(--text2); }
@@ -68,22 +107,41 @@
       <div class="card"><div class="label">外資買入均價 (VWAP)</div><div class="value" id="s-avg">—</div><div class="sub">元</div></div>
     </div>
 
+    <div class="date-bar">
+      <div class="presets">
+        <button class="preset-btn" onclick="applyPreset(5,this)">近5日</button>
+        <button class="preset-btn" onclick="applyPreset(10,this)">近10日</button>
+        <button class="preset-btn" onclick="applyPreset(20,this)">近20日</button>
+        <button class="preset-btn active" onclick="applyPreset(0,this)">全部</button>
+      </div>
+      <span class="sep">|</span>
+      <label>從</label>
+      <input type="date" id="dateFrom">
+      <label>到</label>
+      <input type="date" id="dateTo">
+      <button class="apply-btn" onclick="applyDateRange()">套用</button>
+    </div>
+
     <div class="chart-box">
       <h2>外資每日淨買張（柱）＋ 股價與買入均價（線）</h2>
       <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
     </div>
 
-    <table>
-      <thead>
-        <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>外資淨買(張)</th><th>外資買均價</th><th>外資賣均價</th><th>最大外資</th></tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>外資淨買(張)</th><th>外資買均價</th><th>外資賣均價</th><th>最大外資</th></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="mobile-cards" id="mobileCards"></div>
   </div>
 </main>
 
 <script>
 let chart = null;
+let fullData = null; // 完整資料，filter 用
 
 async function loadStock() {
   const sid = document.getElementById('stockInput').value.trim();
@@ -95,102 +153,119 @@ async function loadStock() {
   try {
     const res = await fetch(`data/${sid}.json?t=${Date.now()}`);
     if (!res.ok) throw new Error(`找不到 data/${sid}.json<br>請先執行：<code>node fetch_chip.js ${sid}</code> 並 commit data 資料夾`);
-    const data = await res.json();
-    render(data);
+    fullData = await res.json();
+    // 初始化日期 input 範圍
+    const allDates = getAllDates(fullData);
+    document.getElementById('dateFrom').value = allDates[0];
+    document.getElementById('dateTo').value   = allDates[allDates.length - 1];
+    document.getElementById('dateTo').max = allDates[allDates.length - 1];
+    document.getElementById('dateFrom').min  = allDates[0];
+    setActivePreset(null); // 全部 active
+    document.querySelector('.preset-btn:last-of-type').classList.add('active');
+    renderView(allDates[0], allDates[allDates.length - 1]);
     statusEl.style.display = 'none';
+    document.getElementById('content').style.display = 'block';
   } catch(e) {
     statusEl.innerHTML = e.message;
   }
 }
 
-function render(data) {
-  const { stockId, startDate, endDate, prices, chips } = data;
+function getAllDates(data) {
+  return [...new Set([...data.prices.map(p=>p.date), ...data.chips.map(c=>c.date)])].sort();
+}
 
-  const priceMap = {};
+function setActivePreset(btn) {
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+function applyPreset(n, btn) {
+  setActivePreset(btn);
+  const allDates = getAllDates(fullData);
+  const filtered = n > 0 ? allDates.slice(-n) : allDates;
+  document.getElementById('dateFrom').value = filtered[0];
+  document.getElementById('dateTo').value   = filtered[filtered.length - 1];
+  renderView(filtered[0], filtered[filtered.length - 1]);
+}
+
+function applyDateRange() {
+  setActivePreset(null);
+  const from = document.getElementById('dateFrom').value;
+  const to   = document.getElementById('dateTo').value;
+  if (from && to) renderView(from, to);
+}
+
+function renderView(fromDate, toDate) {
+  const { stockId, startDate, endDate, prices, chips } = fullData;
+
+  const priceMap = {}, chipMap = {};
   prices.forEach(p => priceMap[p.date] = p);
-  const chipMap = {};
-  chips.forEach(c => chipMap[c.date] = c);
+  chips.forEach(c  => chipMap[c.date]  = c);
 
-  const allDates = [...new Set([...prices.map(p=>p.date), ...chips.map(c=>c.date)])].sort();
+  const allDates = getAllDates(fullData);
+  const dates = allDates.filter(d => d >= fromDate && d <= toDate);
+  if (!dates.length) return;
 
-  const labels    = allDates;
-  const closeArr  = allDates.map(d => priceMap[d]?.close ?? null);
-  const netArr    = allDates.map(d => chipMap[d]?.foreign_net ?? null);
-  const buyAvgArr = allDates.map(d => chipMap[d]?.foreign_buy_avg ?? null);
-
+  // Summary (filtered range)
   document.getElementById('s-stock').textContent = stockId;
-  document.getElementById('s-range').textContent = `${startDate} ～ ${endDate}`;
+  document.getElementById('s-range').textContent = `${dates[0]} ～ ${dates[dates.length-1]}`;
 
-  const lastPrice = prices[prices.length - 1];
-  if (lastPrice) {
-    document.getElementById('s-close').textContent = lastPrice.close;
-    const prev = prices[prices.length - 2];
-    if (prev) {
-      const chg = (lastPrice.close - prev.close).toFixed(2);
-      const pct = ((lastPrice.close - prev.close) / prev.close * 100).toFixed(2);
-      const el = document.getElementById('s-chg');
-      el.textContent = `${chg >= 0 ? '+' : ''}${chg} (${pct}%)`;
-      el.className = 'sub ' + (chg >= 0 ? 'up' : 'down');
-    }
+  const lastPrice = [...dates].reverse().map(d => priceMap[d]).find(Boolean);
+  const prevPrice = lastPrice ? (() => {
+    const idx = allDates.indexOf(lastPrice.date);
+    return idx > 0 ? priceMap[allDates[idx-1]] : null;
+  })() : null;
+  document.getElementById('s-close').textContent = lastPrice?.close ?? '—';
+  if (lastPrice && prevPrice) {
+    const chg = (lastPrice.close - prevPrice.close).toFixed(2);
+    const pct = ((lastPrice.close - prevPrice.close) / prevPrice.close * 100).toFixed(2);
+    const el = document.getElementById('s-chg');
+    el.textContent = `${chg >= 0 ? '+' : ''}${chg} (${pct}%)`;
+    el.className = 'sub ' + (chg >= 0 ? 'up' : 'down');
   }
 
-  const totalNet = chips.reduce((s, c) => s + c.foreign_net, 0);
+  const filteredChips = dates.map(d => chipMap[d]).filter(Boolean);
+  const totalNet = filteredChips.reduce((s, c) => s + c.foreign_net, 0);
   document.getElementById('s-net').textContent = (totalNet >= 0 ? '+' : '') + totalNet;
   document.getElementById('s-net').className = 'value ' + (totalNet >= 0 ? 'up' : 'down');
 
   let totalBuyAmt = 0, totalBuyVol = 0;
-  chips.forEach(c => { totalBuyAmt += c.foreign_buy_avg * c.foreign_buy * 1000; totalBuyVol += c.foreign_buy * 1000; });
+  filteredChips.forEach(c => { totalBuyAmt += c.foreign_buy_avg * c.foreign_buy * 1000; totalBuyVol += c.foreign_buy * 1000; });
   document.getElementById('s-avg').textContent = totalBuyVol ? (totalBuyAmt / totalBuyVol).toFixed(2) : '—';
+
+  // Chart
+  const closeArr  = dates.map(d => priceMap[d]?.close ?? null);
+  const netArr    = dates.map(d => chipMap[d]?.foreign_net ?? null);
+  const buyAvgArr = dates.map(d => chipMap[d]?.foreign_buy_avg ?? null);
 
   if (chart) chart.destroy();
   chart = new Chart(document.getElementById('mainChart'), {
     data: {
-      labels,
+      labels: dates,
       datasets: [
         {
-          type: 'bar',
-          label: '外資淨買(張)',
-          data: netArr,
+          type: 'bar', label: '外資淨買(張)', data: netArr,
           backgroundColor: netArr.map(v => v >= 0 ? 'rgba(239,68,68,0.7)' : 'rgba(34,197,94,0.7)'),
-          yAxisID: 'yNet',
-          order: 2,
+          yAxisID: 'yNet', order: 2,
         },
         {
-          type: 'line',
-          label: '收盤價',
-          data: closeArr,
-          borderColor: '#4f7fff',
-          backgroundColor: 'transparent',
-          borderWidth: 2.5,
-          pointRadius: 3,
-          yAxisID: 'yPrice',
-          order: 1,
-          tension: 0.1,
+          type: 'line', label: '收盤價', data: closeArr,
+          borderColor: '#4f7fff', backgroundColor: 'transparent',
+          borderWidth: 2.5, pointRadius: 3, yAxisID: 'yPrice', order: 1, tension: 0.1,
         },
         {
-          type: 'line',
-          label: '外資買入均價',
-          data: buyAvgArr,
-          borderColor: '#f59e0b',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          borderDash: [5, 4],
-          pointRadius: 2,
-          yAxisID: 'yPrice',
-          order: 0,
-          tension: 0.1,
+          type: 'line', label: '外資買入均價', data: buyAvgArr,
+          borderColor: '#f59e0b', backgroundColor: 'transparent',
+          borderWidth: 2, borderDash: [5, 4], pointRadius: 2, yAxisID: 'yPrice', order: 0, tension: 0.1,
         },
       ],
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
+      responsive: true, maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         tooltip: {
-          backgroundColor: 'rgba(26,29,39,0.95)',
-          borderColor: '#2e3347',
-          borderWidth: 1,
+          backgroundColor: 'rgba(26,29,39,0.95)', borderColor: '#2e3347', borderWidth: 1,
           callbacks: {
             afterBody(ctx) {
               const date = ctx[0]?.label;
@@ -207,25 +282,16 @@ function render(data) {
         legend: { position: 'top', labels: { color: '#94a3b8', boxWidth: 14 } },
       },
       scales: {
-        yNet: {
-          position: 'left',
-          title: { display: true, text: '淨買張數', color: '#64748b' },
-          grid: { color: 'rgba(46,51,71,0.8)' },
-          ticks: { color: '#64748b' },
-        },
-        yPrice: {
-          position: 'right',
-          title: { display: true, text: '價格 (元)', color: '#64748b' },
-          grid: { drawOnChartArea: false },
-          ticks: { color: '#64748b' },
-        },
+        yNet:   { position: 'left',  title: { display: true, text: '淨買張數', color: '#64748b' }, grid: { color: 'rgba(46,51,71,0.8)' }, ticks: { color: '#64748b' } },
+        yPrice: { position: 'right', title: { display: true, text: '價格(元)', color: '#64748b' }, grid: { drawOnChartArea: false }, ticks: { color: '#64748b' } },
         x: { ticks: { color: '#64748b', maxRotation: 45 }, grid: { color: 'rgba(46,51,71,0.5)' } },
       },
     },
   });
 
-  const tbody = document.getElementById('tableBody');
-  tbody.innerHTML = [...allDates].reverse().map(date => {
+  // Table (desktop) + cards (mobile)
+  const rows = [...dates].reverse();
+  document.getElementById('tableBody').innerHTML = rows.map(date => {
     const p = priceMap[date];
     const c = chipMap[date];
     const prevDate = allDates[allDates.indexOf(date) - 1];
@@ -244,7 +310,45 @@ function render(data) {
     </tr>`;
   }).join('');
 
-  document.getElementById('content').style.display = 'block';
+  document.getElementById('mobileCards').innerHTML = rows.map(date => {
+    const p = priceMap[date];
+    const c = chipMap[date];
+    const prevDate = allDates[allDates.indexOf(date) - 1];
+    const prevClose = prevDate ? priceMap[prevDate]?.close : null;
+    const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : null;
+    const chgClass = chg !== null ? (chg >= 0 ? 'up' : 'down') : '';
+    const net = c?.foreign_net;
+    const topF = c?.top_foreign?.[0];
+    const top3 = c?.top_foreign?.slice(0,3).map(f => `${f.name} ${f.net>=0?'+':''}${f.net}張`).join('　') || '—';
+    return `<div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-date">${date}</div>
+        <div class="mcard-price">
+          <div class="mcard-close">${p?.close ?? '—'}</div>
+          <div class="mcard-chg ${chgClass}">${chg !== null ? (chg >= 0 ? '+' : '') + chg : '—'}</div>
+        </div>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-stat">
+          <div class="slabel">外資淨買(張)</div>
+          <div class="sval ${net != null ? (net >= 0 ? 'up' : 'down') : ''}">${net != null ? (net >= 0 ? '+' : '') + net : '—'}</div>
+        </div>
+        <div class="mcard-stat">
+          <div class="slabel">外資買均價</div>
+          <div class="sval">${c?.foreign_buy_avg || '—'}</div>
+        </div>
+        <div class="mcard-stat">
+          <div class="slabel">外資賣均價</div>
+          <div class="sval">${c?.foreign_sell_avg || '—'}</div>
+        </div>
+        <div class="mcard-stat">
+          <div class="slabel">外資買(張)</div>
+          <div class="sval">${c?.foreign_buy ?? '—'}</div>
+        </div>
+      </div>
+      <div class="mcard-broker">主力外資：${top3}</div>
+    </div>`;
+  }).join('');
 }
 
 window.onload = () => loadStock();
