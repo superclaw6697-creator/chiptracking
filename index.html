@@ -130,7 +130,7 @@
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>外資買均價</th><th>外資賣均價</th><th>最大外資</th></tr>
+          <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>當日買均價</th><th>累計買均價</th><th>最大外資</th></tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
@@ -236,10 +236,19 @@ function renderView(fromDate, toDate) {
   // Chart
   const closeArr  = dates.map(d => priceMap[d]?.close ?? null);
   const netArr    = dates.map(d => chipMap[d]?.foreign_net ?? null);
-  const buyAvgArr = dates.map(d => chipMap[d]?.foreign_buy_avg ?? null);
   // 累計淨買（從篩選起始日起算）
   let cum = 0;
   const cumArr = dates.map(d => { cum += chipMap[d]?.foreign_net ?? 0; return cum; });
+  // 累計買入均價 VWAP：Σ(buy_avg × buy張) / Σ(buy張)
+  let cumBuyAmt = 0, cumBuyVol = 0;
+  const cumBuyAvgArr = dates.map(d => {
+    const c = chipMap[d];
+    if (c && c.foreign_buy > 0) {
+      cumBuyAmt += c.foreign_buy_avg * c.foreign_buy;
+      cumBuyVol += c.foreign_buy;
+    }
+    return cumBuyVol > 0 ? +(cumBuyAmt / cumBuyVol).toFixed(2) : null;
+  });
 
   if (chart) chart.destroy();
   chart = new Chart(document.getElementById('mainChart'), {
@@ -263,7 +272,7 @@ function renderView(fromDate, toDate) {
           borderWidth: 2.5, pointRadius: 3, yAxisID: 'yPrice', order: 1, tension: 0.1,
         },
         {
-          type: 'line', label: '外資買入均價', data: buyAvgArr,
+          type: 'line', label: '累計買入均價', data: cumBuyAvgArr,
           borderColor: '#f59e0b', backgroundColor: 'transparent',
           borderWidth: 2, borderDash: [5, 4], pointRadius: 2, yAxisID: 'yPrice', order: 0, tension: 0.1,
         },
@@ -300,9 +309,15 @@ function renderView(fromDate, toDate) {
 
   // Table (desktop) + cards (mobile)
   // 建立 date→cumulative map（正序累計）
-  const cumMap = {};
-  let runSum = 0;
-  dates.forEach(d => { runSum += chipMap[d]?.foreign_net ?? 0; cumMap[d] = runSum; });
+  const cumMap = {}, cumBuyAvgMap = {};
+  let runSum = 0, rBuyAmt = 0, rBuyVol = 0;
+  dates.forEach(d => {
+    runSum += chipMap[d]?.foreign_net ?? 0;
+    cumMap[d] = runSum;
+    const c = chipMap[d];
+    if (c && c.foreign_buy > 0) { rBuyAmt += c.foreign_buy_avg * c.foreign_buy; rBuyVol += c.foreign_buy; }
+    cumBuyAvgMap[d] = rBuyVol > 0 ? (rBuyAmt / rBuyVol).toFixed(2) : null;
+  });
 
   const rows = [...dates].reverse();
   document.getElementById('tableBody').innerHTML = rows.map(date => {
@@ -314,6 +329,7 @@ function renderView(fromDate, toDate) {
     const chgClass = chg !== '—' ? (chg >= 0 ? 'pos' : 'neg') : '';
     const topF = c?.top_foreign?.[0];
     const cumVal = cumMap[date];
+    const cumAvg = cumBuyAvgMap[date];
     return `<tr>
       <td>${date}</td>
       <td>${p?.close ?? '—'}</td>
@@ -321,7 +337,7 @@ function renderView(fromDate, toDate) {
       <td class="${c ? (c.foreign_net >= 0 ? 'pos' : 'neg') : ''}">${c ? (c.foreign_net >= 0 ? '+' : '') + c.foreign_net : '—'}</td>
       <td class="${cumVal != null ? (cumVal >= 0 ? 'pos' : 'neg') : ''}">${cumVal != null ? (cumVal >= 0 ? '+' : '') + cumVal : '—'}</td>
       <td>${c?.foreign_buy_avg || '—'}</td>
-      <td>${c?.foreign_sell_avg || '—'}</td>
+      <td style="color:#f59e0b;font-weight:600">${cumAvg ?? '—'}</td>
       <td style="font-size:12px;color:var(--text3)">${topF ? `${topF.name} ${topF.net >= 0 ? '+' : ''}${topF.net}張` : '—'}</td>
     </tr>`;
   }).join('');
@@ -354,12 +370,12 @@ function renderView(fromDate, toDate) {
           <div class="sval ${cumMap[date] >= 0 ? 'up' : 'down'}">${cumMap[date] >= 0 ? '+' : ''}${cumMap[date] ?? '—'}</div>
         </div>
         <div class="mcard-stat">
-          <div class="slabel">外資買均價</div>
+          <div class="slabel">當日買均價</div>
           <div class="sval">${c?.foreign_buy_avg || '—'}</div>
         </div>
         <div class="mcard-stat">
-          <div class="slabel">外資賣均價</div>
-          <div class="sval">${c?.foreign_sell_avg || '—'}</div>
+          <div class="slabel">累計買均價</div>
+          <div class="sval" style="color:#f59e0b">${cumBuyAvgMap[date] ?? '—'}</div>
         </div>
       </div>
       <div class="mcard-broker">主力外資：${top3}</div>
