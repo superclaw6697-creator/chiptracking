@@ -11,57 +11,70 @@
     --accent: #4f7fff;
     --green: #22c55e; --red: #ef4444; --yellow: #f59e0b;
     --text: #e2e8f0; --text2: #94a3b8; --text3: #64748b;
+    --sidebar: 200px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
   /* ── Header ── */
-  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 11px 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
   header h1 { font-size: 15px; font-weight: 700; white-space: nowrap; }
-  .search { display: flex; gap: 8px; margin-left: auto; align-items: center; flex-wrap: wrap; }
-  .search input[type=text] { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 14px; width: 90px; }
+  .search { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+  .search input[type=text] { padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 13px; width: 80px; }
   .search input[type=text]:focus { outline: none; border-color: var(--accent); }
-  .search button { padding: 6px 14px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .search button { padding: 5px 12px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
   .search button:hover { background: #3d6de8; }
 
-  main { max-width: 1100px; margin: 20px auto; padding: 0 12px; }
+  /* ── Layout ── */
+  .app { display: flex; flex: 1; overflow: hidden; }
+
+  /* ── Sidebar ── */
+  .sidebar { width: var(--sidebar); background: var(--bg2); border-right: 1px solid var(--border); overflow-y: auto; flex-shrink: 0; }
+  .sidebar-title { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; padding: 14px 14px 8px; }
+  .stock-item { padding: 10px 14px; cursor: pointer; border-left: 3px solid transparent; transition: all .15s; }
+  .stock-item:hover { background: var(--bg3); }
+  .stock-item.active { border-left-color: var(--accent); background: rgba(79,127,255,.08); }
+  .stock-item .sid { font-size: 13px; font-weight: 700; color: var(--text); }
+  .stock-item .sname { font-size: 11px; color: var(--text3); margin-top: 1px; }
+  .stock-item.active .sid { color: var(--accent); }
+  @media (max-width: 640px) { .sidebar { width: 100%; position: fixed; top: 0; left: 0; height: 100%; z-index: 50; transform: translateX(-100%); transition: transform .25s; } .sidebar.open { transform: translateX(0); } }
+
+  /* ── Main content ── */
+  .main { flex: 1; overflow-y: auto; padding: 16px; }
+  @media (max-width: 640px) { .main { padding: 12px; } }
 
   /* ── Summary cards ── */
-  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
-  @media (max-width: 640px) { .summary-cards { grid-template-columns: repeat(2, 1fr); } }
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+  @media (max-width: 700px) { .summary-cards { grid-template-columns: repeat(2, 1fr); } }
   .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
   .card .label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
   .card .value { font-size: 20px; font-weight: 700; }
   .card .sub   { font-size: 11px; color: var(--text3); margin-top: 3px; }
   .up { color: var(--red); } .down { color: var(--green); }
 
-  /* ── Date range bar ── */
-  .date-bar { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  /* ── Date bar ── */
+  .date-bar { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .date-bar label { font-size: 12px; color: var(--text3); white-space: nowrap; }
-  .date-bar input[type=date] {
-    padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--bg3); color: var(--text); font-size: 13px;
-    color-scheme: dark;
-  }
+  .date-bar input[type=date] { padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 12px; color-scheme: dark; }
   .date-bar input[type=date]:focus { outline: none; border-color: var(--accent); }
-  .presets { display: flex; gap: 6px; flex-wrap: wrap; }
-  .preset-btn { padding: 4px 10px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg3); color: var(--text2); font-size: 12px; cursor: pointer; white-space: nowrap; transition: all .15s; }
+  .presets { display: flex; gap: 5px; flex-wrap: wrap; }
+  .preset-btn { padding: 4px 9px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg3); color: var(--text2); font-size: 12px; cursor: pointer; white-space: nowrap; transition: all .15s; }
   .preset-btn:hover, .preset-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .apply-btn { padding: 5px 12px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .apply-btn { padding: 4px 11px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap; }
   .apply-btn:hover { background: #3d6de8; }
   .sep { color: var(--border); }
 
   /* ── Chart ── */
-  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
-  .chart-box h2 { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
-  .chart-wrap { position: relative; height: 300px; }
-  @media (max-width: 640px) { .chart-wrap { height: 220px; } }
+  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+  .chart-box h2 { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  .chart-wrap { position: relative; height: 280px; }
+  @media (max-width: 640px) { .chart-wrap { height: 200px; } }
 
   /* ── Desktop table ── */
-  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 40px; }
-  table { width: 100%; border-collapse: collapse; background: var(--bg2); min-width: 560px; }
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 30px; }
+  table { width: 100%; border-collapse: collapse; background: var(--bg2); min-width: 600px; }
   thead { background: var(--bg3); position: sticky; top: 0; z-index: 1; }
-  th, td { padding: 9px 12px; text-align: right; font-size: 13px; border-bottom: 1px solid var(--border); }
+  th, td { padding: 8px 12px; text-align: right; font-size: 12px; border-bottom: 1px solid var(--border); }
   th { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
   th:first-child, td:first-child { text-align: left; }
   tbody tr:hover { background: var(--bg3); }
@@ -70,7 +83,7 @@
   @media (max-width: 640px) { .table-wrap { display: none; } }
 
   /* ── Mobile cards ── */
-  .mobile-cards { display: none; margin-bottom: 40px; }
+  .mobile-cards { display: none; margin-bottom: 30px; }
   @media (max-width: 640px) { .mobile-cards { display: flex; flex-direction: column; gap: 8px; } }
   .mcard { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
   .mcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
@@ -84,83 +97,132 @@
   .mcard-stat .sval { font-size: 14px; font-weight: 600; }
   .mcard-broker { margin-top: 8px; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); padding-top: 7px; }
 
+  /* ── Mobile menu btn ── */
+  .menu-btn { display: none; background: none; border: none; color: var(--text2); cursor: pointer; font-size: 20px; padding: 0 4px; }
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 49; }
+  @media (max-width: 640px) { .menu-btn { display: block; } .overlay.show { display: block; } }
+
   #status { text-align: center; color: var(--text3); padding: 60px 20px; line-height: 1.8; }
-  #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 13px; color: var(--text2); }
+  #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: var(--text2); }
 </style>
 </head>
 <body>
 <header>
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
   <h1>📊 外資籌碼追蹤</h1>
   <div class="search">
-    <input id="stockInput" type="text" value="2312" placeholder="股票代號" onkeydown="if(event.key==='Enter')loadStock()">
-    <button onclick="loadStock()">查詢</button>
+    <input id="stockInput" type="text" placeholder="代號" onkeydown="if(event.key==='Enter')loadStock(this.value)">
+    <button onclick="loadStock(document.getElementById('stockInput').value)">查詢</button>
   </div>
 </header>
-
-<main>
-  <div id="status">載入中...</div>
-  <div id="content" style="display:none">
-    <div class="summary-cards">
-      <div class="card"><div class="label">股票</div><div class="value" id="s-stock">—</div><div class="sub" id="s-range">—</div></div>
-      <div class="card"><div class="label">最新收盤</div><div class="value" id="s-close">—</div><div class="sub" id="s-chg">—</div></div>
-      <div class="card"><div class="label">期間外資累計淨買</div><div class="value" id="s-net">—</div><div class="sub">張</div></div>
-      <div class="card"><div class="label">外資買入均價 (VWAP)</div><div class="value" id="s-avg">—</div><div class="sub">元</div></div>
-    </div>
-
-    <div class="date-bar">
-      <div class="presets">
-        <button class="preset-btn" onclick="applyPreset(5,this)">近5日</button>
-        <button class="preset-btn" onclick="applyPreset(10,this)">近10日</button>
-        <button class="preset-btn" onclick="applyPreset(20,this)">近20日</button>
-        <button class="preset-btn active" onclick="applyPreset(0,this)">全部</button>
-      </div>
-      <span class="sep">|</span>
-      <label>從</label>
-      <input type="date" id="dateFrom">
-      <label>到</label>
-      <input type="date" id="dateTo">
-      <button class="apply-btn" onclick="applyDateRange()">套用</button>
-    </div>
-
-    <div class="chart-box">
-      <h2>外資每日淨買張（柱）＋ 股價與買入均價（線）</h2>
-      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>當日買均價</th><th>累計買均價</th><th>最大外資</th></tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-    </div>
-    <div class="mobile-cards" id="mobileCards"></div>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<div class="app">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-title">持股清單</div>
+    <div id="stockList"></div>
   </div>
-</main>
+  <div class="main">
+    <div id="status">載入中...</div>
+    <div id="content" style="display:none">
+      <div class="summary-cards">
+        <div class="card"><div class="label">股票</div><div class="value" id="s-stock">—</div><div class="sub" id="s-range">—</div></div>
+        <div class="card"><div class="label">最新收盤</div><div class="value" id="s-close">—</div><div class="sub" id="s-chg">—</div></div>
+        <div class="card"><div class="label">期間外資累計淨買</div><div class="value" id="s-net">—</div><div class="sub">張</div></div>
+        <div class="card"><div class="label">外資累計買均價</div><div class="value" id="s-avg">—</div><div class="sub">元 (VWAP)</div></div>
+      </div>
+
+      <div class="date-bar">
+        <div class="presets">
+          <button class="preset-btn" onclick="applyPreset(5,this)">近5日</button>
+          <button class="preset-btn" onclick="applyPreset(10,this)">近10日</button>
+          <button class="preset-btn" onclick="applyPreset(20,this)">近20日</button>
+          <button class="preset-btn active" onclick="applyPreset(0,this)">全部</button>
+        </div>
+        <span class="sep">|</span>
+        <label>從</label>
+        <input type="date" id="dateFrom">
+        <label>到</label>
+        <input type="date" id="dateTo">
+        <button class="apply-btn" onclick="applyDateRange()">套用</button>
+      </div>
+
+      <div class="chart-box">
+        <h2>外資每日淨買張（柱）＋ 股價 & 累計買均價（線）</h2>
+        <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>日期</th><th>收盤</th><th>漲跌</th><th>當日淨買(張)</th><th>累計淨買(張)</th><th>當日買均價</th><th>累計買均價</th><th>最大外資</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="mobile-cards" id="mobileCards"></div>
+    </div>
+  </div>
+</div>
 
 <script>
 let chart = null;
-let fullData = null; // 完整資料，filter 用
+let fullData = null;
+let currentId = null;
 
-async function loadStock() {
-  const sid = document.getElementById('stockInput').value.trim();
+// ── Sidebar ──
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+async function loadIndex() {
+  try {
+    const res = await fetch(`data/index.json?t=${Date.now()}`);
+    if (!res.ok) return;
+    const idx = await res.json();
+    const list = document.getElementById('stockList');
+    list.innerHTML = idx.stocks.map(s =>
+      `<div class="stock-item" id="si-${s.id}" onclick="loadStock('${s.id}')">
+        <div class="sid">${s.id}</div>
+        <div class="sname">${s.name}</div>
+      </div>`
+    ).join('');
+    // 載入第一支
+    if (idx.stocks.length) loadStock(idx.stocks[0].id);
+  } catch(e) { /* index.json 不存在也 ok */ }
+}
+
+function setActiveSidebarItem(id) {
+  document.querySelectorAll('.stock-item').forEach(el => el.classList.remove('active'));
+  const el = document.getElementById(`si-${id}`);
+  if (el) el.classList.add('active');
+}
+
+// ── Load stock ──
+async function loadStock(sid) {
+  sid = (sid || '').trim();
   if (!sid) return;
+  currentId = sid;
+  document.getElementById('stockInput').value = sid;
+  setActiveSidebarItem(sid);
+  // 手機關閉 sidebar
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+
   const statusEl = document.getElementById('status');
   statusEl.style.display = 'block';
   statusEl.innerHTML = '載入中...';
   document.getElementById('content').style.display = 'none';
   try {
     const res = await fetch(`data/${sid}.json?t=${Date.now()}`);
-    if (!res.ok) throw new Error(`找不到 data/${sid}.json<br>請先執行：<code>node fetch_chip.js ${sid}</code> 並 commit data 資料夾`);
+    if (!res.ok) throw new Error(`找不到 data/${sid}.json<br>請執行：<code>node fetch_chip.js ${sid}</code>`);
     fullData = await res.json();
-    // 初始化日期 input 範圍
     const allDates = getAllDates(fullData);
     document.getElementById('dateFrom').value = allDates[0];
     document.getElementById('dateTo').value   = allDates[allDates.length - 1];
-    document.getElementById('dateTo').max = allDates[allDates.length - 1];
-    document.getElementById('dateFrom').min  = allDates[0];
-    setActivePreset(null); // 全部 active
+    document.getElementById('dateTo').max     = allDates[allDates.length - 1];
+    document.getElementById('dateFrom').min   = allDates[0];
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
     document.querySelector('.preset-btn:last-of-type').classList.add('active');
     renderView(allDates[0], allDates[allDates.length - 1]);
     statusEl.style.display = 'none';
@@ -196,7 +258,7 @@ function applyDateRange() {
 }
 
 function renderView(fromDate, toDate) {
-  const { stockId, startDate, endDate, prices, chips } = fullData;
+  const { stockId, prices, chips } = fullData;
 
   const priceMap = {}, chipMap = {};
   prices.forEach(p => priceMap[p.date] = p);
@@ -206,7 +268,7 @@ function renderView(fromDate, toDate) {
   const dates = allDates.filter(d => d >= fromDate && d <= toDate);
   if (!dates.length) return;
 
-  // Summary (filtered range)
+  // ── Summary cards ──
   document.getElementById('s-stock').textContent = stockId;
   document.getElementById('s-range').textContent = `${dates[0]} ～ ${dates[dates.length-1]}`;
 
@@ -233,21 +295,16 @@ function renderView(fromDate, toDate) {
   filteredChips.forEach(c => { totalBuyAmt += c.foreign_buy_avg * c.foreign_buy * 1000; totalBuyVol += c.foreign_buy * 1000; });
   document.getElementById('s-avg').textContent = totalBuyVol ? (totalBuyAmt / totalBuyVol).toFixed(2) : '—';
 
-  // Chart
+  // ── Chart data ──
   const closeArr  = dates.map(d => priceMap[d]?.close ?? null);
   const netArr    = dates.map(d => chipMap[d]?.foreign_net ?? null);
-  // 累計淨買（從篩選起始日起算）
   let cum = 0;
   const cumArr = dates.map(d => { cum += chipMap[d]?.foreign_net ?? 0; return cum; });
-  // 累計買入均價 VWAP：Σ(buy_avg × buy張) / Σ(buy張)
-  let cumBuyAmt = 0, cumBuyVol = 0;
+  let cba = 0, cbv = 0;
   const cumBuyAvgArr = dates.map(d => {
     const c = chipMap[d];
-    if (c && c.foreign_buy > 0) {
-      cumBuyAmt += c.foreign_buy_avg * c.foreign_buy;
-      cumBuyVol += c.foreign_buy;
-    }
-    return cumBuyVol > 0 ? +(cumBuyAmt / cumBuyVol).toFixed(2) : null;
+    if (c && c.foreign_buy > 0) { cba += c.foreign_buy_avg * c.foreign_buy; cbv += c.foreign_buy; }
+    return cbv > 0 ? +(cba / cbv).toFixed(2) : null;
   });
 
   if (chart) chart.destroy();
@@ -255,109 +312,93 @@ function renderView(fromDate, toDate) {
     data: {
       labels: dates,
       datasets: [
-        {
-          type: 'bar', label: '當日淨買(張)', data: netArr,
+        { type:'bar', label:'當日淨買(張)', data:netArr,
           backgroundColor: netArr.map(v => v >= 0 ? 'rgba(239,68,68,0.7)' : 'rgba(34,197,94,0.7)'),
-          yAxisID: 'yNet', order: 2,
-        },
-        {
-          type: 'line', label: '累計淨買(張)', data: cumArr,
-          borderColor: '#a78bfa', backgroundColor: 'transparent',
-          borderWidth: 1.5, borderDash: [3, 3], pointRadius: 0,
-          yAxisID: 'yNet', order: 3, tension: 0.1,
-        },
-        {
-          type: 'line', label: '收盤價', data: closeArr,
-          borderColor: '#4f7fff', backgroundColor: 'transparent',
-          borderWidth: 2.5, pointRadius: 3, yAxisID: 'yPrice', order: 1, tension: 0.1,
-        },
-        {
-          type: 'line', label: '累計買入均價', data: cumBuyAvgArr,
-          borderColor: '#f59e0b', backgroundColor: 'transparent',
-          borderWidth: 2, borderDash: [5, 4], pointRadius: 2, yAxisID: 'yPrice', order: 0, tension: 0.1,
-        },
+          yAxisID:'yNet', order:2 },
+        { type:'line', label:'累計淨買(張)', data:cumArr,
+          borderColor:'#a78bfa', backgroundColor:'transparent',
+          borderWidth:1.5, borderDash:[3,3], pointRadius:0, yAxisID:'yNet', order:3, tension:0.1 },
+        { type:'line', label:'收盤價', data:closeArr,
+          borderColor:'#4f7fff', backgroundColor:'transparent',
+          borderWidth:2.5, pointRadius:3, yAxisID:'yPrice', order:1, tension:0.1 },
+        { type:'line', label:'累計買均價', data:cumBuyAvgArr,
+          borderColor:'#f59e0b', backgroundColor:'transparent',
+          borderWidth:2, borderDash:[5,4], pointRadius:2, yAxisID:'yPrice', order:0, tension:0.1 },
       ],
     },
     options: {
-      responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        tooltip: {
-          backgroundColor: 'rgba(26,29,39,0.95)', borderColor: '#2e3347', borderWidth: 1,
-          callbacks: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{
+        tooltip:{
+          backgroundColor:'rgba(26,29,39,0.95)', borderColor:'#2e3347', borderWidth:1,
+          callbacks:{
             afterBody(ctx) {
               const date = ctx[0]?.label;
               const c = chipMap[date];
               if (!c?.top_foreign?.length) return [];
-              const lines = ['', '── 外資分點 ──'];
-              c.top_foreign.slice(0, 5).forEach(f => {
-                lines.push(`${f.name}  淨${f.net >= 0 ? '+' : ''}${f.net}張  買均${f.buy_avg}`);
-              });
+              const lines = ['','── 外資分點 ──'];
+              c.top_foreign.slice(0,5).forEach(f => lines.push(`${f.name}  淨${f.net>=0?'+':''}${f.net}張  買均${f.buy_avg}`));
               return lines;
             }
           }
         },
-        legend: { position: 'top', labels: { color: '#94a3b8', boxWidth: 14 } },
+        legend:{ position:'top', labels:{ color:'#94a3b8', boxWidth:14 } },
       },
-      scales: {
-        yNet:   { position: 'left',  title: { display: true, text: '淨買張數', color: '#64748b' }, grid: { color: 'rgba(46,51,71,0.8)' }, ticks: { color: '#64748b' } },
-        yPrice: { position: 'right', title: { display: true, text: '價格(元)', color: '#64748b' }, grid: { drawOnChartArea: false }, ticks: { color: '#64748b' } },
-        x: { ticks: { color: '#64748b', maxRotation: 45 }, grid: { color: 'rgba(46,51,71,0.5)' } },
+      scales:{
+        yNet:  { position:'left',  title:{display:true,text:'淨買張數',color:'#64748b'}, grid:{color:'rgba(46,51,71,0.8)'}, ticks:{color:'#64748b'} },
+        yPrice:{ position:'right', title:{display:true,text:'價格(元)',color:'#64748b'}, grid:{drawOnChartArea:false}, ticks:{color:'#64748b'} },
+        x:     { ticks:{color:'#64748b',maxRotation:45}, grid:{color:'rgba(46,51,71,0.5)'} },
       },
     },
   });
 
-  // Table (desktop) + cards (mobile)
-  // 建立 date→cumulative map（正序累計）
+  // ── Table & cards ──
   const cumMap = {}, cumBuyAvgMap = {};
-  let runSum = 0, rBuyAmt = 0, rBuyVol = 0;
+  let rs = 0, rba = 0, rbv = 0;
   dates.forEach(d => {
-    runSum += chipMap[d]?.foreign_net ?? 0;
-    cumMap[d] = runSum;
+    rs += chipMap[d]?.foreign_net ?? 0; cumMap[d] = rs;
     const c = chipMap[d];
-    if (c && c.foreign_buy > 0) { rBuyAmt += c.foreign_buy_avg * c.foreign_buy; rBuyVol += c.foreign_buy; }
-    cumBuyAvgMap[d] = rBuyVol > 0 ? (rBuyAmt / rBuyVol).toFixed(2) : null;
+    if (c && c.foreign_buy > 0) { rba += c.foreign_buy_avg * c.foreign_buy; rbv += c.foreign_buy; }
+    cumBuyAvgMap[d] = rbv > 0 ? (rba / rbv).toFixed(2) : null;
   });
 
   const rows = [...dates].reverse();
+
   document.getElementById('tableBody').innerHTML = rows.map(date => {
-    const p = priceMap[date];
-    const c = chipMap[date];
-    const prevDate = allDates[allDates.indexOf(date) - 1];
+    const p = priceMap[date], c = chipMap[date];
+    const prevDate = allDates[allDates.indexOf(date)-1];
     const prevClose = prevDate ? priceMap[prevDate]?.close : null;
     const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : '—';
-    const chgClass = chg !== '—' ? (chg >= 0 ? 'pos' : 'neg') : '';
+    const chgCls = chg !== '—' ? (chg >= 0 ? 'pos' : 'neg') : '';
     const topF = c?.top_foreign?.[0];
-    const cumVal = cumMap[date];
-    const cumAvg = cumBuyAvgMap[date];
+    const cv = cumMap[date], ca = cumBuyAvgMap[date];
     return `<tr>
       <td>${date}</td>
       <td>${p?.close ?? '—'}</td>
-      <td class="${chgClass}">${chg !== '—' ? (chg >= 0 ? '+' : '') + chg : '—'}</td>
+      <td class="${chgCls}">${chg !== '—' ? (chg >= 0 ? '+' : '') + chg : '—'}</td>
       <td class="${c ? (c.foreign_net >= 0 ? 'pos' : 'neg') : ''}">${c ? (c.foreign_net >= 0 ? '+' : '') + c.foreign_net : '—'}</td>
-      <td class="${cumVal != null ? (cumVal >= 0 ? 'pos' : 'neg') : ''}">${cumVal != null ? (cumVal >= 0 ? '+' : '') + cumVal : '—'}</td>
+      <td class="${cv != null ? (cv >= 0 ? 'pos' : 'neg') : ''}">${cv != null ? (cv >= 0 ? '+' : '') + cv : '—'}</td>
       <td>${c?.foreign_buy_avg || '—'}</td>
-      <td style="color:#f59e0b;font-weight:600">${cumAvg ?? '—'}</td>
-      <td style="font-size:12px;color:var(--text3)">${topF ? `${topF.name} ${topF.net >= 0 ? '+' : ''}${topF.net}張` : '—'}</td>
+      <td style="color:#f59e0b;font-weight:600">${ca ?? '—'}</td>
+      <td style="font-size:11px;color:var(--text3)">${topF ? `${topF.name} ${topF.net >= 0 ? '+' : ''}${topF.net}張` : '—'}</td>
     </tr>`;
   }).join('');
 
   document.getElementById('mobileCards').innerHTML = rows.map(date => {
-    const p = priceMap[date];
-    const c = chipMap[date];
-    const prevDate = allDates[allDates.indexOf(date) - 1];
+    const p = priceMap[date], c = chipMap[date];
+    const prevDate = allDates[allDates.indexOf(date)-1];
     const prevClose = prevDate ? priceMap[prevDate]?.close : null;
     const chg = p && prevClose ? (p.close - prevClose).toFixed(2) : null;
-    const chgClass = chg !== null ? (chg >= 0 ? 'up' : 'down') : '';
+    const chgCls = chg !== null ? (chg >= 0 ? 'up' : 'down') : '';
     const net = c?.foreign_net;
-    const topF = c?.top_foreign?.[0];
     const top3 = c?.top_foreign?.slice(0,3).map(f => `${f.name} ${f.net>=0?'+':''}${f.net}張`).join('　') || '—';
     return `<div class="mcard">
       <div class="mcard-top">
         <div class="mcard-date">${date}</div>
         <div class="mcard-price">
           <div class="mcard-close">${p?.close ?? '—'}</div>
-          <div class="mcard-chg ${chgClass}">${chg !== null ? (chg >= 0 ? '+' : '') + chg : '—'}</div>
+          <div class="mcard-chg ${chgCls}">${chg !== null ? (chg >= 0 ? '+' : '') + chg : '—'}</div>
         </div>
       </div>
       <div class="mcard-body">
@@ -383,7 +424,7 @@ function renderView(fromDate, toDate) {
   }).join('');
 }
 
-window.onload = () => loadStock();
+window.onload = () => loadIndex();
 </script>
 </body>
 </html>
