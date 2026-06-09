@@ -111,19 +111,21 @@
   @media (max-width: 640px) { .menu-btn { display: block; } .overlay.show { display: block; } }
 
   /* ── Broker ranking ── */
-  .rank-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
-  @media (max-width: 640px) { .rank-box { grid-template-columns: 1fr; } }
+  .rank-toggle-btn { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--text3); font-size: 11px; padding: 4px 10px; cursor: pointer; margin-bottom: 8px; }
+  .rank-toggle-btn:hover { color: var(--text2); border-color: var(--text3); }
+  .rank-box { display: none; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .rank-box.open { display: grid; }
+  @media (max-width: 640px) { .rank-box.open { grid-template-columns: 1fr; } }
   .rank-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
   .rank-panel h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
   .rank-panel.buy-panel h3 { color: rgba(239,68,68,0.85); }
   .rank-panel.sell-panel h3 { color: rgba(34,197,94,0.7); }
-  .rank-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid rgba(46,51,71,0.5); font-size: 12px; }
+  .rank-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(46,51,71,0.5); font-size: 12px; }
   .rank-row:last-child { border-bottom: none; }
-  .rank-no { font-size: 10px; color: var(--text3); width: 18px; flex-shrink: 0; }
+  .rank-no { font-size: 10px; color: var(--text3); width: 14px; flex-shrink: 0; }
   .rank-name { flex: 1; color: var(--text2); }
-  .rank-buy  { color: rgba(239,68,68,0.85); font-weight: 600; min-width: 60px; text-align: right; }
-  .rank-sell { color: rgba(34,197,94,0.65); font-weight: 600; min-width: 60px; text-align: right; }
-  .rank-net  { font-size: 11px; color: var(--text3); min-width: 55px; text-align: right; }
+  .rank-buy  { color: rgba(239,68,68,0.85); font-weight: 600; text-align: right; }
+  .rank-sell { color: rgba(34,197,94,0.65); font-weight: 600; text-align: right; }
 
   #status { text-align: center; color: var(--text3); padding: 60px 20px; line-height: 1.8; }
   #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: var(--text2); }
@@ -169,13 +171,14 @@
         <button class="apply-btn" onclick="applyDateRange()">套用</button>
       </div>
 
-      <div class="rank-box">
+      <button class="rank-toggle-btn" id="rankToggle" onclick="toggleRank()">▶ 期間外資淨買賣排行</button>
+      <div class="rank-box" id="rankBox">
         <div class="rank-panel buy-panel">
-          <h3>期間外資買超排行（買張）</h3>
+          <h3>買超前三（淨張）</h3>
           <div id="rankBuy"></div>
         </div>
         <div class="rank-panel sell-panel">
-          <h3>期間外資賣超排行（賣張）</h3>
+          <h3>賣超前三（淨張）</h3>
           <div id="rankSell"></div>
         </div>
       </div>
@@ -204,6 +207,13 @@ let fullData = null;
 let currentId = null;
 
 // ── Sidebar ──
+function toggleRank() {
+  const box = document.getElementById('rankBox');
+  const btn = document.getElementById('rankToggle');
+  const open = box.classList.toggle('open');
+  btn.textContent = (open ? '▼' : '▶') + ' 期間外資淨買賣排行';
+}
+
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('show');
@@ -409,35 +419,20 @@ function renderView(fromDate, toDate) {
     }
   }
   const brokerArr = Object.entries(brokerTotals).map(([name, v]) => ({
-    name, buy: v.buy, sell: v.sell, net: v.buy - v.sell,
+    name, net: v.buy - v.sell,
   }));
-  const topByBuy  = [...brokerArr].sort((a,b) => b.buy  - a.buy ).slice(0, 8);
-  const topBySell = [...brokerArr].sort((a,b) => b.sell - a.sell).slice(0, 8);
+  const top3Buy  = [...brokerArr].sort((a,b) => b.net - a.net).filter(r => r.net > 0).slice(0, 3);
+  const top3Sell = [...brokerArr].sort((a,b) => a.net - b.net).filter(r => r.net < 0).slice(0, 3);
 
-  const rankRow = (r, i, type) => `
+  const rankRow = (r, i, cls) => `
     <div class="rank-row">
       <span class="rank-no">${i+1}</span>
       <span class="rank-name">${r.name}</span>
-      <span class="rank-buy">${r.buy.toLocaleString()}張</span>
-      <span class="rank-sell">${r.sell.toLocaleString()}張</span>
-      <span class="rank-net">${r.net >= 0 ? '+' : ''}${r.net.toLocaleString()}</span>
+      <span class="${cls}">${r.net >= 0 ? '+' : ''}${r.net.toLocaleString()}張</span>
     </div>`;
 
-  document.getElementById('rankBuy').innerHTML =
-    `<div class="rank-row" style="font-size:10px;color:var(--text3);padding-bottom:4px">
-      <span style="width:18px"></span><span style="flex:1"></span>
-      <span style="min-width:60px;text-align:right">買張</span>
-      <span style="min-width:60px;text-align:right">賣張</span>
-      <span style="min-width:55px;text-align:right">淨</span>
-    </div>` + topByBuy.map((r,i) => rankRow(r,i,'buy')).join('');
-
-  document.getElementById('rankSell').innerHTML =
-    `<div class="rank-row" style="font-size:10px;color:var(--text3);padding-bottom:4px">
-      <span style="width:18px"></span><span style="flex:1"></span>
-      <span style="min-width:60px;text-align:right">買張</span>
-      <span style="min-width:60px;text-align:right">賣張</span>
-      <span style="min-width:55px;text-align:right">淨</span>
-    </div>` + topBySell.map((r,i) => rankRow(r,i,'sell')).join('');
+  document.getElementById('rankBuy').innerHTML  = top3Buy.map((r,i)  => rankRow(r,i,'rank-buy')).join('') || '<div style="color:var(--text3);font-size:12px;padding:6px 0">無買超資料</div>';
+  document.getElementById('rankSell').innerHTML = top3Sell.map((r,i) => rankRow(r,i,'rank-sell')).join('') || '<div style="color:var(--text3);font-size:12px;padding:6px 0">無賣超資料</div>';
 
   // Super dominant 閾值：淨買絕對值前 20%
   const netVals  = dates.map(d => chipMap[d]?.foreign_net ?? 0);
