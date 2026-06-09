@@ -42,8 +42,8 @@ function stockStatus(id, todayDate) {
 function gitCommit(todayDate, partial = false) {
   const label = partial ? 'partial-update' : 'auto-update';
   try {
-    execSync('git pull --rebase', { cwd: __dirname, stdio: 'inherit' });
     execSync('git add data/', { cwd: __dirname, stdio: 'pipe' });
+    execSync('git pull --rebase', { cwd: __dirname, stdio: 'inherit' });
     execSync(`git commit -m "data: ${label} ${todayDate}"`, { cwd: __dirname, stdio: 'pipe' });
     execSync('git push', { cwd: __dirname, stdio: 'inherit' });
     log(`✓ git push 完成`);
