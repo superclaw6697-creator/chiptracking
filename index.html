@@ -205,6 +205,7 @@
 let chart = null;
 let fullData = null;
 let currentId = null;
+let stockNameMap = {};
 
 // ── Sidebar ──
 function toggleRank() {
@@ -224,6 +225,7 @@ async function loadIndex(preferStock) {
     const res = await fetch(`data/index.json?t=${Date.now()}`);
     if (!res.ok) return;
     const idx = await res.json();
+    idx.stocks.forEach(s => stockNameMap[s.id] = s.name);
     const list = document.getElementById('stockList');
     list.innerHTML = idx.stocks.map(s =>
       `<div class="stock-item" id="si-${s.id}" onclick="loadStock('${s.id}')">
@@ -315,7 +317,9 @@ function renderView(fromDate, toDate) {
   if (!dates.length) return;
 
   // ── Summary cards ──
-  document.getElementById('s-stock').textContent = stockId;
+  const stockName = stockNameMap[stockId] || '';
+  document.getElementById('s-stock').textContent = stockName ? `${stockId} ${stockName}` : stockId;
+  document.title = stockName ? `${stockId} ${stockName} | 外資籌碼` : `${stockId} | 外資籌碼`;
   document.getElementById('s-range').textContent = `${dates[0]} ～ ${dates[dates.length-1]}`;
 
   const lastPrice = [...dates].reverse().map(d => priceMap[d]).find(Boolean);
