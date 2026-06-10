@@ -18,7 +18,7 @@ const { spawnSync, execSync } = require('child_process');
 
 const DATA_DIR          = path.join(__dirname, 'data');
 const SLEEP_MS          = 5 * 60 * 1000;  // 5 分鐘
-const MAX_NO_MARKET_ITER = 3;
+const MAX_NO_MARKET_ITER = 15;  // 75 分鐘，等 FinMind 發布資料
 const CUTOFF_HOUR       = 20;              // 20:00 強制結束
 
 function now()     { return new Date(); }
