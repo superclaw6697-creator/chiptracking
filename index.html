@@ -155,12 +155,13 @@
   .scan-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .scan-card-hd { padding: 9px 13px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 7px; font-size: .85rem; font-weight: 600; background: var(--bg3); }
   .scan-card-hd .badge { margin-left: auto; font-size: .7rem; background: var(--bg4); padding: 2px 8px; border-radius: 20px; color: var(--text2); }
-  .scan-tbl-wrap { overflow-x: auto; max-height: 380px; }
+  .scan-tbl-wrap { overflow-x: auto; }
   .scan-tbl { width: 100%; border-collapse: collapse; font-size: .78rem; }
-  .scan-tbl th { padding: 6px 10px; text-align: left; color: var(--text3); font-weight: 500; font-size: .69rem; border-bottom: 1px solid var(--border); background: var(--bg); white-space: nowrap; position: sticky; top: 0; }
+  .scan-tbl th { padding: 6px 10px; text-align: left; color: var(--text3); font-weight: 500; font-size: .69rem; border-bottom: 1px solid var(--border); background: var(--bg2); white-space: nowrap; }
   .scan-tbl td { padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .scan-tbl tr:last-child td { border-bottom: none; }
   .scan-tbl tr:hover td { background: var(--bg3); }
+  .scan-tbl .more-rows { display: none; }
   .scan-tbl a { color: #a5b4fc; text-decoration: none; font-weight: 600; white-space: nowrap; }
   .scan-tbl a:hover { color: #c7d2fe; }
   .tag-up { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: .68rem; font-weight: 700; background: rgba(245,158,11,.15); color: #fbbf24; }
@@ -168,8 +169,15 @@
   .scan-neg { color: #fb7185; font-weight: 600; }
   .scan-muted { color: var(--text3); font-size: .72rem; white-space: nowrap; }
   .scan-empty { padding: 20px; text-align: center; color: var(--text3); font-size: .82rem; }
-  .sc-toggle { margin-left: 6px; font-size: .7rem; color: var(--text3); transition: color .15s; }
-  .scan-card-hd:hover .sc-toggle { color: var(--text2); }
+  .scan-more-btn { display: block; width: 100%; padding: 7px; text-align: center; font-size: .75rem; color: var(--text3); background: none; border: none; border-top: 1px solid var(--border); cursor: pointer; transition: background .15s, color .15s; }
+  .scan-more-btn:hover { background: var(--bg3); color: var(--text2); }
+  /* ── RWD ── */
+  @media (max-width: 480px) {
+    header h1 { display: none; }
+    .tab-btn { padding: 5px 10px; font-size: .73rem; }
+    .scan-grid { gap: 8px; }
+    .scan-card-hd { font-size: .8rem; }
+  }
 </style>
 </head>
 <body>
@@ -253,27 +261,19 @@
   <div id="scan-content" style="display:none">
     <div class="scan-grid">
       <div class="scan-card">
-        <div class="scan-card-hd" onclick="toggleScanCard('sb-inst',this)" style="cursor:pointer">
-          🔍 外資連續買超<span class="badge" id="sc-inst">0</span><span class="sc-toggle">▼</span>
-        </div>
+        <div class="scan-card-hd">🔍 外資連續買超<span class="badge" id="sc-inst">0</span></div>
         <div class="scan-tbl-wrap" id="sb-inst"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd" onclick="toggleScanCard('sb-rec',this)" style="cursor:pointer">
-          📈 量增低翻強<span class="badge" id="sc-rec">0</span><span class="sc-toggle">▼</span>
-        </div>
+        <div class="scan-card-hd">📈 量增低翻強<span class="badge" id="sc-rec">0</span></div>
         <div class="scan-tbl-wrap" id="sb-rec"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd" onclick="toggleScanCard('sb-steady',this)" style="cursor:pointer">
-          🕯️ 穩量緩漲<span class="badge" id="sc-steady">0</span><span class="sc-toggle">▼</span>
-        </div>
+        <div class="scan-card-hd">🕯️ 穩量緩漲<span class="badge" id="sc-steady">0</span></div>
         <div class="scan-tbl-wrap" id="sb-steady"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd" onclick="toggleScanCard('sb-break',this)" style="cursor:pointer">
-          💥 盤整突破<span class="badge" id="sc-break">0</span><span class="sc-toggle">▼</span>
-        </div>
+        <div class="scan-card-hd">💥 盤整突破<span class="badge" id="sc-break">0</span></div>
         <div class="scan-tbl-wrap" id="sb-break"></div>
       </div>
     </div>
@@ -678,26 +678,33 @@ function switchTab(tab) {
   if (!isChip && !document.getElementById('scan-date-sel').options.length) initScan();
 }
 
-// ── Scan card collapse ────────────────────────────────────────
-function toggleScanCard(bodyId, hd) {
-  const body = document.getElementById(bodyId);
-  const tog  = hd.querySelector('.sc-toggle');
-  const collapsed = body.style.display === 'none';
-  body.style.display = collapsed ? '' : 'none';
-  if (tog) tog.textContent = collapsed ? '▼' : '▶';
-}
-
 // ── 日報掃描 ─────────────────────────────────────────────────
 const yahooUrl = id => `https://tw.stock.yahoo.com/quote/${id}`;
 const sLink    = (id, name) => `<a href="${yahooUrl(id)}" target="_blank">${id} ${name}</a>`;
 const fmtNet   = n => n >= 0 ? `<span class="scan-pos">+${n.toLocaleString()}</span>` : `<span class="scan-neg">${n.toLocaleString()}</span>`;
 
+const SHOW_LIMIT = 10;
+
 function scanTable(cols, rows) {
   if (!rows.length) return '<div class="scan-empty">無符合條件</div>';
-  return `<table class="scan-tbl">
-    <tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr>
-    ${rows.join('')}
-  </table>`;
+  const head = `<tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr>`;
+  const top  = rows.slice(0, SHOW_LIMIT).join('');
+  const rest = rows.slice(SHOW_LIMIT);
+  const moreHtml = rest.length
+    ? `<tbody class="more-rows">${rest.join('')}</tbody>
+       <button class="scan-more-btn" onclick="toggleMore(this)">展開其餘 ${rest.length} 筆 ▾</button>`
+    : '';
+  return `<table class="scan-tbl"><thead>${head}</thead><tbody>${top}</tbody></table>${moreHtml}`;
+}
+
+function toggleMore(btn) {
+  const moreBody = btn.previousElementSibling;
+  const open = moreBody.style.display !== 'none' && moreBody.style.display !== '';
+  // first render: display is '' (CSS sets display:none via class)
+  const isHidden = moreBody.style.display === 'none' || moreBody.style.display === '';
+  moreBody.style.display = isHidden ? 'table-row-group' : 'none';
+  const n = moreBody.querySelectorAll('tr').length;
+  btn.textContent = isHidden ? `收起 ▴` : `展開其餘 ${n} 筆 ▾`;
 }
 
 function renderScanReport(r) {
