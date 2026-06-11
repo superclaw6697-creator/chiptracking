@@ -684,7 +684,7 @@ function switchTab(tab) {
   if (tab === 'scan' && !document.getElementById('scan-date-sel').options.length) initScan();
   if (tab === 'etf') {
     const frame = document.getElementById('etf-frame');
-    if (!frame.src) frame.src = 'https://superclaw6697-creator.github.io/etfatracking/dashboard.html';
+    if (!frame.getAttribute('src')) frame.src = 'https://superclaw6697-creator.github.io/etfatracking/dashboard.html';
   }
 }
 
