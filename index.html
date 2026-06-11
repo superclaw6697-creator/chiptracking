@@ -185,6 +185,8 @@
   .cross-close { font-size: 1rem; font-weight: 700; color: var(--text); margin-top: 4px; }
   .cross-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
   .cross-tag { font-size: .65rem; padding: 1px 6px; border-radius: 4px; font-weight: 600; background: rgba(99,102,241,.2); color: #a5b4fc; white-space: nowrap; }
+  .cross-more-btn { display: block; width: 100%; padding: 7px; text-align: center; font-size: .75rem; color: var(--text3); background: none; border: none; border-top: 1px solid rgba(99,102,241,.2); cursor: pointer; transition: background .15s, color .15s; }
+  .cross-more-btn:hover { background: rgba(99,102,241,.08); color: #a5b4fc; }
   /* ── RWD ── */
   @media (max-width: 480px) {
     header h1 { display: none; }
@@ -736,6 +738,14 @@ function scanTable(cols, rows) {
   return `<table class="scan-tbl">${head}<tbody>${top}</tbody>${moreBody}</table>${moreBtn}`;
 }
 
+function toggleCrossMore(btn) {
+  const moreGrid = btn.previousElementSibling;
+  const open = moreGrid.style.display !== 'none';
+  moreGrid.style.display = open ? 'none' : 'grid';
+  const n = moreGrid.querySelectorAll('.cross-item').length;
+  btn.textContent = open ? `展開其餘 ${n} 支 ▾` : `收起 ▴`;
+}
+
 function toggleDesc(btn) {
   const desc = btn.closest('.scan-card-hd').nextElementSibling;
   const open = desc.style.display === 'block';
@@ -822,9 +832,10 @@ function renderScanReport(r) {
 
   const wrap = document.getElementById('sc-cross-wrap');
   if (cross.length) {
-    const items = cross.map(id => {
-      const c    = allById[id] || {};
-      const name = c.name || id;
+    const CROSS_LIMIT = 5;
+    const mkItem = id => {
+      const c     = allById[id] || {};
+      const name  = c.name || id;
       const close = c.latestClose || c.low2 || '';
       const tags  = idTags[id].map(t=>`<span class="cross-tag">${t}</span>`).join('');
       return `<div class="cross-item">
@@ -832,10 +843,19 @@ function renderScanReport(r) {
         ${close ? `<div class="cross-close">${close} 元</div>` : ''}
         <div class="cross-tags">${tags}</div>
       </div>`;
-    }).join('');
+    };
+    const topItems  = cross.slice(0, CROSS_LIMIT).map(mkItem).join('');
+    const restItems = cross.slice(CROSS_LIMIT).map(mkItem).join('');
+    const moreBtn   = restItems
+      ? `<button class="cross-more-btn" onclick="toggleCrossMore(this)">展開其餘 ${cross.length - CROSS_LIMIT} 支 ▾</button>`
+      : '';
+    const moreGrid  = restItems
+      ? `<div class="cross-grid cross-more" style="display:none;padding-top:0">${restItems}</div>`
+      : '';
     wrap.innerHTML = `<div class="cross-section">
       <div class="cross-hd">⚡ 多策略共現<span class="badge">${cross.length} 支</span></div>
-      <div class="cross-grid">${items}</div>
+      <div class="cross-grid">${topItems}</div>
+      ${moreGrid}${moreBtn}
     </div>`;
   } else {
     wrap.innerHTML = '';
