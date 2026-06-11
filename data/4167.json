@@ -1,16 +1,8 @@
 {
   "stockId": "4167",
-  "startDate": "2026-06-03",
-  "endDate": "2026-06-09",
+  "startDate": "2026-06-04",
+  "endDate": "2026-06-10",
   "prices": [
-    {
-      "date": "2026-06-03",
-      "open": 20.1,
-      "high": 20.2,
-      "low": 19.95,
-      "close": 20.15,
-      "volume": 1144184
-    },
     {
       "date": "2026-06-04",
       "open": 20.05,
@@ -42,61 +34,17 @@
       "low": 19.95,
       "close": 20.45,
       "volume": 2110300
+    },
+    {
+      "date": "2026-06-10",
+      "open": 20.7,
+      "high": 20.7,
+      "low": 19.9,
+      "close": 19.95,
+      "volume": 1485052
     }
   ],
   "chips": [
-    {
-      "date": "2026-06-03",
-      "foreign_buy": 341,
-      "foreign_buy_avg": 20.12,
-      "foreign_sell": 152,
-      "foreign_sell_avg": 20.11,
-      "foreign_net": 189,
-      "top_foreign": [
-        {
-          "name": "摩根大通",
-          "buy": 145,
-          "buy_avg": 20.11,
-          "sell": 5,
-          "sell_avg": 20.11,
-          "net": 140
-        },
-        {
-          "name": "摩根士丹利",
-          "buy": 58,
-          "buy_avg": 20.16,
-          "sell": 8,
-          "sell_avg": 20.07,
-          "net": 50
-        },
-        {
-          "name": "美商高盛亞",
-          "buy": 34,
-          "buy_avg": 20.09,
-          "sell": 4,
-          "sell_avg": 20.19,
-          "net": 30
-        }
-      ],
-      "top_foreign_sellers": [
-        {
-          "name": "星洲瑞銀",
-          "buy": 101,
-          "buy_avg": 20.11,
-          "sell": 131,
-          "sell_avg": 20.11,
-          "net": -30
-        },
-        {
-          "name": "美林證券",
-          "buy": 3,
-          "buy_avg": 20.05,
-          "sell": 4,
-          "sell_avg": 20.05,
-          "net": -1
-        }
-      ]
-    },
     {
       "date": "2026-06-04",
       "foreign_buy": 604,
@@ -332,6 +280,58 @@
           "sell": 44,
           "sell_avg": 20.24,
           "net": -9
+        }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "foreign_buy": 201,
+      "foreign_buy_avg": 20.23,
+      "foreign_sell": 280,
+      "foreign_sell_avg": 20.15,
+      "foreign_net": -79,
+      "top_foreign": [
+        {
+          "name": "摩根大通",
+          "buy": 34,
+          "buy_avg": 20.45,
+          "sell": 8,
+          "sell_avg": 20.35,
+          "net": 26
+        },
+        {
+          "name": "美林證券",
+          "buy": 26,
+          "buy_avg": 20.08,
+          "sell": 4,
+          "sell_avg": 19.95,
+          "net": 22
+        },
+        {
+          "name": "星洲瑞銀",
+          "buy": 47,
+          "buy_avg": 20.14,
+          "sell": 25,
+          "sell_avg": 20.27,
+          "net": 22
+        },
+        {
+          "name": "摩根士丹利",
+          "buy": 45,
+          "buy_avg": 20.23,
+          "sell": 42,
+          "sell_avg": 20.2,
+          "net": 3
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美商高盛亞",
+          "buy": 45,
+          "buy_avg": 20.23,
+          "sell": 197,
+          "sell_avg": 20.12,
+          "net": -152
         }
       ]
     }
