@@ -169,6 +169,9 @@
   .scan-neg { color: #fb7185; font-weight: 600; }
   .scan-muted { color: var(--text3); font-size: .72rem; white-space: nowrap; }
   .scan-empty { padding: 20px; text-align: center; color: var(--text3); font-size: .82rem; }
+  .sc-info-btn { margin-left: 4px; width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--text3); background: none; color: var(--text3); font-size: .6rem; font-weight: 700; cursor: pointer; line-height: 14px; flex-shrink: 0; transition: all .15s; }
+  .sc-info-btn:hover, .sc-info-btn.active { border-color: var(--accent); color: var(--accent); }
+  .sc-desc { display: none; padding: 8px 12px 10px; font-size: .74rem; color: var(--text2); background: var(--bg); border-bottom: 1px solid var(--border); line-height: 1.65; }
   .scan-more-btn { display: block; width: 100%; padding: 7px; text-align: center; font-size: .75rem; color: var(--text3); background: none; border: none; border-top: 1px solid var(--border); cursor: pointer; transition: background .15s, color .15s; }
   .scan-more-btn:hover { background: var(--bg3); color: var(--text2); }
   /* ── Cross-confirm section ── */
@@ -274,27 +277,33 @@
     <div id="sc-cross-wrap" style="margin-bottom:14px"></div>
     <div class="scan-grid">
       <div class="scan-card">
-        <div class="scan-card-hd">🔍 外資連續買超<span class="badge" id="sc-inst">0</span></div>
+        <div class="scan-card-hd">🔍 外資連續買超<span class="badge" id="sc-inst">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">外資（含外資自營）連續 ≥3 個交易日淨買超，取連買張數合計最大的前幾支。代表外資持續加碼，籌碼面偏多。</div>
         <div class="scan-tbl-wrap" id="sb-inst"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">📈 量增低翻強<span class="badge" id="sc-rec">0</span></div>
+        <div class="scan-card-hd">📈 量增低翻強<span class="badge" id="sc-rec">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">近 20 日曾跌破 MA20，近 5 日重新站上 MA20 並漲幅 ≥5%，且近期量比全期均量 ≥1.3x。反映低檔整理後有量承接的反彈訊號。</div>
         <div class="scan-tbl-wrap" id="sb-rec"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">🕯️ 穩量緩漲<span class="badge" id="sc-steady">0</span></div>
+        <div class="scan-card-hd">🕯️ 穩量緩漲<span class="badge" id="sc-steady">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">近 10 日量能穩定（量 CV &lt;0.3），10 日中 ≥7 天收盤墊高，累計漲幅 3–18%，日均量 ≥1000 張。典型緩步上攻、不急漲不爆量的健康走勢。</div>
         <div class="scan-tbl-wrap" id="sb-steady"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">💥 盤整突破<span class="badge" id="sc-break">0</span></div>
+        <div class="scan-card-hd">💥 盤整突破<span class="badge" id="sc-break">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">前 20 日股價橫盤（價格 CV &lt;0.06），近 2 日突然跳漲 ≥4% 且量比盤整期 ≥1.5x。代表長期蓄積能量後的向上爆發。</div>
         <div class="scan-tbl-wrap" id="sb-break"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">🤝 三法人同買<span class="badge" id="sc-three">0</span></div>
+        <div class="scan-card-hd">🤝 三法人同買<span class="badge" id="sc-three">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">近 5 日累計，外資、投信、自營商三者同時都是淨買超，合計 ≥100 張。三大法人方向一致是強力的籌碼共識訊號。</div>
         <div class="scan-tbl-wrap" id="sb-three"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">📐 底底高<span class="badge" id="sc-hl">0</span></div>
+        <div class="scan-card-hd">📐 底底高<span class="badge" id="sc-hl">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">近 40 日出現至少兩個局部低點（前後各一日都比它高），且後低 &gt; 前低，最後低點在近 10 日內，現價高於最後低點。顯示賣壓逐次遞減、空頭力道衰竭。</div>
         <div class="scan-tbl-wrap" id="sb-hl"></div>
       </div>
     </div>
@@ -725,6 +734,13 @@ function scanTable(cols, rows) {
     ? `<button class="scan-more-btn" onclick="toggleMore(this)">展開其餘 ${rest.length} 筆 ▾</button>`
     : '';
   return `<table class="scan-tbl">${head}<tbody>${top}</tbody>${moreBody}</table>${moreBtn}`;
+}
+
+function toggleDesc(btn) {
+  const desc = btn.closest('.scan-card-hd').nextElementSibling;
+  const open = desc.style.display === 'block';
+  desc.style.display = open ? 'none' : 'block';
+  btn.classList.toggle('active', !open);
 }
 
 function toggleMore(btn) {
