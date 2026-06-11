@@ -7,100 +7,113 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #0f1117; --bg2: #1a1d27; --bg3: #242736; --border: #2e3347;
-    --accent: #4f7fff;
-    --green: #22c55e; --red: #ef4444; --yellow: #f59e0b;
-    --text: #e2e8f0; --text2: #94a3b8; --text3: #64748b;
-    --sidebar: 200px;
+    --bg:     #080d16;
+    --bg2:    #0f1520;
+    --bg3:    #17202e;
+    --bg4:    #1e2a3a;
+    --border: #1f2d40;
+    --accent: #6366f1;
+    --buy:    #f43f5e;
+    --sell:   #38bdf8;
+    --amber:  #f59e0b;
+    --text:   #dde5f0;
+    --text2:  #8899aa;
+    --text3:  #4e6070;
+    --sidebar: 190px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
 
   /* ── Header ── */
-  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 11px 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-  header h1 { font-size: 15px; font-weight: 700; white-space: nowrap; }
-  .search { display: flex; gap: 8px; margin-left: auto; align-items: center; }
-  .search input[type=text] { padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 13px; width: 80px; }
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  header h1 { font-size: 14px; font-weight: 700; white-space: nowrap; letter-spacing: .3px; }
+  .search { display: flex; gap: 6px; align-items: center; }
+  .search input[type=text] { padding: 5px 10px; border-radius: 7px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 13px; width: 76px; }
   .search input[type=text]:focus { outline: none; border-color: var(--accent); }
-  .search button { padding: 5px 12px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
-  .search button:hover { background: #3d6de8; }
+  .search button { padding: 5px 12px; border-radius: 7px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
 
-  /* ── Layout ── */
-  .app { display: flex; flex: 1; overflow: hidden; }
+  /* ── Tab nav ── */
+  .tab-nav { display: flex; gap: 3px; margin-left: auto; }
+  .tab-btn { padding: 5px 14px; border-radius: 7px; font-size: .78rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; background: transparent; color: var(--text2); transition: all .15s; letter-spacing: .2px; }
+  .tab-btn:hover { background: var(--bg4); color: var(--text); }
+  .tab-btn.active { background: var(--accent); color: #fff; border-color: rgba(99,102,241,.4); }
+
+  /* ── Page body: wraps chip-view + scan-view ── */
+  .page-body { display: flex; flex: 1; overflow: hidden; }
+
+  /* ── Chip view ── */
+  #chip-view { display: flex; flex: 1; overflow: hidden; }
 
   /* ── Sidebar ── */
   .sidebar { width: var(--sidebar); background: var(--bg2); border-right: 1px solid var(--border); overflow-y: auto; flex-shrink: 0; }
   .sidebar-title { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; padding: 14px 14px 8px; }
-  .stock-item { padding: 10px 14px; cursor: pointer; border-left: 3px solid transparent; transition: all .15s; }
+  .stock-item { padding: 9px 14px; cursor: pointer; border-left: 3px solid transparent; transition: all .15s; }
   .stock-item:hover { background: var(--bg3); }
-  .stock-item.active { border-left-color: var(--accent); background: rgba(79,127,255,.08); }
-  .stock-item .sid { font-size: 13px; font-weight: 700; color: var(--text); }
+  .stock-item.active { border-left-color: var(--accent); background: rgba(99,102,241,.08); }
+  .stock-item .sid { font-size: 13px; font-weight: 700; }
   .stock-item .sname { font-size: 11px; color: var(--text3); margin-top: 1px; }
   .stock-item.active .sid { color: var(--accent); }
   @media (max-width: 640px) { .sidebar { width: 100%; position: fixed; top: 0; left: 0; height: 100%; z-index: 50; transform: translateX(-100%); transition: transform .25s; } .sidebar.open { transform: translateX(0); } }
 
-  /* ── Main content ── */
-  .main { flex: 1; overflow-y: auto; padding: 16px; }
-  @media (max-width: 640px) { .main { padding: 12px; } }
+  /* ── Main chip content ── */
+  .main { flex: 1; overflow-y: auto; padding: 14px 16px; }
+  @media (max-width: 640px) { .main { padding: 10px 12px; } }
 
   /* ── Summary cards ── */
-  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
   @media (max-width: 700px) { .summary-cards { grid-template-columns: repeat(2, 1fr); } }
-  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; }
   .card .label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
   .card .value { font-size: 20px; font-weight: 700; }
   .card .sub   { font-size: 11px; color: var(--text3); margin-top: 3px; }
-  .up { color: var(--red); } .down { color: var(--green); }
+  .up { color: var(--buy); } .down { color: var(--sell); }
 
   /* ── Date bar ── */
-  .date-bar { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .date-bar { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 9px 13px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .date-bar label { font-size: 12px; color: var(--text3); white-space: nowrap; }
   .date-bar input[type=date] { padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 12px; color-scheme: dark; }
   .date-bar input[type=date]:focus { outline: none; border-color: var(--accent); }
-  .presets { display: flex; gap: 5px; flex-wrap: wrap; }
+  .presets { display: flex; gap: 4px; flex-wrap: wrap; }
   .preset-btn { padding: 4px 9px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg3); color: var(--text2); font-size: 12px; cursor: pointer; white-space: nowrap; transition: all .15s; }
   .preset-btn:hover, .preset-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   .apply-btn { padding: 4px 11px; border-radius: 6px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap; }
-  .apply-btn:hover { background: #3d6de8; }
   .sep { color: var(--border); }
 
   /* ── Chart ── */
-  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
-  .chart-box h2 { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em; }
-  .chart-wrap { position: relative; height: 280px; }
-  @media (max-width: 640px) { .chart-wrap { height: 200px; } }
+  .chart-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; margin-bottom: 12px; }
+  .chart-box h2 { font-size: 10px; font-weight: 600; color: var(--text3); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .06em; }
+  .chart-wrap { position: relative; height: 260px; }
+  @media (max-width: 640px) { .chart-wrap { height: 190px; } }
 
   /* ── Desktop table ── */
   .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 30px; }
   table { width: 100%; border-collapse: collapse; background: var(--bg2); min-width: 600px; }
   thead { background: var(--bg3); position: sticky; top: 0; z-index: 1; }
-  th, td { padding: 8px 12px; text-align: right; font-size: 12px; border-bottom: 1px solid var(--border); }
+  th, td { padding: 7px 12px; text-align: right; font-size: 12px; border-bottom: 1px solid var(--border); }
   th { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
   th:first-child, td:first-child { text-align: left; }
   tbody tr:hover { background: var(--bg3); }
-  .pos { color: var(--red); font-weight: 600; }
-  .neg { color: var(--green); font-weight: 600; }
-  /* 買超行：紅底 + 左色條 */
-  tbody tr.row-buy  { background: rgba(239,68,68,0.07); box-shadow: inset 3px 0 0 rgba(239,68,68,0.65); }
-  tbody tr.row-buy:hover  { background: rgba(239,68,68,0.13); }
-  /* 賣超行：低飽和綠底 + 左色條 */
-  tbody tr.row-sell { background: rgba(34,197,94,0.05); box-shadow: inset 3px 0 0 rgba(34,197,94,0.35); }
-  tbody tr.row-sell:hover { background: rgba(34,197,94,0.10); }
+  .pos { color: var(--buy); font-weight: 600; }
+  .neg { color: var(--sell); font-weight: 600; }
+  tbody tr.row-buy  { background: rgba(244,63,94,0.06);  box-shadow: inset 3px 0 0 rgba(244,63,94,0.55); }
+  tbody tr.row-buy:hover  { background: rgba(244,63,94,0.11); }
+  tbody tr.row-sell { background: rgba(56,189,248,0.04); box-shadow: inset 3px 0 0 rgba(56,189,248,0.3); }
+  tbody tr.row-sell:hover { background: rgba(56,189,248,0.08); }
   @media (max-width: 640px) { .table-wrap { display: none; } }
 
   /* ── Mobile cards ── */
   .mobile-cards { display: none; margin-bottom: 30px; }
   @media (max-width: 640px) { .mobile-cards { display: flex; flex-direction: column; gap: 8px; } }
   .mcard { background: var(--bg2); border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px; padding: 12px 14px; }
-  .mcard.buy-dom  { border-left-color: rgba(239,68,68,0.8);  background: rgba(239,68,68,0.06); }
-  .mcard.sell-dom { border-left-color: rgba(34,197,94,0.4);  background: rgba(34,197,94,0.04); }
+  .mcard.buy-dom  { border-left-color: rgba(244,63,94,0.7);  background: rgba(244,63,94,0.05); }
+  .mcard.sell-dom { border-left-color: rgba(56,189,248,0.4); background: rgba(56,189,248,0.04); }
   .mcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
   .mcard-date { font-size: 13px; font-weight: 600; }
   .mcard-price { text-align: right; }
   .mcard-close { font-size: 16px; font-weight: 700; }
   .mcard-chg { font-size: 12px; margin-top: 1px; }
   .mcard-body { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-  .mcard-stat { background: var(--bg3); border-radius: 6px; padding: 7px 10px; }
+  .mcard-stat { background: var(--bg3); border-radius: 7px; padding: 7px 10px; }
   .mcard-stat .slabel { font-size: 10px; color: var(--text3); margin-bottom: 2px; }
   .mcard-stat .sval { font-size: 14px; font-weight: 600; }
   .mcard-broker { margin-top: 8px; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); padding-top: 7px; }
@@ -113,71 +126,64 @@
   /* ── Broker ranking ── */
   .rank-toggle-btn { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--text3); font-size: 11px; padding: 4px 10px; cursor: pointer; margin-bottom: 8px; }
   .rank-toggle-btn:hover { color: var(--text2); border-color: var(--text3); }
-  .rank-box { display: none; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .rank-box { display: none; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .rank-box.open { display: grid; }
   @media (max-width: 640px) { .rank-box.open { grid-template-columns: 1fr; } }
   .rank-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
   .rank-panel h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
-  .rank-panel.buy-panel h3 { color: rgba(239,68,68,0.85); }
-  .rank-panel.sell-panel h3 { color: rgba(34,197,94,0.7); }
-  .rank-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(46,51,71,0.5); font-size: 12px; }
+  .rank-panel.buy-panel h3  { color: rgba(244,63,94,0.85); }
+  .rank-panel.sell-panel h3 { color: rgba(56,189,248,0.7); }
+  .rank-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(31,45,64,0.8); font-size: 12px; }
   .rank-row:last-child { border-bottom: none; }
   .rank-no { font-size: 10px; color: var(--text3); width: 14px; flex-shrink: 0; }
   .rank-name { flex: 1; color: var(--text2); }
-  .rank-buy  { color: rgba(239,68,68,0.85); font-weight: 600; text-align: right; }
-  .rank-sell { color: rgba(34,197,94,0.65); font-weight: 600; text-align: right; }
+  .rank-buy  { color: rgba(244,63,94,0.85); font-weight: 600; text-align: right; }
+  .rank-sell { color: rgba(56,189,248,0.75); font-weight: 600; text-align: right; }
   .rank-detail-row { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-size: 11px; }
   .rank-detail-date { color: var(--text3); width: 40px; flex-shrink: 0; }
 
   #status { text-align: center; color: var(--text3); padding: 60px 20px; line-height: 1.8; }
   #status code { background: var(--bg3); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: var(--text2); }
 
-  /* ── Tab nav ── */
-  .tab-nav { display: flex; gap: 4px; margin-left: auto; }
-  .tab-btn { padding: 5px 13px; border-radius: 6px; font-size: .8rem; font-weight: 500; cursor: pointer; border: none; background: transparent; color: var(--text2); transition: background .15s; }
-  .tab-btn:hover { background: var(--bg3); color: var(--text); }
-  .tab-btn.active { background: #6366f1; color: #fff; }
-
-  /* ── Scan report view ── */
-  #scan-view { display: none; flex: 1; overflow-y: auto; padding: 16px; }
-  .scan-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-  .scan-toolbar select { background: var(--bg3); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: .82rem; cursor: pointer; }
-  .scan-toolbar .scan-range { font-size: .75rem; color: var(--text3); }
-  .scan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  /* ── Scan view ── */
+  #scan-view { display: none; flex: 1; flex-direction: column; overflow-y: auto; padding: 14px 16px; }
+  .scan-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-shrink: 0; }
+  .scan-toolbar select { background: var(--bg3); color: var(--text); border: 1px solid var(--border); border-radius: 7px; padding: 6px 10px; font-size: .82rem; cursor: pointer; }
+  .scan-range { font-size: .75rem; color: var(--text3); }
+  .scan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 640px) { .scan-grid { grid-template-columns: 1fr; } }
   .scan-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-  .scan-card-hd { padding: 9px 13px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 7px; font-size: .88rem; font-weight: 600; }
-  .scan-card-hd .badge { margin-left: auto; font-size: .7rem; background: var(--bg3); padding: 2px 7px; border-radius: 20px; color: var(--text3); }
-  .scan-tbl-wrap { overflow-x: auto; }
+  .scan-card-hd { padding: 9px 13px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 7px; font-size: .85rem; font-weight: 600; background: var(--bg3); }
+  .scan-card-hd .badge { margin-left: auto; font-size: .7rem; background: var(--bg4); padding: 2px 8px; border-radius: 20px; color: var(--text2); }
+  .scan-tbl-wrap { overflow-x: auto; max-height: 380px; }
   .scan-tbl { width: 100%; border-collapse: collapse; font-size: .78rem; }
-  .scan-tbl th { padding: 6px 10px; text-align: left; color: var(--text3); font-weight: 500; font-size: .7rem; border-bottom: 1px solid var(--border); background: #161824; white-space: nowrap; }
-  .scan-tbl td { padding: 6px 10px; border-bottom: 1px solid #1e2235; vertical-align: middle; }
+  .scan-tbl th { padding: 6px 10px; text-align: left; color: var(--text3); font-weight: 500; font-size: .69rem; border-bottom: 1px solid var(--border); background: var(--bg); white-space: nowrap; position: sticky; top: 0; }
+  .scan-tbl td { padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .scan-tbl tr:last-child td { border-bottom: none; }
   .scan-tbl tr:hover td { background: var(--bg3); }
-  .scan-tbl a { color: #818cf8; text-decoration: none; font-weight: 600; white-space: nowrap; }
-  .scan-tbl a:hover { color: #a5b4fc; text-decoration: underline; }
-  .tag-up { display: inline-block; padding: 1px 5px; border-radius: 4px; font-size: .68rem; font-weight: 700; background: #14532d33; color: #4ade80; }
-  .scan-pos { color: #4ade80; }
-  .scan-neg { color: #ef4444; }
+  .scan-tbl a { color: #a5b4fc; text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .scan-tbl a:hover { color: #c7d2fe; }
+  .tag-up { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: .68rem; font-weight: 700; background: rgba(245,158,11,.15); color: #fbbf24; }
+  .scan-pos { color: #fbbf24; font-weight: 600; }
+  .scan-neg { color: #fb7185; font-weight: 600; }
   .scan-muted { color: var(--text3); font-size: .72rem; white-space: nowrap; }
-  .scan-empty { padding: 18px; text-align: center; color: var(--text3); font-size: .82rem; }
+  .scan-empty { padding: 20px; text-align: center; color: var(--text3); font-size: .82rem; }
+  .sc-toggle { margin-left: 6px; font-size: .7rem; color: var(--text3); transition: color .15s; }
+  .scan-card-hd:hover .sc-toggle { color: var(--text2); }
 </style>
 </head>
 <body>
 <header>
   <button class="menu-btn" id="menuBtn" onclick="toggleSidebar()">☰</button>
   <h1>📊 籌碼工具</h1>
-  <div class="search" id="chipSearch">
-    <input id="stockInput" type="text" placeholder="代號" onkeydown="if(event.key==='Enter')loadStock(this.value)">
-    <button onclick="loadStock(document.getElementById('stockInput').value)">查詢</button>
-  </div>
   <div class="tab-nav">
     <button class="tab-btn active" id="tab-chip" onclick="switchTab('chip')">個股追蹤</button>
     <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')">日報掃描</button>
   </div>
 </header>
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-<div class="app">
+<div class="page-body">
+<div id="chip-view" class="app">
   <div class="sidebar" id="sidebar">
     <div class="sidebar-title">持股清單</div>
     <div id="stockList"></div>
@@ -247,24 +253,33 @@
   <div id="scan-content" style="display:none">
     <div class="scan-grid">
       <div class="scan-card">
-        <div class="scan-card-hd">🔍 外資連續買超<span class="badge" id="sc-inst">0</span></div>
+        <div class="scan-card-hd" onclick="toggleScanCard('sb-inst',this)" style="cursor:pointer">
+          🔍 外資連續買超<span class="badge" id="sc-inst">0</span><span class="sc-toggle">▼</span>
+        </div>
         <div class="scan-tbl-wrap" id="sb-inst"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">📈 量增低翻強<span class="badge" id="sc-rec">0</span></div>
+        <div class="scan-card-hd" onclick="toggleScanCard('sb-rec',this)" style="cursor:pointer">
+          📈 量增低翻強<span class="badge" id="sc-rec">0</span><span class="sc-toggle">▼</span>
+        </div>
         <div class="scan-tbl-wrap" id="sb-rec"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">🕯️ 穩量緩漲<span class="badge" id="sc-steady">0</span></div>
+        <div class="scan-card-hd" onclick="toggleScanCard('sb-steady',this)" style="cursor:pointer">
+          🕯️ 穩量緩漲<span class="badge" id="sc-steady">0</span><span class="sc-toggle">▼</span>
+        </div>
         <div class="scan-tbl-wrap" id="sb-steady"></div>
       </div>
       <div class="scan-card">
-        <div class="scan-card-hd">💥 盤整突破<span class="badge" id="sc-break">0</span></div>
+        <div class="scan-card-hd" onclick="toggleScanCard('sb-break',this)" style="cursor:pointer">
+          💥 盤整突破<span class="badge" id="sc-break">0</span><span class="sc-toggle">▼</span>
+        </div>
         <div class="scan-tbl-wrap" id="sb-break"></div>
       </div>
     </div>
   </div>
 </div>
+</div><!-- /.page-body -->
 
 <script>
 let chart = null;
@@ -315,9 +330,10 @@ async function loadStock(sid) {
   sid = (sid || '').trim();
   if (!sid) return;
   currentId = sid;
-  document.getElementById('stockInput').value = sid;
   setActiveSidebarItem(sid);
-  history.replaceState(null, '', `?stock=${sid}`);
+  const _p = new URLSearchParams(location.search);
+  _p.set('stock', sid);
+  history.replaceState(null, '', '?' + _p.toString());
   // 手機關閉 sidebar
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('show');
@@ -640,13 +656,12 @@ function renderView(fromDate, toDate) {
 
 window.onload = () => {
   const params = new URLSearchParams(location.search);
-  const qs = params.get('stock');
-  if (qs) {
-    // 先載入 index 建側欄，再直接顯示指定股票
-    loadIndex(qs);
-  } else {
-    loadIndex();
+  const qs  = params.get('stock');
+  const tab = params.get('tab');
+  if (tab === 'scan') {
+    switchTab('scan');
   }
+  loadIndex(qs || undefined);
 };
 
 // ── Tab 切換 ────────────────────────────────────────────────
@@ -654,11 +669,22 @@ function switchTab(tab) {
   const isChip = tab === 'chip';
   document.getElementById('tab-chip').classList.toggle('active', isChip);
   document.getElementById('tab-scan').classList.toggle('active', !isChip);
-  document.querySelector('.app').style.display          = isChip ? 'flex' : 'none';
+  document.getElementById('chip-view').style.display    = isChip ? 'flex' : 'none';
   document.getElementById('scan-view').style.display    = isChip ? 'none' : 'flex';
-  document.getElementById('chipSearch').style.display   = isChip ? 'flex' : 'none';
   document.getElementById('menuBtn').style.display      = isChip ? '' : 'none';
+  const params = new URLSearchParams(location.search);
+  params.set('tab', tab);
+  history.replaceState(null, '', '?' + params.toString());
   if (!isChip && !document.getElementById('scan-date-sel').options.length) initScan();
+}
+
+// ── Scan card collapse ────────────────────────────────────────
+function toggleScanCard(bodyId, hd) {
+  const body = document.getElementById(bodyId);
+  const tog  = hd.querySelector('.sc-toggle');
+  const collapsed = body.style.display === 'none';
+  body.style.display = collapsed ? '' : 'none';
+  if (tog) tog.textContent = collapsed ? '▼' : '▶';
 }
 
 // ── 日報掃描 ─────────────────────────────────────────────────
