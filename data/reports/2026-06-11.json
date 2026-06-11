@@ -1,0 +1,1399 @@
+{
+  "date": "2026-06-11",
+  "scanRange": "2026-05-29 ～ 2026-06-11",
+  "generatedAt": "2026-06-11T12:01:10.814Z",
+  "institutional": [
+    {
+      "id": "5347",
+      "name": "世界",
+      "streak": 9,
+      "totalNet": 66732,
+      "recentNets": [
+        7888,
+        2796,
+        2263,
+        7279,
+        6994,
+        15564,
+        5207,
+        6706,
+        12035
+      ],
+      "brokers": [
+        "摩根士丹利 +6,547張",
+        "星洲瑞銀 +6,091張",
+        "美商高盛亞 +2,568張"
+      ]
+    },
+    {
+      "id": "6244",
+      "name": "茂迪",
+      "streak": 3,
+      "totalNet": 8718,
+      "recentNets": [
+        815,
+        1659,
+        6244
+      ],
+      "brokers": [
+        "摩根士丹利 +3,189張",
+        "美商高盛亞 +1,047張",
+        "美林證券 +905張"
+      ]
+    },
+    {
+      "id": "6121",
+      "name": "新普",
+      "streak": 10,
+      "totalNet": 5922,
+      "recentNets": [
+        406,
+        164,
+        687,
+        789,
+        559,
+        894,
+        762,
+        525,
+        528,
+        608
+      ],
+      "brokers": [
+        "摩根士丹利 +514張",
+        "星洲瑞銀 +388張",
+        "美商高盛亞 +320張"
+      ]
+    },
+    {
+      "id": "6261",
+      "name": "久元",
+      "streak": 8,
+      "totalNet": 5265,
+      "recentNets": [
+        361,
+        449,
+        203,
+        574,
+        641,
+        1026,
+        562,
+        1449
+      ],
+      "brokers": [
+        "美商高盛亞 +935張",
+        "星洲瑞銀 +417張",
+        "摩根士丹利 +360張"
+      ]
+    },
+    {
+      "id": "6182",
+      "name": "合晶",
+      "streak": 4,
+      "totalNet": 4377,
+      "recentNets": [
+        909,
+        1028,
+        384,
+        2056
+      ],
+      "brokers": [
+        "港商野村 +1,867張",
+        "摩根士丹利 +1,022張",
+        "美商高盛亞 +532張"
+      ]
+    },
+    {
+      "id": "5410",
+      "name": "國眾",
+      "streak": 7,
+      "totalNet": 3419,
+      "recentNets": [
+        296,
+        319,
+        603,
+        84,
+        274,
+        139,
+        1704
+      ],
+      "brokers": [
+        "摩根大通 +473張",
+        "摩根士丹利 +289張",
+        "星洲瑞銀 +265張"
+      ]
+    },
+    {
+      "id": "3441",
+      "name": "聯一光",
+      "streak": 6,
+      "totalNet": 2634,
+      "recentNets": [
+        403,
+        795,
+        61,
+        142,
+        283,
+        950
+      ],
+      "brokers": [
+        "摩根大通 +460張",
+        "美商高盛亞 +354張",
+        "摩根士丹利 +184張"
+      ]
+    },
+    {
+      "id": "6174",
+      "name": "安碁",
+      "streak": 6,
+      "totalNet": 2545,
+      "recentNets": [
+        5,
+        196,
+        291,
+        144,
+        30,
+        1879
+      ],
+      "brokers": [
+        "摩根大通 +642張",
+        "港商野村 +409張",
+        "美林證券 +279張"
+      ]
+    },
+    {
+      "id": "3211",
+      "name": "順達",
+      "streak": 4,
+      "totalNet": 2321,
+      "recentNets": [
+        790,
+        605,
+        546,
+        380
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8358",
+      "name": "金居",
+      "streak": 5,
+      "totalNet": 2285,
+      "recentNets": [
+        352,
+        531,
+        505,
+        550,
+        347
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3152",
+      "name": "璟德",
+      "streak": 5,
+      "totalNet": 2217,
+      "recentNets": [
+        259,
+        76,
+        198,
+        899,
+        785
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8121",
+      "name": "越峰",
+      "streak": 3,
+      "totalNet": 2088,
+      "recentNets": [
+        1104,
+        805,
+        179
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4953",
+      "name": "緯軟",
+      "streak": 8,
+      "totalNet": 2063,
+      "recentNets": [
+        152,
+        35,
+        149,
+        376,
+        397,
+        526,
+        233,
+        195
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4908",
+      "name": "前鼎",
+      "streak": 5,
+      "totalNet": 2020,
+      "recentNets": [
+        218,
+        32,
+        175,
+        595,
+        1000
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6126",
+      "name": "信音",
+      "streak": 3,
+      "totalNet": 1949,
+      "recentNets": [
+        490,
+        51,
+        1408
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8182",
+      "name": "加高",
+      "streak": 5,
+      "totalNet": 1741,
+      "recentNets": [
+        435,
+        41,
+        226,
+        276,
+        763
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4971",
+      "name": "IET-KY",
+      "streak": 4,
+      "totalNet": 1549,
+      "recentNets": [
+        235,
+        203,
+        586,
+        525
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5009",
+      "name": "榮剛",
+      "streak": 3,
+      "totalNet": 1457,
+      "recentNets": [
+        105,
+        1142,
+        210
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8050",
+      "name": "廣積",
+      "streak": 6,
+      "totalNet": 1449,
+      "recentNets": [
+        591,
+        218,
+        156,
+        222,
+        74,
+        188
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3691",
+      "name": "碩禾",
+      "streak": 3,
+      "totalNet": 1293,
+      "recentNets": [
+        48,
+        787,
+        458
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8415",
+      "name": "大國鋼",
+      "streak": 7,
+      "totalNet": 1180,
+      "recentNets": [
+        230,
+        43,
+        139,
+        171,
+        187,
+        163,
+        247
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8227",
+      "name": "巨有科技",
+      "streak": 6,
+      "totalNet": 1091,
+      "recentNets": [
+        2,
+        90,
+        118,
+        33,
+        342,
+        506
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5904",
+      "name": "寶雅",
+      "streak": 6,
+      "totalNet": 1019,
+      "recentNets": [
+        126,
+        197,
+        260,
+        273,
+        110,
+        53
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6538",
+      "name": "倉和",
+      "streak": 3,
+      "totalNet": 1017,
+      "recentNets": [
+        261,
+        154,
+        602
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4966",
+      "name": "譜瑞-KY",
+      "streak": 3,
+      "totalNet": 951,
+      "recentNets": [
+        382,
+        361,
+        208
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8240",
+      "name": "華宏",
+      "streak": 8,
+      "totalNet": 816,
+      "recentNets": [
+        54,
+        69,
+        20,
+        54,
+        276,
+        66,
+        15,
+        262
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6237",
+      "name": "驊訊",
+      "streak": 5,
+      "totalNet": 786,
+      "recentNets": [
+        32,
+        381,
+        240,
+        62,
+        71
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6151",
+      "name": "晉倫",
+      "streak": 4,
+      "totalNet": 684,
+      "recentNets": [
+        241,
+        67,
+        111,
+        265
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3213",
+      "name": "茂訊",
+      "streak": 3,
+      "totalNet": 602,
+      "recentNets": [
+        26,
+        420,
+        156
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6227",
+      "name": "茂綸",
+      "streak": 4,
+      "totalNet": 568,
+      "recentNets": [
+        118,
+        175,
+        14,
+        261
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5478",
+      "name": "智冠",
+      "streak": 9,
+      "totalNet": 567,
+      "recentNets": [
+        145,
+        109,
+        11,
+        15,
+        97,
+        52,
+        10,
+        64,
+        64
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3581",
+      "name": "博磊",
+      "streak": 5,
+      "totalNet": 505,
+      "recentNets": [
+        346,
+        7,
+        25,
+        36,
+        91
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5324",
+      "name": "士開",
+      "streak": 4,
+      "totalNet": 499,
+      "recentNets": [
+        116,
+        196,
+        99,
+        88
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5302",
+      "name": "太欣",
+      "streak": 5,
+      "totalNet": 492,
+      "recentNets": [
+        87,
+        31,
+        310,
+        11,
+        53
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4207",
+      "name": "環泰",
+      "streak": 10,
+      "totalNet": 491,
+      "recentNets": [
+        65,
+        144,
+        9,
+        13,
+        32,
+        15,
+        61,
+        47,
+        48,
+        57
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6741",
+      "name": "91APP*-KY",
+      "streak": 5,
+      "totalNet": 487,
+      "recentNets": [
+        68,
+        89,
+        142,
+        147,
+        41
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3546",
+      "name": "宇峻",
+      "streak": 6,
+      "totalNet": 425,
+      "recentNets": [
+        41,
+        84,
+        89,
+        40,
+        77,
+        94
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3529",
+      "name": "力旺",
+      "streak": 5,
+      "totalNet": 422,
+      "recentNets": [
+        24,
+        298,
+        18,
+        64,
+        18
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5511",
+      "name": "德昌",
+      "streak": 9,
+      "totalNet": 391,
+      "recentNets": [
+        84,
+        36,
+        35,
+        75,
+        55,
+        31,
+        11,
+        48,
+        16
+      ],
+      "brokers": []
+    },
+    {
+      "id": "7751",
+      "name": "竑騰",
+      "streak": 5,
+      "totalNet": 366,
+      "recentNets": [
+        17,
+        210,
+        4,
+        63,
+        72
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5210",
+      "name": "寶碩",
+      "streak": 4,
+      "totalNet": 352,
+      "recentNets": [
+        33,
+        216,
+        85,
+        18
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8908",
+      "name": "欣雄",
+      "streak": 6,
+      "totalNet": 297,
+      "recentNets": [
+        138,
+        78,
+        6,
+        4,
+        39,
+        32
+      ],
+      "brokers": []
+    },
+    {
+      "id": "2230",
+      "name": "泰茂",
+      "streak": 10,
+      "totalNet": 283,
+      "recentNets": [
+        4,
+        72,
+        33,
+        74,
+        40,
+        7,
+        9,
+        33,
+        3,
+        8
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6469",
+      "name": "大樹",
+      "streak": 4,
+      "totalNet": 273,
+      "recentNets": [
+        2,
+        119,
+        7,
+        145
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5278",
+      "name": "尚凡*",
+      "streak": 5,
+      "totalNet": 264,
+      "recentNets": [
+        27,
+        64,
+        32,
+        27,
+        114
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8032",
+      "name": "光菱",
+      "streak": 3,
+      "totalNet": 258,
+      "recentNets": [
+        131,
+        68,
+        59
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6568",
+      "name": "宏觀",
+      "streak": 5,
+      "totalNet": 243,
+      "recentNets": [
+        73,
+        3,
+        85,
+        32,
+        50
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5291",
+      "name": "邑昇",
+      "streak": 4,
+      "totalNet": 226,
+      "recentNets": [
+        104,
+        14,
+        77,
+        31
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6640",
+      "name": "均華",
+      "streak": 4,
+      "totalNet": 212,
+      "recentNets": [
+        57,
+        23,
+        35,
+        97
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6996",
+      "name": "力領科技",
+      "streak": 3,
+      "totalNet": 207,
+      "recentNets": [
+        135,
+        70,
+        2
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3516",
+      "name": "亞帝歐",
+      "streak": 9,
+      "totalNet": 206,
+      "recentNets": [
+        19,
+        23,
+        13,
+        8,
+        11,
+        8,
+        8,
+        24,
+        92
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5011",
+      "name": "久陽",
+      "streak": 3,
+      "totalNet": 199,
+      "recentNets": [
+        101,
+        74,
+        24
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4107",
+      "name": "邦特",
+      "streak": 8,
+      "totalNet": 164,
+      "recentNets": [
+        36,
+        43,
+        13,
+        22,
+        17,
+        18,
+        11,
+        4
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3169",
+      "name": "亞信",
+      "streak": 3,
+      "totalNet": 159,
+      "recentNets": [
+        50,
+        106,
+        3
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3287",
+      "name": "廣寰科",
+      "streak": 4,
+      "totalNet": 154,
+      "recentNets": [
+        87,
+        10,
+        5,
+        52
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3609",
+      "name": "三一東林",
+      "streak": 4,
+      "totalNet": 131,
+      "recentNets": [
+        31,
+        40,
+        36,
+        24
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3114",
+      "name": "好德",
+      "streak": 3,
+      "totalNet": 115,
+      "recentNets": [
+        11,
+        81,
+        23
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5490",
+      "name": "同亨",
+      "streak": 3,
+      "totalNet": 115,
+      "recentNets": [
+        53,
+        56,
+        6
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4556",
+      "name": "旭然",
+      "streak": 4,
+      "totalNet": 88,
+      "recentNets": [
+        12,
+        30,
+        16,
+        30
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5701",
+      "name": "劍湖山",
+      "streak": 5,
+      "totalNet": 70,
+      "recentNets": [
+        25,
+        17,
+        22,
+        5,
+        1
+      ],
+      "brokers": []
+    },
+    {
+      "id": "8942",
+      "name": "森鉅",
+      "streak": 3,
+      "totalNet": 64,
+      "recentNets": [
+        8,
+        41,
+        15
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4506",
+      "name": "崇友",
+      "streak": 3,
+      "totalNet": 60,
+      "recentNets": [
+        19,
+        16,
+        25
+      ],
+      "brokers": []
+    },
+    {
+      "id": "3611",
+      "name": "鼎翰",
+      "streak": 3,
+      "totalNet": 47,
+      "recentNets": [
+        9,
+        20,
+        18
+      ],
+      "brokers": []
+    },
+    {
+      "id": "1268",
+      "name": "漢來美食",
+      "streak": 10,
+      "totalNet": 42,
+      "recentNets": [
+        4,
+        4,
+        2,
+        16,
+        1,
+        4,
+        3,
+        3,
+        3,
+        2
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4549",
+      "name": "桓達",
+      "streak": 3,
+      "totalNet": 33,
+      "recentNets": [
+        22,
+        2,
+        9
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6195",
+      "name": "詩肯",
+      "streak": 4,
+      "totalNet": 21,
+      "recentNets": [
+        2,
+        3,
+        3,
+        13
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5015",
+      "name": "華祺",
+      "streak": 3,
+      "totalNet": 16,
+      "recentNets": [
+        13,
+        2,
+        1
+      ],
+      "brokers": []
+    },
+    {
+      "id": "2718",
+      "name": "全心投控",
+      "streak": 3,
+      "totalNet": 15,
+      "recentNets": [
+        2,
+        12,
+        1
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6154",
+      "name": "順發",
+      "streak": 3,
+      "totalNet": 11,
+      "recentNets": [
+        6,
+        1,
+        4
+      ],
+      "brokers": []
+    },
+    {
+      "id": "5903",
+      "name": "全家",
+      "streak": 3,
+      "totalNet": 9,
+      "recentNets": [
+        5,
+        1,
+        3
+      ],
+      "brokers": []
+    },
+    {
+      "id": "4153",
+      "name": "鈺緯",
+      "streak": 4,
+      "totalNet": 6,
+      "recentNets": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6654",
+      "name": "天正國際",
+      "streak": 3,
+      "totalNet": 6,
+      "recentNets": [
+        2,
+        2,
+        2
+      ],
+      "brokers": []
+    },
+    {
+      "id": "6210",
+      "name": "慶生",
+      "streak": 3,
+      "totalNet": 5,
+      "recentNets": [
+        1,
+        3,
+        1
+      ],
+      "brokers": []
+    }
+  ],
+  "priceRecovery": [
+    {
+      "id": "1714",
+      "name": "和桐",
+      "gain": 25.2,
+      "latestClose": 14.4,
+      "volRatio": 1.48
+    },
+    {
+      "id": "6153",
+      "name": "嘉聯益",
+      "gain": 9.7,
+      "latestClose": 20.3,
+      "volRatio": 1.6
+    },
+    {
+      "id": "3550",
+      "name": "聯穎",
+      "gain": 18.9,
+      "latestClose": 28.6,
+      "volRatio": 1.5
+    },
+    {
+      "id": "3362",
+      "name": "先進光",
+      "gain": 10.8,
+      "latestClose": 164,
+      "volRatio": 1.61
+    },
+    {
+      "id": "2241",
+      "name": "艾姆勒",
+      "gain": 13.1,
+      "latestClose": 40.05,
+      "volRatio": 1.38
+    },
+    {
+      "id": "6901",
+      "name": "鑽石投資",
+      "gain": 12.2,
+      "latestClose": 16.05,
+      "volRatio": 1.48
+    },
+    {
+      "id": "7788",
+      "name": "松川精密",
+      "gain": 21,
+      "latestClose": 271,
+      "volRatio": 1.55
+    },
+    {
+      "id": "2537",
+      "name": "聯上發",
+      "gain": 11.3,
+      "latestClose": 11.3,
+      "volRatio": 1.64
+    },
+    {
+      "id": "4542",
+      "name": "科嶠",
+      "gain": 6.6,
+      "latestClose": 305,
+      "volRatio": 1.57
+    },
+    {
+      "id": "5534",
+      "name": "長虹",
+      "gain": 5.9,
+      "latestClose": 82,
+      "volRatio": 1.4
+    },
+    {
+      "id": "4741",
+      "name": "泓瀚",
+      "gain": 28.8,
+      "latestClose": 81,
+      "volRatio": 1.52
+    },
+    {
+      "id": "4113",
+      "name": "聯上",
+      "gain": 8.9,
+      "latestClose": 16.55,
+      "volRatio": 1.59
+    },
+    {
+      "id": "2536",
+      "name": "宏普",
+      "gain": 5.1,
+      "latestClose": 21.65,
+      "volRatio": 1.38
+    },
+    {
+      "id": "7722",
+      "name": "LINEPAY",
+      "gain": 21.3,
+      "latestClose": 370.5,
+      "volRatio": 1.65
+    },
+    {
+      "id": "4556",
+      "name": "旭然",
+      "gain": 39.1,
+      "latestClose": 60.8,
+      "volRatio": 1.35
+    },
+    {
+      "id": "4402",
+      "name": "郡都開發",
+      "gain": 28.8,
+      "latestClose": 17.2,
+      "volRatio": 1.5
+    }
+  ],
+  "steadyRise": [
+    {
+      "id": "2892",
+      "name": "第一金",
+      "gain": 11.7,
+      "upDays": 7,
+      "cv": 0.3,
+      "avgVolK": 71344,
+      "latestClose": 30.65
+    },
+    {
+      "id": "2882",
+      "name": "國泰金",
+      "gain": 17.3,
+      "upDays": 7,
+      "cv": 0.18,
+      "avgVolK": 55888,
+      "latestClose": 100.5
+    },
+    {
+      "id": "9907",
+      "name": "統一實",
+      "gain": 5,
+      "upDays": 7,
+      "cv": 0.13,
+      "avgVolK": 4335,
+      "latestClose": 16.75
+    },
+    {
+      "id": "2915",
+      "name": "潤泰全",
+      "gain": 11.7,
+      "upDays": 7,
+      "cv": 0.29,
+      "avgVolK": 3724,
+      "latestClose": 49.15
+    },
+    {
+      "id": "1307",
+      "name": "三芳",
+      "gain": 13,
+      "upDays": 8,
+      "cv": 0.28,
+      "avgVolK": 1895,
+      "latestClose": 35.2
+    },
+    {
+      "id": "3703",
+      "name": "欣陸",
+      "gain": 7.9,
+      "upDays": 7,
+      "cv": 0.27,
+      "avgVolK": 1701,
+      "latestClose": 21.8
+    },
+    {
+      "id": "00701",
+      "name": "國泰股利精選30",
+      "gain": 6.5,
+      "upDays": 7,
+      "cv": 0.23,
+      "avgVolK": 1662,
+      "latestClose": 36.29
+    },
+    {
+      "id": "6121",
+      "name": "新普",
+      "gain": 4.6,
+      "upDays": 7,
+      "cv": 0.24,
+      "avgVolK": 1491,
+      "latestClose": 411
+    }
+  ],
+  "breakout": [
+    {
+      "id": "8112",
+      "name": "至上",
+      "baseCV": 0.05,
+      "breakGain": 4.7,
+      "volSurge": 1.8,
+      "latestClose": 95.5
+    },
+    {
+      "id": "3576",
+      "name": "聯合再生",
+      "baseCV": 0.048,
+      "breakGain": 4.3,
+      "volSurge": 1.6,
+      "latestClose": 18
+    },
+    {
+      "id": "2542",
+      "name": "興富發",
+      "baseCV": 0.016,
+      "breakGain": 5,
+      "volSurge": 3.2,
+      "latestClose": 45.35
+    },
+    {
+      "id": "6244",
+      "name": "茂迪",
+      "baseCV": 0.042,
+      "breakGain": 10,
+      "volSurge": 2.9,
+      "latestClose": 31.25
+    },
+    {
+      "id": "9941",
+      "name": "裕融",
+      "baseCV": 0.054,
+      "breakGain": 4.3,
+      "volSurge": 2.1,
+      "latestClose": 87.7
+    },
+    {
+      "id": "2501",
+      "name": "國建",
+      "baseCV": 0.034,
+      "breakGain": 6.4,
+      "volSurge": 6.5,
+      "latestClose": 25.75
+    },
+    {
+      "id": "6757",
+      "name": "台灣虎航",
+      "baseCV": 0.034,
+      "breakGain": 5.5,
+      "volSurge": 2.3,
+      "latestClose": 55.6
+    },
+    {
+      "id": "4306",
+      "name": "炎洲",
+      "baseCV": 0.044,
+      "breakGain": 5,
+      "volSurge": 2.1,
+      "latestClose": 15.85
+    },
+    {
+      "id": "2539",
+      "name": "櫻花建",
+      "baseCV": 0.041,
+      "breakGain": 5.4,
+      "volSurge": 1.9,
+      "latestClose": 38.9
+    },
+    {
+      "id": "3088",
+      "name": "艾訊",
+      "baseCV": 0.035,
+      "breakGain": 6.6,
+      "volSurge": 1.8,
+      "latestClose": 145
+    },
+    {
+      "id": "4147",
+      "name": "中裕",
+      "baseCV": 0.06,
+      "breakGain": 6.5,
+      "volSurge": 1.5,
+      "latestClose": 58.6
+    },
+    {
+      "id": "6177",
+      "name": "達麗",
+      "baseCV": 0.03,
+      "breakGain": 5.5,
+      "volSurge": 2.7,
+      "latestClose": 47.4
+    },
+    {
+      "id": "3290",
+      "name": "東浦",
+      "baseCV": 0.037,
+      "breakGain": 17.8,
+      "volSurge": 4.4,
+      "latestClose": 63.6
+    },
+    {
+      "id": "3003",
+      "name": "健和興",
+      "baseCV": 0.029,
+      "breakGain": 4.4,
+      "volSurge": 1.8,
+      "latestClose": 67
+    },
+    {
+      "id": "5534",
+      "name": "長虹",
+      "baseCV": 0.016,
+      "breakGain": 5.5,
+      "volSurge": 4.5,
+      "latestClose": 82
+    },
+    {
+      "id": "2540",
+      "name": "愛山林",
+      "baseCV": 0.032,
+      "breakGain": 4.7,
+      "volSurge": 2.5,
+      "latestClose": 53.3
+    },
+    {
+      "id": "2537",
+      "name": "聯上發",
+      "baseCV": 0.025,
+      "breakGain": 11.9,
+      "volSurge": 9.2,
+      "latestClose": 11.3
+    },
+    {
+      "id": "5410",
+      "name": "國眾",
+      "baseCV": 0.035,
+      "breakGain": 9.7,
+      "volSurge": 3.1,
+      "latestClose": 44.15
+    },
+    {
+      "id": "5522",
+      "name": "遠雄",
+      "baseCV": 0.031,
+      "breakGain": 5.3,
+      "volSurge": 4,
+      "latestClose": 80
+    }
+  ]
+}
