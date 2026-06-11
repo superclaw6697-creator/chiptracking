@@ -1,7 +1,7 @@
 {
   "date": "2026-06-11",
   "scanRange": "2026-05-29 ～ 2026-06-11",
-  "generatedAt": "2026-06-11T13:21:42.005Z",
+  "generatedAt": "2026-06-11T13:46:35.843Z",
   "institutional": [
     {
       "id": "5347",
@@ -1398,180 +1398,284 @@
   ],
   "threeInstitutional": [
     {
-      "id": "2887",
-      "name": "台新新光金",
-      "totalNet": 110062,
-      "foreign": 64168,
-      "trust": 37188,
-      "dealer": 8706
+      "id": "3481",
+      "name": "群創",
+      "totalNet": 35276,
+      "foreign": 34595,
+      "trust": 22,
+      "dealer": 659
     },
     {
       "id": "2892",
       "name": "第一金",
-      "totalNet": 79096,
-      "foreign": 75349,
-      "trust": 1551,
-      "dealer": 2196
+      "totalNet": 21340,
+      "foreign": 19414,
+      "trust": 512,
+      "dealer": 1414
     },
     {
       "id": "2890",
       "name": "永豐金",
-      "totalNet": 71705,
-      "foreign": 67152,
-      "trust": 2400,
-      "dealer": 2153
-    },
-    {
-      "id": "2884",
-      "name": "玉山金",
-      "totalNet": 53766,
-      "foreign": 47776,
-      "trust": 2878,
-      "dealer": 3112
+      "totalNet": 16105,
+      "foreign": 13608,
+      "trust": 1021,
+      "dealer": 1476
     },
     {
       "id": "3045",
       "name": "台灣大",
-      "totalNet": 26240,
-      "foreign": 24980,
-      "trust": 1194,
-      "dealer": 66
+      "totalNet": 11842,
+      "foreign": 11549,
+      "trust": 229,
+      "dealer": 64
     },
     {
-      "id": "5880",
-      "name": "合庫金",
-      "totalNet": 17079,
-      "foreign": 14690,
-      "trust": 517,
-      "dealer": 1872
+      "id": "2801",
+      "name": "彰銀",
+      "totalNet": 11677,
+      "foreign": 11397,
+      "trust": 234,
+      "dealer": 46
+    },
+    {
+      "id": "2344",
+      "name": "華邦電",
+      "totalNet": 11525,
+      "foreign": 6599,
+      "trust": 4009,
+      "dealer": 917
+    },
+    {
+      "id": "2313",
+      "name": "華通",
+      "totalNet": 11075,
+      "foreign": 10647,
+      "trust": 90,
+      "dealer": 338
     },
     {
       "id": "1216",
       "name": "統一",
-      "totalNet": 12955,
-      "foreign": 11669,
-      "trust": 356,
-      "dealer": 930
+      "totalNet": 7573,
+      "foreign": 6667,
+      "trust": 325,
+      "dealer": 581
     },
     {
-      "id": "1785",
-      "name": "光洋科",
-      "totalNet": 4096,
-      "foreign": 4072,
-      "trust": 3,
-      "dealer": 21
+      "id": "2356",
+      "name": "英業達",
+      "totalNet": 7334,
+      "foreign": 7083,
+      "trust": 117,
+      "dealer": 134
+    },
+    {
+      "id": "2412",
+      "name": "中華電",
+      "totalNet": 6644,
+      "foreign": 5853,
+      "trust": 335,
+      "dealer": 456
+    },
+    {
+      "id": "2884",
+      "name": "玉山金",
+      "totalNet": 5866,
+      "foreign": 2859,
+      "trust": 1291,
+      "dealer": 1716
+    },
+    {
+      "id": "3042",
+      "name": "晶技",
+      "totalNet": 5325,
+      "foreign": 4930,
+      "trust": 391,
+      "dealer": 4
+    },
+    {
+      "id": "4958",
+      "name": "臻鼎-KY",
+      "totalNet": 3370,
+      "foreign": 1748,
+      "trust": 1458,
+      "dealer": 164
+    },
+    {
+      "id": "2489",
+      "name": "瑞軒",
+      "totalNet": 2376,
+      "foreign": 2353,
+      "trust": 22,
+      "dealer": 1
     },
     {
       "id": "2426",
       "name": "鼎元",
-      "totalNet": 3428,
-      "foreign": 2948,
-      "trust": 9,
-      "dealer": 471
+      "totalNet": 1694,
+      "foreign": 1685,
+      "trust": 8,
+      "dealer": 1
     },
     {
-      "id": "3376",
-      "name": "新日興",
-      "totalNet": 2304,
-      "foreign": 1054,
-      "trust": 1091,
-      "dealer": 159
+      "id": "4904",
+      "name": "遠傳",
+      "totalNet": 1687,
+      "foreign": 1549,
+      "trust": 69,
+      "dealer": 69
+    },
+    {
+      "id": "6451",
+      "name": "訊芯-KY",
+      "totalNet": 1455,
+      "foreign": 1447,
+      "trust": 2,
+      "dealer": 6
+    },
+    {
+      "id": "2377",
+      "name": "微星",
+      "totalNet": 1339,
+      "foreign": 1226,
+      "trust": 50,
+      "dealer": 63
     },
     {
       "id": "3026",
       "name": "禾伸堂",
-      "totalNet": 2058,
-      "foreign": 1975,
-      "trust": 41,
-      "dealer": 42
-    },
-    {
-      "id": "5285",
-      "name": "界霖",
-      "totalNet": 1565,
-      "foreign": 1136,
-      "trust": 26,
-      "dealer": 403
-    },
-    {
-      "id": "3088",
-      "name": "艾訊",
-      "totalNet": 1551,
-      "foreign": 1480,
-      "trust": 8,
-      "dealer": 63
-    },
-    {
-      "id": "3357",
-      "name": "臺慶科",
-      "totalNet": 1081,
-      "foreign": 684,
-      "trust": 335,
-      "dealer": 62
-    },
-    {
-      "id": "2645",
-      "name": "長榮航太",
-      "totalNet": 1054,
-      "foreign": 1018,
-      "trust": 1,
-      "dealer": 35
-    },
-    {
-      "id": "5904",
-      "name": "寶雅",
-      "totalNet": 981,
-      "foreign": 893,
-      "trust": 67,
-      "dealer": 21
-    },
-    {
-      "id": "6831",
-      "name": "邁科",
-      "totalNet": 980,
-      "foreign": 395,
-      "trust": 572,
-      "dealer": 13
-    },
-    {
-      "id": "8021",
-      "name": "尖點",
-      "totalNet": 970,
-      "foreign": 26,
-      "trust": 897,
-      "dealer": 47
-    },
-    {
-      "id": "5434",
-      "name": "崇越",
-      "totalNet": 368,
-      "foreign": 326,
+      "totalNet": 1107,
+      "foreign": 1035,
       "trust": 33,
-      "dealer": 9
+      "dealer": 39
     },
     {
-      "id": "8155",
-      "name": "博智",
-      "totalNet": 160,
-      "foreign": 71,
-      "trust": 75,
-      "dealer": 14
+      "id": "5876",
+      "name": "上海商銀",
+      "totalNet": 1058,
+      "foreign": 714,
+      "trust": 171,
+      "dealer": 173
     },
     {
-      "id": "6670",
-      "name": "復盛應用",
-      "totalNet": 141,
-      "foreign": 93,
-      "trust": 47,
+      "id": "2401",
+      "name": "凌陽",
+      "totalNet": 905,
+      "foreign": 828,
+      "trust": 5,
+      "dealer": 72
+    },
+    {
+      "id": "8039",
+      "name": "台虹",
+      "totalNet": 861,
+      "foreign": 778,
+      "trust": 5,
+      "dealer": 78
+    },
+    {
+      "id": "3017",
+      "name": "奇鋐",
+      "totalNet": 531,
+      "foreign": 112,
+      "trust": 318,
+      "dealer": 101
+    },
+    {
+      "id": "3583",
+      "name": "辛耘",
+      "totalNet": 459,
+      "foreign": 433,
+      "trust": 25,
       "dealer": 1
     },
     {
-      "id": "8109",
-      "name": "博大",
-      "totalNet": 128,
-      "foreign": 54,
-      "trust": 54,
-      "dealer": 20
+      "id": "1560",
+      "name": "中砂",
+      "totalNet": 439,
+      "foreign": 91,
+      "trust": 345,
+      "dealer": 3
+    },
+    {
+      "id": "1477",
+      "name": "聚陽",
+      "totalNet": 431,
+      "foreign": 408,
+      "trust": 9,
+      "dealer": 14
+    },
+    {
+      "id": "2301",
+      "name": "光寶科",
+      "totalNet": 366,
+      "foreign": 102,
+      "trust": 43,
+      "dealer": 221
+    },
+    {
+      "id": "8299",
+      "name": "群聯",
+      "totalNet": 309,
+      "foreign": 255,
+      "trust": 43,
+      "dealer": 11
+    },
+    {
+      "id": "3006",
+      "name": "晶豪科",
+      "totalNet": 270,
+      "foreign": 246,
+      "trust": 15,
+      "dealer": 9
+    },
+    {
+      "id": "6202",
+      "name": "盛群",
+      "totalNet": 261,
+      "foreign": 238,
+      "trust": 17,
+      "dealer": 6
+    },
+    {
+      "id": "2006",
+      "name": "東和鋼鐵",
+      "totalNet": 220,
+      "foreign": 172,
+      "trust": 23,
+      "dealer": 25
+    },
+    {
+      "id": "8016",
+      "name": "矽創",
+      "totalNet": 219,
+      "foreign": 141,
+      "trust": 72,
+      "dealer": 6
+    },
+    {
+      "id": "3592",
+      "name": "瑞鼎",
+      "totalNet": 205,
+      "foreign": 198,
+      "trust": 3,
+      "dealer": 4
+    },
+    {
+      "id": "6510",
+      "name": "精測",
+      "totalNet": 171,
+      "foreign": 150,
+      "trust": 15,
+      "dealer": 6
+    },
+    {
+      "id": "1723",
+      "name": "中碳",
+      "totalNet": 108,
+      "foreign": 72,
+      "trust": 21,
+      "dealer": 15
     }
   ],
   "higherLows": [
