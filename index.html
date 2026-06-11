@@ -687,21 +687,20 @@ const SHOW_LIMIT = 10;
 
 function scanTable(cols, rows) {
   if (!rows.length) return '<div class="scan-empty">無符合條件</div>';
-  const head = `<tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr>`;
+  const head = `<thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead>`;
   const top  = rows.slice(0, SHOW_LIMIT).join('');
   const rest = rows.slice(SHOW_LIMIT);
-  const moreHtml = rest.length
-    ? `<tbody class="more-rows">${rest.join('')}</tbody>
-       <button class="scan-more-btn" onclick="toggleMore(this)">展開其餘 ${rest.length} 筆 ▾</button>`
+  const moreBody = rest.length ? `<tbody class="more-rows">${rest.join('')}</tbody>` : '';
+  const moreBtn  = rest.length
+    ? `<button class="scan-more-btn" onclick="toggleMore(this)">展開其餘 ${rest.length} 筆 ▾</button>`
     : '';
-  return `<table class="scan-tbl"><thead>${head}</thead><tbody>${top}</tbody></table>${moreHtml}`;
+  return `<table class="scan-tbl">${head}<tbody>${top}</tbody>${moreBody}</table>${moreBtn}`;
 }
 
 function toggleMore(btn) {
-  const moreBody = btn.previousElementSibling;
-  const open = moreBody.style.display !== 'none' && moreBody.style.display !== '';
-  // first render: display is '' (CSS sets display:none via class)
-  const isHidden = moreBody.style.display === 'none' || moreBody.style.display === '';
+  const tbl      = btn.previousElementSibling;          // the <table>
+  const moreBody = tbl.querySelector('.more-rows');
+  const isHidden = moreBody.style.display !== 'table-row-group';
   moreBody.style.display = isHidden ? 'table-row-group' : 'none';
   const n = moreBody.querySelectorAll('tr').length;
   btn.textContent = isHidden ? `收起 ▴` : `展開其餘 ${n} 筆 ▾`;
