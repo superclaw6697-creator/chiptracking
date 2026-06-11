@@ -277,6 +277,14 @@
         <div class="scan-card-hd">💥 盤整突破<span class="badge" id="sc-break">0</span></div>
         <div class="scan-tbl-wrap" id="sb-break"></div>
       </div>
+      <div class="scan-card">
+        <div class="scan-card-hd">🤝 三法人同買<span class="badge" id="sc-three">0</span></div>
+        <div class="scan-tbl-wrap" id="sb-three"></div>
+      </div>
+      <div class="scan-card">
+        <div class="scan-card-hd">📐 底底高<span class="badge" id="sc-hl">0</span></div>
+        <div class="scan-tbl-wrap" id="sb-hl"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -722,6 +730,8 @@ function renderScanReport(r) {
   document.getElementById('sc-rec').textContent    = r.priceRecovery.length;
   document.getElementById('sc-steady').textContent = r.steadyRise.length;
   document.getElementById('sc-break').textContent  = r.breakout.length;
+  document.getElementById('sc-three').textContent  = (r.threeInstitutional||[]).length;
+  document.getElementById('sc-hl').textContent     = (r.higherLows||[]).length;
 
   document.getElementById('sb-inst').innerHTML = scanTable(
     ['股票','連續','淨買合計','近5日','主力分點'],
@@ -742,6 +752,14 @@ function renderScanReport(r) {
   document.getElementById('sb-break').innerHTML = scanTable(
     ['股票','突破漲幅','量比','CV','收盤'],
     r.breakout.map(c=>`<tr><td>${sLink(c.id,c.name)}</td><td><span class="tag-up">+${c.breakGain}%</span></td><td class="scan-muted">×${c.volSurge}</td><td class="scan-muted">${c.baseCV}</td><td class="scan-muted">${c.latestClose}元</td></tr>`)
+  );
+  document.getElementById('sb-three').innerHTML = scanTable(
+    ['股票','合計淨買','外資','投信','自營'],
+    (r.threeInstitutional||[]).map(c=>`<tr><td>${sLink(c.id,c.name)}</td><td>${fmtNet(c.totalNet)}張</td><td class="scan-pos">+${c.foreign}</td><td class="scan-pos">+${c.trust}</td><td class="scan-pos">+${c.dealer}</td></tr>`)
+  );
+  document.getElementById('sb-hl').innerHTML = scanTable(
+    ['股票','低點漲幅','前低→後低','收盤','距低'],
+    (r.higherLows||[]).map(c=>`<tr><td>${sLink(c.id,c.name)}</td><td><span class="tag-up">+${c.lowRise}%</span></td><td class="scan-muted">${c.low1}→${c.low2}</td><td class="scan-muted">${c.latestClose}元</td><td class="scan-muted">${c.daysFromLow}日</td></tr>`)
   );
   document.getElementById('scan-loading').style.display = 'none';
   document.getElementById('scan-content').style.display = '';
