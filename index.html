@@ -171,6 +171,17 @@
   .scan-empty { padding: 20px; text-align: center; color: var(--text3); font-size: .82rem; }
   .scan-more-btn { display: block; width: 100%; padding: 7px; text-align: center; font-size: .75rem; color: var(--text3); background: none; border: none; border-top: 1px solid var(--border); cursor: pointer; transition: background .15s, color .15s; }
   .scan-more-btn:hover { background: var(--bg3); color: var(--text2); }
+  /* ── Cross-confirm section ── */
+  .cross-section { background: var(--bg2); border: 1px solid rgba(99,102,241,.35); border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(99,102,241,.1); }
+  .cross-hd { padding: 9px 14px; background: rgba(99,102,241,.1); border-bottom: 1px solid rgba(99,102,241,.2); display: flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 700; color: #a5b4fc; }
+  .cross-hd .badge { margin-left: auto; font-size: .7rem; background: rgba(99,102,241,.2); padding: 2px 8px; border-radius: 20px; color: #a5b4fc; }
+  .cross-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; padding: 12px; }
+  .cross-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+  .cross-item a { color: #c7d2fe; font-weight: 700; font-size: .85rem; text-decoration: none; }
+  .cross-item a:hover { color: #e0e7ff; }
+  .cross-close { font-size: 1rem; font-weight: 700; color: var(--text); margin-top: 4px; }
+  .cross-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .cross-tag { font-size: .65rem; padding: 1px 6px; border-radius: 4px; font-weight: 600; background: rgba(99,102,241,.2); color: #a5b4fc; white-space: nowrap; }
   /* ── RWD ── */
   @media (max-width: 480px) {
     header h1 { display: none; }
@@ -260,6 +271,7 @@
   </div>
   <div id="scan-loading" style="text-align:center;color:var(--text3);padding:40px">載入中...</div>
   <div id="scan-content" style="display:none">
+    <div id="sc-cross-wrap" style="margin-bottom:14px"></div>
     <div class="scan-grid">
       <div class="scan-card">
         <div class="scan-card-hd">🔍 外資連續買超<span class="badge" id="sc-inst">0</span></div>
@@ -761,6 +773,58 @@ function renderScanReport(r) {
     ['股票','低點漲幅','前低→後低','收盤','距低'],
     (r.higherLows||[]).map(c=>`<tr><td>${sLink(c.id,c.name)}</td><td><span class="tag-up">+${c.lowRise}%</span></td><td class="scan-muted">${c.low1}→${c.low2}</td><td class="scan-muted">${c.latestClose}元</td><td class="scan-muted">${c.daysFromLow}日</td></tr>`)
   );
+  // ── 多策略交叉確認 ──
+  const stratSets = [
+    { key: '外資連買',   ids: r.institutional.map(c=>c.id),       getInfo: c=>c && `連${c.streak}日 +${c.totalNet}張` },
+    { key: '低翻強',     ids: r.priceRecovery.map(c=>c.id),       getInfo: c=>c && `+${c.gain}%` },
+    { key: '穩量緩漲',   ids: r.steadyRise.map(c=>c.id),          getInfo: c=>c && `+${c.gain}%` },
+    { key: '盤整突破',   ids: r.breakout.map(c=>c.id),            getInfo: c=>c && `突破+${c.breakGain}%` },
+    { key: '三法人同買', ids: (r.threeInstitutional||[]).map(c=>c.id), getInfo: c=>c && `+${c.totalNet}張` },
+    { key: '底底高',     ids: (r.higherLows||[]).map(c=>c.id),    getInfo: c=>c && `低+${c.lowRise}%` },
+  ];
+
+  const idCount = {};
+  const idTags  = {};
+  for (const s of stratSets) {
+    for (const id of s.ids) {
+      idCount[id] = (idCount[id] || 0) + 1;
+      if (!idTags[id]) idTags[id] = [];
+      idTags[id].push(s.key);
+    }
+  }
+
+  // 所有策略的 latestClose 查找
+  const allById = {};
+  for (const arr of [r.institutional, r.priceRecovery, r.steadyRise, r.breakout, r.threeInstitutional||[], r.higherLows||[]]) {
+    for (const c of arr) { if (!allById[c.id]) allById[c.id] = c; }
+  }
+
+  const cross = Object.entries(idCount)
+    .filter(([,n]) => n >= 2)
+    .sort((a,b) => b[1]-a[1])
+    .map(([id]) => id);
+
+  const wrap = document.getElementById('sc-cross-wrap');
+  if (cross.length) {
+    const items = cross.map(id => {
+      const c    = allById[id] || {};
+      const name = c.name || id;
+      const close = c.latestClose || c.low2 || '';
+      const tags  = idTags[id].map(t=>`<span class="cross-tag">${t}</span>`).join('');
+      return `<div class="cross-item">
+        <div><a href="${yahooUrl(id)}" target="_blank">${id} ${name}</a></div>
+        ${close ? `<div class="cross-close">${close} 元</div>` : ''}
+        <div class="cross-tags">${tags}</div>
+      </div>`;
+    }).join('');
+    wrap.innerHTML = `<div class="cross-section">
+      <div class="cross-hd">⚡ 多策略共現<span class="badge">${cross.length} 支</span></div>
+      <div class="cross-grid">${items}</div>
+    </div>`;
+  } else {
+    wrap.innerHTML = '';
+  }
+
   document.getElementById('scan-loading').style.display = 'none';
   document.getElementById('scan-content').style.display = '';
 }
