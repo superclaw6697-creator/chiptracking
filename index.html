@@ -187,6 +187,7 @@
   <div class="tab-nav">
     <button class="tab-btn active" id="tab-chip" onclick="switchTab('chip')">個股追蹤</button>
     <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')">日報掃描</button>
+    <button class="tab-btn" id="tab-etf" onclick="switchTab('etf')">ETF 追蹤</button>
   </div>
 </header>
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
@@ -278,6 +279,10 @@
       </div>
     </div>
   </div>
+</div>
+<!-- ── ETF 追蹤 view ── -->
+<div id="etf-view" style="display:none;flex:1;overflow:hidden">
+  <iframe id="etf-frame" src="" style="width:100%;height:100%;border:none"></iframe>
 </div>
 </div><!-- /.page-body -->
 
@@ -666,16 +671,21 @@ window.onload = () => {
 
 // ── Tab 切換 ────────────────────────────────────────────────
 function switchTab(tab) {
-  const isChip = tab === 'chip';
-  document.getElementById('tab-chip').classList.toggle('active', isChip);
-  document.getElementById('tab-scan').classList.toggle('active', !isChip);
-  document.getElementById('chip-view').style.display    = isChip ? 'flex' : 'none';
-  document.getElementById('scan-view').style.display    = isChip ? 'none' : 'flex';
-  document.getElementById('menuBtn').style.display      = isChip ? '' : 'none';
+  ['chip','scan','etf'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+  });
+  document.getElementById('chip-view').style.display = tab === 'chip' ? 'flex' : 'none';
+  document.getElementById('scan-view').style.display = tab === 'scan' ? 'flex' : 'none';
+  document.getElementById('etf-view').style.display  = tab === 'etf'  ? 'flex' : 'none';
+  document.getElementById('menuBtn').style.display   = tab === 'chip' ? '' : 'none';
   const params = new URLSearchParams(location.search);
   params.set('tab', tab);
   history.replaceState(null, '', '?' + params.toString());
-  if (!isChip && !document.getElementById('scan-date-sel').options.length) initScan();
+  if (tab === 'scan' && !document.getElementById('scan-date-sel').options.length) initScan();
+  if (tab === 'etf') {
+    const frame = document.getElementById('etf-frame');
+    if (!frame.src) frame.src = 'https://superclaw6697-creator.github.io/etfatracking/dashboard.html';
+  }
 }
 
 // ── 日報掃描 ─────────────────────────────────────────────────
