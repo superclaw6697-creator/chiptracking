@@ -1,16 +1,8 @@
 {
   "stockId": "6121",
-  "startDate": "2026-06-05",
-  "endDate": "2026-06-11",
+  "startDate": "2026-06-08",
+  "endDate": "2026-06-12",
   "prices": [
-    {
-      "date": "2026-06-05",
-      "open": 412,
-      "high": 423.5,
-      "low": 410,
-      "close": 422.5,
-      "volume": 2244797
-    },
     {
       "date": "2026-06-08",
       "open": 399,
@@ -42,93 +34,17 @@
       "low": 400,
       "close": 411,
       "volume": 1086072
+    },
+    {
+      "date": "2026-06-12",
+      "open": 419,
+      "high": 419.5,
+      "low": 411,
+      "close": 411.5,
+      "volume": 1042126
     }
   ],
   "chips": [
-    {
-      "date": "2026-06-05",
-      "foreign_buy": 673,
-      "foreign_buy_avg": 418.79,
-      "foreign_sell": 422,
-      "foreign_sell_avg": 419.36,
-      "foreign_net": 251,
-      "top_foreign": [
-        {
-          "name": "上海匯豐",
-          "buy": 186,
-          "buy_avg": 417.93,
-          "sell": 0,
-          "sell_avg": 0,
-          "net": 186
-        },
-        {
-          "name": "花旗環球",
-          "buy": 77,
-          "buy_avg": 422.08,
-          "sell": 1,
-          "sell_avg": 416.5,
-          "net": 76
-        },
-        {
-          "name": "摩根士丹利",
-          "buy": 72,
-          "buy_avg": 419.8,
-          "sell": 6,
-          "sell_avg": 419.5,
-          "net": 66
-        },
-        {
-          "name": "美商高盛亞",
-          "buy": 61,
-          "buy_avg": 418.28,
-          "sell": 12,
-          "sell_avg": 416.9,
-          "net": 49
-        },
-        {
-          "name": "星洲瑞銀",
-          "buy": 150,
-          "buy_avg": 418.8,
-          "sell": 128,
-          "sell_avg": 418.91,
-          "net": 22
-        },
-        {
-          "name": "美林證券",
-          "buy": 30,
-          "buy_avg": 417.52,
-          "sell": 11,
-          "sell_avg": 422.5,
-          "net": 19
-        },
-        {
-          "name": "港商野村",
-          "buy": 11,
-          "buy_avg": 415,
-          "sell": 0,
-          "sell_avg": 0,
-          "net": 11
-        }
-      ],
-      "top_foreign_sellers": [
-        {
-          "name": "摩根大通",
-          "buy": 86,
-          "buy_avg": 418.13,
-          "sell": 262,
-          "sell_avg": 419.57,
-          "net": -176
-        },
-        {
-          "name": "群益高盛",
-          "buy": 0,
-          "buy_avg": 420,
-          "sell": 1,
-          "sell_avg": 420.57,
-          "net": -1
-        }
-      ]
-    },
     {
       "date": "2026-06-08",
       "foreign_buy": 967,
@@ -423,6 +339,73 @@
           "net": -70
         }
       ]
+    },
+    {
+      "date": "2026-06-12",
+      "foreign_buy": 274,
+      "foreign_buy_avg": 414.61,
+      "foreign_sell": 67,
+      "foreign_sell_avg": 413.5,
+      "foreign_net": 207,
+      "top_foreign": [
+        {
+          "name": "星洲瑞銀",
+          "buy": 60,
+          "buy_avg": 414.74,
+          "sell": 8,
+          "sell_avg": 414.13,
+          "net": 52
+        },
+        {
+          "name": "美商高盛亞",
+          "buy": 71,
+          "buy_avg": 415.04,
+          "sell": 23,
+          "sell_avg": 414.05,
+          "net": 48
+        },
+        {
+          "name": "上海匯豐",
+          "buy": 48,
+          "buy_avg": 414.16,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 48
+        },
+        {
+          "name": "摩根士丹利",
+          "buy": 41,
+          "buy_avg": 415.7,
+          "sell": 5,
+          "sell_avg": 411.9,
+          "net": 36
+        },
+        {
+          "name": "摩根大通",
+          "buy": 36,
+          "buy_avg": 412.58,
+          "sell": 19,
+          "sell_avg": 413.71,
+          "net": 17
+        },
+        {
+          "name": "港商麥格理",
+          "buy": 4,
+          "buy_avg": 417.25,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 4
+        },
+        {
+          "name": "港商野村",
+          "buy": 3,
+          "buy_avg": 413.33,
+          "sell": 2,
+          "sell_avg": 415.75,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": []
     }
   ]
 }

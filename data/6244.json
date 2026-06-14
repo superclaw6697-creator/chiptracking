@@ -1,16 +1,8 @@
 {
   "stockId": "6244",
-  "startDate": "2026-06-05",
-  "endDate": "2026-06-11",
+  "startDate": "2026-06-08",
+  "endDate": "2026-06-12",
   "prices": [
-    {
-      "date": "2026-06-05",
-      "open": 30.2,
-      "high": 30.6,
-      "low": 28.25,
-      "close": 28.7,
-      "volume": 8611513
-    },
     {
       "date": "2026-06-08",
       "open": 25.85,
@@ -42,93 +34,17 @@
       "low": 29.1,
       "close": 31.25,
       "volume": 36272534
+    },
+    {
+      "date": "2026-06-12",
+      "open": 32.25,
+      "high": 33.8,
+      "low": 30.9,
+      "close": 31.1,
+      "volume": 32021804
     }
   ],
   "chips": [
-    {
-      "date": "2026-06-05",
-      "foreign_buy": 332,
-      "foreign_buy_avg": 28.91,
-      "foreign_sell": 1892,
-      "foreign_sell_avg": 28.84,
-      "foreign_net": -1560,
-      "top_foreign": [
-        {
-          "name": "群益高盛",
-          "buy": 4,
-          "buy_avg": 28.68,
-          "sell": 1,
-          "sell_avg": 29.65,
-          "net": 3
-        }
-      ],
-      "top_foreign_sellers": [
-        {
-          "name": "星洲瑞銀",
-          "buy": 49,
-          "buy_avg": 29.38,
-          "sell": 372,
-          "sell_avg": 28.88,
-          "net": -323
-        },
-        {
-          "name": "美林證券",
-          "buy": 31,
-          "buy_avg": 28.74,
-          "sell": 354,
-          "sell_avg": 28.86,
-          "net": -323
-        },
-        {
-          "name": "摩根大通",
-          "buy": 115,
-          "buy_avg": 28.71,
-          "sell": 434,
-          "sell_avg": 28.87,
-          "net": -319
-        },
-        {
-          "name": "美商高盛亞",
-          "buy": 100,
-          "buy_avg": 28.94,
-          "sell": 368,
-          "sell_avg": 28.97,
-          "net": -268
-        },
-        {
-          "name": "港商野村",
-          "buy": 3,
-          "buy_avg": 29.2,
-          "sell": 221,
-          "sell_avg": 28.57,
-          "net": -218
-        },
-        {
-          "name": "摩根士丹利",
-          "buy": 30,
-          "buy_avg": 28.94,
-          "sell": 112,
-          "sell_avg": 28.6,
-          "net": -82
-        },
-        {
-          "name": "上海匯豐",
-          "buy": 0,
-          "buy_avg": 0,
-          "sell": 21,
-          "sell_avg": 28.78,
-          "net": -21
-        },
-        {
-          "name": "港商麥格理",
-          "buy": 0,
-          "buy_avg": 0,
-          "sell": 9,
-          "sell_avg": 28.65,
-          "net": -9
-        }
-      ]
-    },
     {
       "date": "2026-06-08",
       "foreign_buy": 339,
@@ -397,6 +313,74 @@
           "sell": 10,
           "sell_avg": 30.46,
           "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-06-12",
+      "foreign_buy": 4928,
+      "foreign_buy_avg": 32.36,
+      "foreign_sell": 2324,
+      "foreign_sell_avg": 32.77,
+      "foreign_net": 2605,
+      "top_foreign": [
+        {
+          "name": "摩根士丹利",
+          "buy": 1880,
+          "buy_avg": 32.44,
+          "sell": 507,
+          "sell_avg": 32.68,
+          "net": 1373
+        },
+        {
+          "name": "星洲瑞銀",
+          "buy": 635,
+          "buy_avg": 32.28,
+          "sell": 206,
+          "sell_avg": 32.62,
+          "net": 429
+        },
+        {
+          "name": "美林證券",
+          "buy": 373,
+          "buy_avg": 32.76,
+          "sell": 38,
+          "sell_avg": 33.48,
+          "net": 335
+        },
+        {
+          "name": "摩根大通",
+          "buy": 513,
+          "buy_avg": 31.91,
+          "sell": 222,
+          "sell_avg": 32.91,
+          "net": 291
+        },
+        {
+          "name": "港商野村",
+          "buy": 152,
+          "buy_avg": 33.04,
+          "sell": 9,
+          "sell_avg": 32.83,
+          "net": 143
+        },
+        {
+          "name": "美商高盛亞",
+          "buy": 1362,
+          "buy_avg": 32.28,
+          "sell": 1327,
+          "sell_avg": 32.78,
+          "net": 35
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "群益高盛",
+          "buy": 13,
+          "buy_avg": 33.05,
+          "sell": 15,
+          "sell_avg": 32.85,
+          "net": -2
         }
       ]
     }
