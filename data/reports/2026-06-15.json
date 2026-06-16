@@ -1,7 +1,7 @@
 {
   "date": "2026-06-15",
   "scanRange": "2026-06-02 ～ 2026-06-15",
-  "generatedAt": "2026-06-16T00:18:59.890Z",
+  "generatedAt": "2026-06-16T04:58:29.749Z",
   "institutional": [
     {
       "id": "2618",
@@ -4791,6 +4791,86 @@
       "foreign": 87,
       "trust": 11,
       "dealer": 51
+    }
+  ],
+  "foreignSellTrustBuy": [
+    {
+      "id": "4915",
+      "name": "致伸",
+      "foreignTotal": -3684,
+      "recentTrustNet": 3982
+    },
+    {
+      "id": "6271",
+      "name": "同欣電",
+      "foreignTotal": -3204,
+      "recentTrustNet": 1862
+    },
+    {
+      "id": "2206",
+      "name": "三陽工業",
+      "foreignTotal": -2085,
+      "recentTrustNet": 1473
+    },
+    {
+      "id": "6239",
+      "name": "力成",
+      "foreignTotal": -18619,
+      "recentTrustNet": 1334
+    },
+    {
+      "id": "5425",
+      "name": "台半",
+      "foreignTotal": -1496,
+      "recentTrustNet": 1198
+    },
+    {
+      "id": "9917",
+      "name": "中保科",
+      "foreignTotal": -643,
+      "recentTrustNet": 1089
+    },
+    {
+      "id": "3231",
+      "name": "緯創",
+      "foreignTotal": -33169,
+      "recentTrustNet": 930
+    },
+    {
+      "id": "6415",
+      "name": "矽力*-KY",
+      "foreignTotal": -212,
+      "recentTrustNet": 581
+    },
+    {
+      "id": "5243",
+      "name": "乙盛-KY",
+      "foreignTotal": -802,
+      "recentTrustNet": 500
+    },
+    {
+      "id": "2472",
+      "name": "立隆電",
+      "foreignTotal": -2786,
+      "recentTrustNet": 235
+    },
+    {
+      "id": "6510",
+      "name": "精測",
+      "foreignTotal": -246,
+      "recentTrustNet": 202
+    },
+    {
+      "id": "6138",
+      "name": "茂達",
+      "foreignTotal": -6,
+      "recentTrustNet": 193
+    },
+    {
+      "id": "3218",
+      "name": "大學光",
+      "foreignTotal": -72,
+      "recentTrustNet": 177
     }
   ],
   "higherLows": [
