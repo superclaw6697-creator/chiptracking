@@ -308,6 +308,11 @@
         <div class="sc-desc">近 40 日出現至少兩個局部低點（前後各一日都比它高），且後低 &gt; 前低，最後低點在近 10 日內，現價高於最後低點。顯示賣壓逐次遞減、空頭力道衰竭。</div>
         <div class="scan-tbl-wrap" id="sb-hl"></div>
       </div>
+      <div class="scan-card">
+        <div class="scan-card-hd">🔄 外資賣、投信剛買<span class="badge" id="sc-fstb">0</span><button class="sc-info-btn" onclick="toggleDesc(this)">i</button></div>
+        <div class="sc-desc">外資近 5 日累計淨賣超，投信最近 2 日剛轉買超（合計 ≥50 張），且前 3 日投信是賣超或零。反映外資減碼時投信悄悄進場的籌碼分歧訊號。</div>
+        <div class="scan-tbl-wrap" id="sb-fstb"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -770,6 +775,7 @@ function renderScanReport(r) {
   document.getElementById('sc-break').textContent  = r.breakout.length;
   document.getElementById('sc-three').textContent  = (r.threeInstitutional||[]).length;
   document.getElementById('sc-hl').textContent     = (r.higherLows||[]).length;
+  document.getElementById('sc-fstb').textContent   = (r.foreignSellTrustBuy||[]).length;
 
   document.getElementById('sb-inst').innerHTML = scanTable(
     ['股票','連續','淨買合計','近5日','主力分點'],
@@ -799,6 +805,10 @@ function renderScanReport(r) {
     ['股票','低點漲幅','前低→後低','收盤','距低'],
     (r.higherLows||[]).map(c=>`<tr><td>${sLink(c.id,c.name)}</td><td><span class="tag-up">+${c.lowRise}%</span></td><td class="scan-muted">${c.low1}→${c.low2}</td><td class="scan-muted">${c.latestClose}元</td><td class="scan-muted">${c.daysFromLow}日</td></tr>`)
   );
+  document.getElementById('sb-fstb').innerHTML = scanTable(
+    ['股票','外資近5日','投信近2日'],
+    (r.foreignSellTrustBuy||[]).map(c=>`<tr><td>${sLink(c.id,c.name)}</td><td class="scan-neg">${c.foreignTotal}張</td><td class="scan-pos">+${c.recentTrustNet}張</td></tr>`)
+  );
   // ── 多策略交叉確認 ──
   const stratSets = [
     { key: '外資連買',   ids: r.institutional.map(c=>c.id),       getInfo: c=>c && `連${c.streak}日 +${c.totalNet}張` },
@@ -807,6 +817,7 @@ function renderScanReport(r) {
     { key: '盤整突破',   ids: r.breakout.map(c=>c.id),            getInfo: c=>c && `突破+${c.breakGain}%` },
     { key: '三法人同買', ids: (r.threeInstitutional||[]).map(c=>c.id), getInfo: c=>c && `+${c.totalNet}張` },
     { key: '底底高',     ids: (r.higherLows||[]).map(c=>c.id),    getInfo: c=>c && `低+${c.lowRise}%` },
+    { key: '外資賣投信買', ids: (r.foreignSellTrustBuy||[]).map(c=>c.id), getInfo: c=>c && `投信+${c.recentTrustNet}張` },
   ];
 
   const idCount = {};
@@ -821,7 +832,7 @@ function renderScanReport(r) {
 
   // 所有策略的 latestClose 查找
   const allById = {};
-  for (const arr of [r.institutional, r.priceRecovery, r.steadyRise, r.breakout, r.threeInstitutional||[], r.higherLows||[]]) {
+  for (const arr of [r.institutional, r.priceRecovery, r.steadyRise, r.breakout, r.threeInstitutional||[], r.higherLows||[], r.foreignSellTrustBuy||[]]) {
     for (const c of arr) { if (!allById[c.id]) allById[c.id] = c; }
   }
 
