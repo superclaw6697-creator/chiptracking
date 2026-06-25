@@ -1,7 +1,7 @@
 {
   "stockId": "1514",
   "startDate": "2026-04-29",
-  "endDate": "2026-06-24",
+  "endDate": "2026-06-25",
   "prices": [
     {
       "date": "2026-04-29",
@@ -314,6 +314,14 @@
       "low": 125.5,
       "close": 128,
       "volume": 10112113
+    },
+    {
+      "date": "2026-06-25",
+      "open": 128,
+      "high": 128,
+      "low": 123,
+      "close": 123.5,
+      "volume": 5361134
     }
   ],
   "chips": [
@@ -3245,6 +3253,74 @@
           "buy_avg": 126.54,
           "sell": 7,
           "sell_avg": 128.86,
+          "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "foreign_buy": 157,
+      "foreign_buy_avg": 124.14,
+      "foreign_sell": 2094,
+      "foreign_sell_avg": 124.8,
+      "foreign_net": -1938,
+      "top_foreign": [
+        {
+          "name": "瑞銀",
+          "buy": 19,
+          "buy_avg": 124.39,
+          "sell": 1,
+          "sell_avg": 123.5,
+          "net": 18
+        },
+        {
+          "name": "花旗環球",
+          "buy": 10,
+          "buy_avg": 123.65,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 10
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 44,
+          "buy_avg": 124.47,
+          "sell": 1765,
+          "sell_avg": 124.86,
+          "net": -1721
+        },
+        {
+          "name": "美林",
+          "buy": 42,
+          "buy_avg": 124.16,
+          "sell": 241,
+          "sell_avg": 124.61,
+          "net": -199
+        },
+        {
+          "name": "美商高盛",
+          "buy": 7,
+          "buy_avg": 123.86,
+          "sell": 41,
+          "sell_avg": 123.65,
+          "net": -34
+        },
+        {
+          "name": "港商野村",
+          "buy": 35,
+          "buy_avg": 123.76,
+          "sell": 45,
+          "sell_avg": 124.47,
+          "net": -10
+        },
+        {
+          "name": "摩根大通",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 1,
+          "sell_avg": 123.5,
           "net": -1
         }
       ]

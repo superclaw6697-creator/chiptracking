@@ -1,7 +1,7 @@
 {
   "stockId": "2312",
   "startDate": "2026-04-01",
-  "endDate": "2026-06-24",
+  "endDate": "2026-06-25",
   "prices": [
     {
       "date": "2026-04-01",
@@ -458,6 +458,14 @@
       "low": 34.95,
       "close": 38,
       "volume": 152064892
+    },
+    {
+      "date": "2026-06-25",
+      "open": 38.5,
+      "high": 38.55,
+      "low": 36.25,
+      "close": 36.4,
+      "volume": 114832487
     }
   ],
   "chips": [
@@ -4882,6 +4890,82 @@
           "sell": 207,
           "sell_avg": 37.72,
           "net": -57
+        }
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "foreign_buy": 3351,
+      "foreign_buy_avg": 36.79,
+      "foreign_sell": 27469,
+      "foreign_sell_avg": 37.24,
+      "foreign_net": -24118,
+      "top_foreign": [
+        {
+          "name": "群益高盛",
+          "buy": 152,
+          "buy_avg": 36.9,
+          "sell": 23,
+          "sell_avg": 36.72,
+          "net": 129
+        },
+        {
+          "name": "花旗環球",
+          "buy": 27,
+          "buy_avg": 36.7,
+          "sell": 13,
+          "sell_avg": 36.58,
+          "net": 14
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 325,
+          "buy_avg": 37.15,
+          "sell": 8047,
+          "sell_avg": 37.2,
+          "net": -7722
+        },
+        {
+          "name": "美商高盛",
+          "buy": 663,
+          "buy_avg": 36.96,
+          "sell": 5558,
+          "sell_avg": 36.98,
+          "net": -4895
+        },
+        {
+          "name": "摩根大通",
+          "buy": 862,
+          "buy_avg": 36.64,
+          "sell": 4304,
+          "sell_avg": 37.78,
+          "net": -3442
+        },
+        {
+          "name": "港商野村",
+          "buy": 192,
+          "buy_avg": 37.32,
+          "sell": 3427,
+          "sell_avg": 36.97,
+          "net": -3235
+        },
+        {
+          "name": "美林",
+          "buy": 241,
+          "buy_avg": 36.57,
+          "sell": 2764,
+          "sell_avg": 37.2,
+          "net": -2523
+        },
+        {
+          "name": "瑞銀",
+          "buy": 889,
+          "buy_avg": 36.62,
+          "sell": 3333,
+          "sell_avg": 37.37,
+          "net": -2444
         }
       ]
     }
