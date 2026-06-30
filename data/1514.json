@@ -1,7 +1,7 @@
 {
   "stockId": "1514",
   "startDate": "2026-04-29",
-  "endDate": "2026-06-29",
+  "endDate": "2026-06-30",
   "prices": [
     {
       "date": "2026-04-29",
@@ -338,6 +338,14 @@
       "low": 118,
       "close": 119,
       "volume": 2693374
+    },
+    {
+      "date": "2026-06-30",
+      "open": 120.5,
+      "high": 123,
+      "low": 119.5,
+      "close": 123,
+      "volume": 2148484
     }
   ],
   "chips": [
@@ -3468,6 +3476,16 @@
           "net": -86
         }
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "foreign_buy": 0,
+      "foreign_buy_avg": 0,
+      "foreign_sell": 0,
+      "foreign_sell_avg": 0,
+      "foreign_net": 0,
+      "top_foreign": [],
+      "top_foreign_sellers": []
     }
   ]
 }
