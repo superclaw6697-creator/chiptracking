@@ -1,7 +1,7 @@
 {
   "stockId": "2312",
   "startDate": "2026-04-01",
-  "endDate": "2026-07-06",
+  "endDate": "2026-07-07",
   "prices": [
     {
       "date": "2026-04-01",
@@ -522,6 +522,14 @@
       "low": 35.05,
       "close": 35.55,
       "volume": 21782984
+    },
+    {
+      "date": "2026-07-07",
+      "open": 36.05,
+      "high": 36.1,
+      "low": 33.9,
+      "close": 34.1,
+      "volume": 19621054
     }
   ],
   "chips": [
@@ -5554,6 +5562,74 @@
           "sell": 14,
           "sell_avg": 35.53,
           "net": -14
+        }
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "foreign_buy": 2071,
+      "foreign_buy_avg": 34.74,
+      "foreign_sell": 3089,
+      "foreign_sell_avg": 34.91,
+      "foreign_net": -1018,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 863,
+          "buy_avg": 34.8,
+          "sell": 663,
+          "sell_avg": 34.98,
+          "net": 200
+        },
+        {
+          "name": "花旗環球",
+          "buy": 79,
+          "buy_avg": 35.58,
+          "sell": 12,
+          "sell_avg": 35.54,
+          "net": 67
+        },
+        {
+          "name": "群益高盛",
+          "buy": 19,
+          "buy_avg": 35.07,
+          "sell": 17,
+          "sell_avg": 35.07,
+          "net": 2
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 91,
+          "buy_avg": 35.41,
+          "sell": 824,
+          "sell_avg": 34.91,
+          "net": -733
+        },
+        {
+          "name": "摩根大通",
+          "buy": 463,
+          "buy_avg": 34.45,
+          "sell": 692,
+          "sell_avg": 34.81,
+          "net": -229
+        },
+        {
+          "name": "瑞銀",
+          "buy": 448,
+          "buy_avg": 34.65,
+          "sell": 611,
+          "sell_avg": 34.88,
+          "net": -163
+        },
+        {
+          "name": "美林",
+          "buy": 64,
+          "buy_avg": 34.9,
+          "sell": 226,
+          "sell_avg": 35,
+          "net": -162
         }
       ]
     }
