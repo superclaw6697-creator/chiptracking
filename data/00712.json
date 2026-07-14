@@ -1,0 +1,108 @@
+{
+  "stockId": "00712",
+  "startDate": "2026-07-08",
+  "endDate": "2026-07-14",
+  "prices": [
+    {
+      "date": "2026-07-08",
+      "open": 8.88,
+      "high": 8.89,
+      "low": 8.83,
+      "close": 8.85,
+      "volume": 27212278
+    },
+    {
+      "date": "2026-07-09",
+      "open": 8.84,
+      "high": 8.84,
+      "low": 8.79,
+      "close": 8.79,
+      "volume": 13629875
+    },
+    {
+      "date": "2026-07-13",
+      "open": 8.81,
+      "high": 8.92,
+      "low": 8.81,
+      "close": 8.87,
+      "volume": 22524362
+    },
+    {
+      "date": "2026-07-14",
+      "open": 8.82,
+      "high": 8.84,
+      "low": 8.79,
+      "close": 8.8,
+      "volume": 26273384
+    }
+  ],
+  "chips": [
+    {
+      "date": "2026-07-08",
+      "foreign_buy": 0,
+      "foreign_buy_avg": 0,
+      "foreign_sell": 0,
+      "foreign_sell_avg": 0,
+      "foreign_net": 0,
+      "top_foreign": [],
+      "top_foreign_sellers": []
+    },
+    {
+      "date": "2026-07-09",
+      "foreign_buy": 1,
+      "foreign_buy_avg": 8.8,
+      "foreign_sell": 29,
+      "foreign_sell_avg": 8.84,
+      "foreign_net": -28,
+      "top_foreign": [
+        {
+          "name": "群益高盛",
+          "buy": 1,
+          "buy_avg": 8.8,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 29,
+          "sell_avg": 8.84,
+          "net": -29
+        }
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "foreign_buy": 0,
+      "foreign_buy_avg": 0,
+      "foreign_sell": 0,
+      "foreign_sell_avg": 0,
+      "foreign_net": 0,
+      "top_foreign": [],
+      "top_foreign_sellers": []
+    },
+    {
+      "date": "2026-07-14",
+      "foreign_buy": 1,
+      "foreign_buy_avg": 8.81,
+      "foreign_sell": 0,
+      "foreign_sell_avg": 0,
+      "foreign_net": 1,
+      "top_foreign": [
+        {
+          "name": "群益高盛",
+          "buy": 1,
+          "buy_avg": 8.81,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": []
+    }
+  ]
+}
