@@ -1,7 +1,7 @@
 {
   "stockId": "2474",
   "startDate": "2026-04-14",
-  "endDate": "2026-07-15",
+  "endDate": "2026-07-16",
   "prices": [
     {
       "date": "2026-04-14",
@@ -514,6 +514,14 @@
       "low": 189,
       "close": 191,
       "volume": 2626467
+    },
+    {
+      "date": "2026-07-16",
+      "open": 190,
+      "high": 192,
+      "low": 188,
+      "close": 189,
+      "volume": 2277538
     }
   ],
   "chips": [
@@ -5648,6 +5656,74 @@
           "sell": 38,
           "sell_avg": 190.82,
           "net": -3
+        }
+      ]
+    },
+    {
+      "date": "2026-07-16",
+      "foreign_buy": 910,
+      "foreign_buy_avg": 189.93,
+      "foreign_sell": 567,
+      "foreign_sell_avg": 190.08,
+      "foreign_net": 343,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 358,
+          "buy_avg": 190.49,
+          "sell": 62,
+          "sell_avg": 190.09,
+          "net": 296
+        },
+        {
+          "name": "瑞銀",
+          "buy": 108,
+          "buy_avg": 189.69,
+          "sell": 46,
+          "sell_avg": 189.82,
+          "net": 62
+        },
+        {
+          "name": "美林",
+          "buy": 68,
+          "buy_avg": 189.77,
+          "sell": 14,
+          "sell_avg": 189.71,
+          "net": 54
+        },
+        {
+          "name": "摩根大通",
+          "buy": 293,
+          "buy_avg": 189.42,
+          "sell": 247,
+          "sell_avg": 190.48,
+          "net": 46
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美商高盛",
+          "buy": 75,
+          "buy_avg": 189.74,
+          "sell": 171,
+          "sell_avg": 189.52,
+          "net": -96
+        },
+        {
+          "name": "港商野村",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 20,
+          "sell_avg": 190.95,
+          "net": -20
+        },
+        {
+          "name": "群益高盛",
+          "buy": 0,
+          "buy_avg": 190,
+          "sell": 1,
+          "sell_avg": 189.5,
+          "net": -1
         }
       ]
     }
