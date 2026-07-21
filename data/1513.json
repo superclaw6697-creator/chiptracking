@@ -1,7 +1,7 @@
 {
   "stockId": "1513",
   "startDate": "2026-04-29",
-  "endDate": "2026-07-20",
+  "endDate": "2026-07-21",
   "prices": [
     {
       "date": "2026-04-29",
@@ -450,6 +450,14 @@
       "low": 154,
       "close": 157.5,
       "volume": 4311536
+    },
+    {
+      "date": "2026-07-21",
+      "open": 160,
+      "high": 164,
+      "low": 160,
+      "close": 162.5,
+      "volume": 3232666
     }
   ],
   "chips": [
@@ -4601,6 +4609,74 @@
           "sell": 109,
           "sell_avg": 161.69,
           "net": -45
+        }
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "foreign_buy": 1477,
+      "foreign_buy_avg": 162.24,
+      "foreign_sell": 585,
+      "foreign_sell_avg": 162.46,
+      "foreign_net": 892,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 495,
+          "buy_avg": 162.1,
+          "sell": 118,
+          "sell_avg": 162.66,
+          "net": 377
+        },
+        {
+          "name": "港商野村",
+          "buy": 302,
+          "buy_avg": 162.27,
+          "sell": 28,
+          "sell_avg": 163.41,
+          "net": 274
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 245,
+          "buy_avg": 162.41,
+          "sell": 10,
+          "sell_avg": 163.1,
+          "net": 235
+        },
+        {
+          "name": "美林",
+          "buy": 68,
+          "buy_avg": 162.32,
+          "sell": 28,
+          "sell_avg": 162.18,
+          "net": 40
+        },
+        {
+          "name": "摩根大通",
+          "buy": 226,
+          "buy_avg": 162.31,
+          "sell": 190,
+          "sell_avg": 162.71,
+          "net": 36
+        },
+        {
+          "name": "花旗環球",
+          "buy": 102,
+          "buy_avg": 162.08,
+          "sell": 88,
+          "sell_avg": 162.28,
+          "net": 14
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "瑞銀",
+          "buy": 39,
+          "buy_avg": 162.45,
+          "sell": 123,
+          "sell_avg": 161.8,
+          "net": -84
         }
       ]
     }
