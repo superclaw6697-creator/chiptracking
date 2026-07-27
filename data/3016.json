@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-07-24",
+  "endDate": "2026-07-27",
   "prices": [
     {
       "date": "2026-04-01",
@@ -626,6 +626,14 @@
       "low": 95.1,
       "close": 95.3,
       "volume": 5430956
+    },
+    {
+      "date": "2026-07-27",
+      "open": 94.5,
+      "high": 95.8,
+      "low": 90.5,
+      "close": 94.2,
+      "volume": 3551809
     }
   ],
   "chips": [
@@ -5851,6 +5859,74 @@
           "buy_avg": 98.57,
           "sell": 221,
           "sell_avg": 99.02,
+          "net": -2
+        }
+      ]
+    },
+    {
+      "date": "2026-07-27",
+      "foreign_buy": 1059,
+      "foreign_buy_avg": 92.66,
+      "foreign_sell": 603,
+      "foreign_sell_avg": 93.1,
+      "foreign_net": 456,
+      "top_foreign": [
+        {
+          "name": "瑞銀",
+          "buy": 542,
+          "buy_avg": 92.55,
+          "sell": 63,
+          "sell_avg": 93.29,
+          "net": 479
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 118,
+          "buy_avg": 92.91,
+          "sell": 100,
+          "sell_avg": 93.51,
+          "net": 18
+        },
+        {
+          "name": "港商野村",
+          "buy": 17,
+          "buy_avg": 92.92,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 17
+        },
+        {
+          "name": "摩根大通",
+          "buy": 90,
+          "buy_avg": 93.1,
+          "sell": 82,
+          "sell_avg": 93.24,
+          "net": 8
+        },
+        {
+          "name": "美商高盛",
+          "buy": 277,
+          "buy_avg": 92.6,
+          "sell": 275,
+          "sell_avg": 92.62,
+          "net": 2
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美林",
+          "buy": 10,
+          "buy_avg": 92.44,
+          "sell": 76,
+          "sell_avg": 93.85,
+          "net": -66
+        },
+        {
+          "name": "花旗環球",
+          "buy": 5,
+          "buy_avg": 93.9,
+          "sell": 7,
+          "sell_avg": 94.81,
           "net": -2
         }
       ]
