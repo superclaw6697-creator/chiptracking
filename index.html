@@ -699,8 +699,8 @@ window.onload = () => {
   const params = new URLSearchParams(location.search);
   const qs  = params.get('stock');
   const tab = params.get('tab');
-  if (tab === 'scan') {
-    switchTab('scan');
+  if (tab === 'scan' || tab === 'etf') {
+    switchTab(tab);
   }
   loadIndex(qs || undefined);
 };
