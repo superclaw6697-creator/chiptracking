@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-08-25",
+  "endDate": "2026-08-26",
   "prices": [
     {
       "date": "2026-04-01",
@@ -802,6 +802,14 @@
       "low": 93.9,
       "close": 96.8,
       "volume": 4122205
+    },
+    {
+      "date": "2026-08-26",
+      "open": 97.6,
+      "high": 105,
+      "low": 97.1,
+      "close": 102,
+      "volume": 5178243
     }
   ],
   "chips": [
@@ -7492,6 +7500,82 @@
           "sell": 7,
           "sell_avg": 97.89,
           "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-08-26",
+      "foreign_buy": 2260,
+      "foreign_buy_avg": 102.59,
+      "foreign_sell": 760,
+      "foreign_sell_avg": 102.26,
+      "foreign_net": 1500,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 1143,
+          "buy_avg": 102.55,
+          "sell": 171,
+          "sell_avg": 102.21,
+          "net": 972
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 615,
+          "buy_avg": 102.91,
+          "sell": 130,
+          "sell_avg": 102.68,
+          "net": 485
+        },
+        {
+          "name": "瑞銀",
+          "buy": 345,
+          "buy_avg": 102.16,
+          "sell": 256,
+          "sell_avg": 102.18,
+          "net": 89
+        },
+        {
+          "name": "美林",
+          "buy": 20,
+          "buy_avg": 100.13,
+          "sell": 7,
+          "sell_avg": 102.5,
+          "net": 13
+        },
+        {
+          "name": "花旗環球",
+          "buy": 7,
+          "buy_avg": 102.21,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 7
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "摩根大通",
+          "buy": 117,
+          "buy_avg": 103.22,
+          "sell": 167,
+          "sell_avg": 102.03,
+          "net": -50
+        },
+        {
+          "name": "港商野村",
+          "buy": 13,
+          "buy_avg": 99.9,
+          "sell": 27,
+          "sell_avg": 102.48,
+          "net": -14
+        },
+        {
+          "name": "群益高盛",
+          "buy": 0,
+          "buy_avg": 102,
+          "sell": 2,
+          "sell_avg": 103.75,
+          "net": -2
         }
       ]
     }
