@@ -1,7 +1,7 @@
 {
   "stockId": "2352",
   "startDate": "2026-05-21",
-  "endDate": "2026-09-02",
+  "endDate": "2026-09-03",
   "prices": [
     {
       "date": "2026-05-21",
@@ -586,6 +586,14 @@
       "low": 28.3,
       "close": 28.7,
       "volume": 3477673
+    },
+    {
+      "date": "2026-09-03",
+      "open": 28.85,
+      "high": 29.6,
+      "low": 28.5,
+      "close": 28.5,
+      "volume": 7278956
     }
   ],
   "chips": [
@@ -5879,6 +5887,74 @@
           "sell": 31,
           "sell_avg": 28.55,
           "net": -31
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "foreign_buy": 1623,
+      "foreign_buy_avg": 28.97,
+      "foreign_sell": 3196,
+      "foreign_sell_avg": 28.67,
+      "foreign_net": -1573,
+      "top_foreign": [
+        {
+          "name": "港商野村",
+          "buy": 255,
+          "buy_avg": 28.83,
+          "sell": 92,
+          "sell_avg": 28.67,
+          "net": 163
+        },
+        {
+          "name": "美林",
+          "buy": 144,
+          "buy_avg": 28.98,
+          "sell": 26,
+          "sell_avg": 28.69,
+          "net": 118
+        },
+        {
+          "name": "花旗環球",
+          "buy": 142,
+          "buy_avg": 28.62,
+          "sell": 38,
+          "sell_avg": 28.78,
+          "net": 104
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美商高盛",
+          "buy": 604,
+          "buy_avg": 29.04,
+          "sell": 1348,
+          "sell_avg": 28.67,
+          "net": -744
+        },
+        {
+          "name": "瑞銀",
+          "buy": 103,
+          "buy_avg": 29.36,
+          "sell": 790,
+          "sell_avg": 28.7,
+          "net": -687
+        },
+        {
+          "name": "摩根大通",
+          "buy": 122,
+          "buy_avg": 29.27,
+          "sell": 386,
+          "sell_avg": 28.65,
+          "net": -264
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 253,
+          "buy_avg": 28.88,
+          "sell": 516,
+          "sell_avg": 28.61,
+          "net": -263
         }
       ]
     }
