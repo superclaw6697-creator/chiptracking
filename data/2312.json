@@ -1,7 +1,7 @@
 {
   "stockId": "2312",
   "startDate": "2026-04-01",
-  "endDate": "2026-09-03",
+  "endDate": "2026-09-04",
   "prices": [
     {
       "date": "2026-04-01",
@@ -858,6 +858,14 @@
       "low": 31.8,
       "close": 31.8,
       "volume": 11799179
+    },
+    {
+      "date": "2026-09-04",
+      "open": 32.2,
+      "high": 33.15,
+      "low": 32.1,
+      "close": 32.85,
+      "volume": 11344593
     }
   ],
   "chips": [
@@ -8873,6 +8881,74 @@
           "sell": 17,
           "sell_avg": 32.01,
           "net": -3
+        }
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "foreign_buy": 4949,
+      "foreign_buy_avg": 32.79,
+      "foreign_sell": 719,
+      "foreign_sell_avg": 32.71,
+      "foreign_net": 4230,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 1770,
+          "buy_avg": 32.88,
+          "sell": 107,
+          "sell_avg": 32.6,
+          "net": 1663
+        },
+        {
+          "name": "摩根大通",
+          "buy": 1553,
+          "buy_avg": 32.67,
+          "sell": 171,
+          "sell_avg": 32.8,
+          "net": 1382
+        },
+        {
+          "name": "美商高盛",
+          "buy": 1316,
+          "buy_avg": 32.85,
+          "sell": 256,
+          "sell_avg": 32.65,
+          "net": 1060
+        },
+        {
+          "name": "港商野村",
+          "buy": 134,
+          "buy_avg": 32.64,
+          "sell": 29,
+          "sell_avg": 33.02,
+          "net": 105
+        },
+        {
+          "name": "美林",
+          "buy": 126,
+          "buy_avg": 32.54,
+          "sell": 101,
+          "sell_avg": 32.79,
+          "net": 25
+        },
+        {
+          "name": "瑞銀",
+          "buy": 38,
+          "buy_avg": 32.79,
+          "sell": 36,
+          "sell_avg": 32.41,
+          "net": 2
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "群益高盛",
+          "buy": 5,
+          "buy_avg": 32.42,
+          "sell": 12,
+          "sell_avg": 32.98,
+          "net": -7
         }
       ]
     }
