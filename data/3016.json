@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-09-07",
+  "endDate": "2026-09-08",
   "prices": [
     {
       "date": "2026-04-01",
@@ -874,6 +874,14 @@
       "low": 100,
       "close": 100.5,
       "volume": 2695630
+    },
+    {
+      "date": "2026-09-08",
+      "open": 102,
+      "high": 108.5,
+      "low": 101,
+      "close": 101.5,
+      "volume": 11481206
     }
   ],
   "chips": [
@@ -8192,6 +8200,74 @@
           "sell": 2,
           "sell_avg": 100.5,
           "net": -2
+        }
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "foreign_buy": 1977,
+      "foreign_buy_avg": 105.55,
+      "foreign_sell": 2088,
+      "foreign_sell_avg": 104.13,
+      "foreign_net": -111,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 782,
+          "buy_avg": 105.52,
+          "sell": 470,
+          "sell_avg": 103.77,
+          "net": 312
+        },
+        {
+          "name": "瑞銀",
+          "buy": 400,
+          "buy_avg": 106.03,
+          "sell": 295,
+          "sell_avg": 105.38,
+          "net": 105
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 389,
+          "buy_avg": 104.95,
+          "sell": 740,
+          "sell_avg": 104.44,
+          "net": -351
+        },
+        {
+          "name": "摩根大通",
+          "buy": 303,
+          "buy_avg": 105.33,
+          "sell": 420,
+          "sell_avg": 103.37,
+          "net": -117
+        },
+        {
+          "name": "美林",
+          "buy": 16,
+          "buy_avg": 103.88,
+          "sell": 61,
+          "sell_avg": 101.85,
+          "net": -45
+        },
+        {
+          "name": "群益高盛",
+          "buy": 2,
+          "buy_avg": 101,
+          "sell": 13,
+          "sell_avg": 107.64,
+          "net": -11
+        },
+        {
+          "name": "花旗環球",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 4,
+          "sell_avg": 106.63,
+          "net": -4
         }
       ]
     }

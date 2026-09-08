@@ -1,7 +1,7 @@
 {
   "stockId": "1503",
   "startDate": "2026-04-29",
-  "endDate": "2026-09-07",
+  "endDate": "2026-09-08",
   "prices": [
     {
       "date": "2026-04-29",
@@ -730,6 +730,14 @@
       "low": 206.5,
       "close": 207.5,
       "volume": 1513620
+    },
+    {
+      "date": "2026-09-08",
+      "open": 207.5,
+      "high": 208.5,
+      "low": 204,
+      "close": 204.5,
+      "volume": 1075972
     }
   ],
   "chips": [
@@ -6969,6 +6977,74 @@
           "buy_avg": 211.02,
           "sell": 90,
           "sell_avg": 208.41,
+          "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "foreign_buy": 188,
+      "foreign_buy_avg": 205.13,
+      "foreign_sell": 149,
+      "foreign_sell_avg": 205.97,
+      "foreign_net": 40,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 80,
+          "buy_avg": 205.04,
+          "sell": 10,
+          "sell_avg": 207.55,
+          "net": 70
+        },
+        {
+          "name": "瑞銀",
+          "buy": 35,
+          "buy_avg": 205.09,
+          "sell": 5,
+          "sell_avg": 207.7,
+          "net": 30
+        },
+        {
+          "name": "港商野村",
+          "buy": 4,
+          "buy_avg": 206,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 4
+        },
+        {
+          "name": "港麥格理",
+          "buy": 1,
+          "buy_avg": 207.5,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "摩根大通",
+          "buy": 2,
+          "buy_avg": 206,
+          "sell": 36,
+          "sell_avg": 205.41,
+          "net": -34
+        },
+        {
+          "name": "美商高盛",
+          "buy": 36,
+          "buy_avg": 205.2,
+          "sell": 67,
+          "sell_avg": 206.32,
+          "net": -31
+        },
+        {
+          "name": "美林",
+          "buy": 30,
+          "buy_avg": 205.1,
+          "sell": 31,
+          "sell_avg": 205.06,
           "net": -1
         }
       ]
