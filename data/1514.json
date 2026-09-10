@@ -1,7 +1,7 @@
 {
   "stockId": "1514",
   "startDate": "2026-04-29",
-  "endDate": "2026-09-09",
+  "endDate": "2026-09-10",
   "prices": [
     {
       "date": "2026-04-29",
@@ -746,6 +746,14 @@
       "low": 101,
       "close": 103.5,
       "volume": 1215113
+    },
+    {
+      "date": "2026-09-10",
+      "open": 103,
+      "high": 103,
+      "low": 101.5,
+      "close": 102,
+      "volume": 618113
     }
   ],
   "chips": [
@@ -6840,6 +6848,74 @@
           "sell": 1,
           "sell_avg": 102,
           "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "foreign_buy": 100,
+      "foreign_buy_avg": 102.15,
+      "foreign_sell": 208,
+      "foreign_sell_avg": 102.12,
+      "foreign_net": -108,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 68,
+          "buy_avg": 102.15,
+          "sell": 9,
+          "sell_avg": 102.39,
+          "net": 59
+        },
+        {
+          "name": "美林",
+          "buy": 3,
+          "buy_avg": 102,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 3
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美商高盛",
+          "buy": 4,
+          "buy_avg": 102.02,
+          "sell": 89,
+          "sell_avg": 102.18,
+          "net": -85
+        },
+        {
+          "name": "港商野村",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 40,
+          "sell_avg": 102,
+          "net": -40
+        },
+        {
+          "name": "瑞銀",
+          "buy": 1,
+          "buy_avg": 102,
+          "sell": 21,
+          "sell_avg": 102.05,
+          "net": -20
+        },
+        {
+          "name": "上海匯豐",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 14,
+          "sell_avg": 102.04,
+          "net": -14
+        },
+        {
+          "name": "摩根大通",
+          "buy": 23,
+          "buy_avg": 102.2,
+          "sell": 34,
+          "sell_avg": 102.13,
+          "net": -11
         }
       ]
     }
