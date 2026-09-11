@@ -1,7 +1,7 @@
 {
   "stockId": "1503",
   "startDate": "2026-04-29",
-  "endDate": "2026-09-10",
+  "endDate": "2026-09-11",
   "prices": [
     {
       "date": "2026-04-29",
@@ -754,6 +754,14 @@
       "low": 202.5,
       "close": 205,
       "volume": 1763548
+    },
+    {
+      "date": "2026-09-11",
+      "open": 202,
+      "high": 203,
+      "low": 200,
+      "close": 202,
+      "volume": 1253200
     }
   ],
   "chips": [
@@ -7182,6 +7190,82 @@
         }
       ],
       "top_foreign_sellers": []
+    },
+    {
+      "date": "2026-09-11",
+      "foreign_buy": 242,
+      "foreign_buy_avg": 201.86,
+      "foreign_sell": 406,
+      "foreign_sell_avg": 201.41,
+      "foreign_net": -164,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 124,
+          "buy_avg": 201.99,
+          "sell": 69,
+          "sell_avg": 201.54,
+          "net": 55
+        },
+        {
+          "name": "港商野村",
+          "buy": 13,
+          "buy_avg": 202.35,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 13
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 27,
+          "buy_avg": 201.44,
+          "sell": 165,
+          "sell_avg": 200.85,
+          "net": -138
+        },
+        {
+          "name": "美林",
+          "buy": 17,
+          "buy_avg": 201.91,
+          "sell": 61,
+          "sell_avg": 202.01,
+          "net": -44
+        },
+        {
+          "name": "瑞銀",
+          "buy": 12,
+          "buy_avg": 201.79,
+          "sell": 51,
+          "sell_avg": 201.94,
+          "net": -39
+        },
+        {
+          "name": "摩根大通",
+          "buy": 49,
+          "buy_avg": 201.6,
+          "sell": 54,
+          "sell_avg": 201.77,
+          "net": -5
+        },
+        {
+          "name": "上海匯豐",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 4,
+          "sell_avg": 201.54,
+          "net": -4
+        },
+        {
+          "name": "花旗環球",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 3,
+          "sell_avg": 201,
+          "net": -3
+        }
+      ]
     }
   ]
 }
