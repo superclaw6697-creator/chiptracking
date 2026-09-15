@@ -1,7 +1,7 @@
 {
   "stockId": "1519",
   "startDate": "2026-04-29",
-  "endDate": "2026-09-14",
+  "endDate": "2026-09-15",
   "prices": [
     {
       "date": "2026-04-29",
@@ -770,6 +770,14 @@
       "low": 697,
       "close": 697,
       "volume": 1792604
+    },
+    {
+      "date": "2026-09-15",
+      "open": 704,
+      "high": 708,
+      "low": 694,
+      "close": 694,
+      "volume": 1232165
     }
   ],
   "chips": [
@@ -7639,6 +7647,82 @@
           "sell": 2,
           "sell_avg": 697,
           "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "foreign_buy": 272,
+      "foreign_buy_avg": 698.22,
+      "foreign_sell": 348,
+      "foreign_sell_avg": 698.39,
+      "foreign_net": -76,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 51,
+          "buy_avg": 697.96,
+          "sell": 11,
+          "sell_avg": 700.18,
+          "net": 40
+        },
+        {
+          "name": "美林",
+          "buy": 42,
+          "buy_avg": 697.9,
+          "sell": 7,
+          "sell_avg": 700,
+          "net": 35
+        },
+        {
+          "name": "瑞銀",
+          "buy": 24,
+          "buy_avg": 695.6,
+          "sell": 22,
+          "sell_avg": 699,
+          "net": 2
+        },
+        {
+          "name": "港麥格理",
+          "buy": 1,
+          "buy_avg": 697,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "港商野村",
+          "buy": 10,
+          "buy_avg": 703.8,
+          "sell": 79,
+          "sell_avg": 698.68,
+          "net": -69
+        },
+        {
+          "name": "摩根大通",
+          "buy": 27,
+          "buy_avg": 696.93,
+          "sell": 66,
+          "sell_avg": 698.69,
+          "net": -39
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 114,
+          "buy_avg": 698.81,
+          "sell": 141,
+          "sell_avg": 697.76,
+          "net": -27
+        },
+        {
+          "name": "花旗環球",
+          "buy": 3,
+          "buy_avg": 698.67,
+          "sell": 22,
+          "sell_avg": 698.5,
+          "net": -19
         }
       ]
     }
