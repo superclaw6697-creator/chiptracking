@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-09-18",
+  "endDate": "2026-09-21",
   "prices": [
     {
       "date": "2026-04-01",
@@ -946,6 +946,14 @@
       "low": 115,
       "close": 116.5,
       "volume": 11658641
+    },
+    {
+      "date": "2026-09-21",
+      "open": 118,
+      "high": 123,
+      "low": 115.5,
+      "close": 120.5,
+      "volume": 12523363
     }
   ],
   "chips": [
@@ -8940,6 +8948,82 @@
           "sell": 227,
           "sell_avg": 115.85,
           "net": -48
+        }
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "foreign_buy": 3064,
+      "foreign_buy_avg": 119.33,
+      "foreign_sell": 763,
+      "foreign_sell_avg": 117.59,
+      "foreign_net": 2301,
+      "top_foreign": [
+        {
+          "name": "瑞銀",
+          "buy": 804,
+          "buy_avg": 120.75,
+          "sell": 54,
+          "sell_avg": 117.01,
+          "net": 750
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 820,
+          "buy_avg": 119.23,
+          "sell": 163,
+          "sell_avg": 119.44,
+          "net": 657
+        },
+        {
+          "name": "美商高盛",
+          "buy": 629,
+          "buy_avg": 119,
+          "sell": 165,
+          "sell_avg": 118.54,
+          "net": 464
+        },
+        {
+          "name": "摩根大通",
+          "buy": 412,
+          "buy_avg": 119.12,
+          "sell": 197,
+          "sell_avg": 116.44,
+          "net": 215
+        },
+        {
+          "name": "美林",
+          "buy": 276,
+          "buy_avg": 117.45,
+          "sell": 126,
+          "sell_avg": 116.23,
+          "net": 150
+        },
+        {
+          "name": "港商野村",
+          "buy": 108,
+          "buy_avg": 117,
+          "sell": 45,
+          "sell_avg": 116.5,
+          "net": 63
+        },
+        {
+          "name": "花旗環球",
+          "buy": 4,
+          "buy_avg": 118.38,
+          "sell": 1,
+          "sell_avg": 122,
+          "net": 3
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "群益高盛",
+          "buy": 11,
+          "buy_avg": 119.27,
+          "sell": 12,
+          "sell_avg": 118.81,
+          "net": -1
         }
       ]
     }
