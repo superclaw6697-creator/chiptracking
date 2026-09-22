@@ -1,7 +1,7 @@
 {
   "stockId": "1513",
   "startDate": "2026-04-29",
-  "endDate": "2026-09-21",
+  "endDate": "2026-09-22",
   "prices": [
     {
       "date": "2026-04-29",
@@ -810,6 +810,14 @@
       "low": 166,
       "close": 166.5,
       "volume": 2036486
+    },
+    {
+      "date": "2026-09-22",
+      "open": 167.5,
+      "high": 168,
+      "low": 165,
+      "close": 166,
+      "volume": 2115591
     }
   ],
   "chips": [
@@ -7946,6 +7954,82 @@
           "sell": 1,
           "sell_avg": 167,
           "net": -1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "foreign_buy": 1106,
+      "foreign_buy_avg": 166.51,
+      "foreign_sell": 179,
+      "foreign_sell_avg": 166.41,
+      "foreign_net": 927,
+      "top_foreign": [
+        {
+          "name": "摩根大通",
+          "buy": 352,
+          "buy_avg": 166.59,
+          "sell": 6,
+          "sell_avg": 166.33,
+          "net": 346
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 360,
+          "buy_avg": 166.44,
+          "sell": 22,
+          "sell_avg": 167.23,
+          "net": 338
+        },
+        {
+          "name": "瑞銀",
+          "buy": 168,
+          "buy_avg": 166.36,
+          "sell": 22,
+          "sell_avg": 166.59,
+          "net": 146
+        },
+        {
+          "name": "美商高盛",
+          "buy": 187,
+          "buy_avg": 166.6,
+          "sell": 104,
+          "sell_avg": 166.25,
+          "net": 83
+        },
+        {
+          "name": "美林",
+          "buy": 23,
+          "buy_avg": 167.02,
+          "sell": 3,
+          "sell_avg": 166.33,
+          "net": 20
+        },
+        {
+          "name": "花旗環球",
+          "buy": 15,
+          "buy_avg": 166.27,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 15
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "港麥格理",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 19,
+          "sell_avg": 166.11,
+          "net": -19
+        },
+        {
+          "name": "上海匯豐",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 3,
+          "sell_avg": 166.5,
+          "net": -3
         }
       ]
     }

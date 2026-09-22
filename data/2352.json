@@ -1,7 +1,7 @@
 {
   "stockId": "2352",
   "startDate": "2026-05-21",
-  "endDate": "2026-09-21",
+  "endDate": "2026-09-22",
   "prices": [
     {
       "date": "2026-05-21",
@@ -690,6 +690,14 @@
       "low": 29.25,
       "close": 29.6,
       "volume": 8883719
+    },
+    {
+      "date": "2026-09-22",
+      "open": 29.85,
+      "high": 29.85,
+      "low": 29.4,
+      "close": 29.4,
+      "volume": 4168335
     }
   ],
   "chips": [
@@ -6848,6 +6856,74 @@
         }
       ],
       "top_foreign_sellers": []
+    },
+    {
+      "date": "2026-09-22",
+      "foreign_buy": 1126,
+      "foreign_buy_avg": 29.57,
+      "foreign_sell": 1388,
+      "foreign_sell_avg": 29.58,
+      "foreign_net": -262,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 512,
+          "buy_avg": 29.58,
+          "sell": 408,
+          "sell_avg": 29.57,
+          "net": 104
+        },
+        {
+          "name": "花旗環球",
+          "buy": 99,
+          "buy_avg": 29.52,
+          "sell": 1,
+          "sell_avg": 29.45,
+          "net": 98
+        },
+        {
+          "name": "群益高盛",
+          "buy": 9,
+          "buy_avg": 29.69,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 9
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美商高盛",
+          "buy": 429,
+          "buy_avg": 29.57,
+          "sell": 662,
+          "sell_avg": 29.57,
+          "net": -233
+        },
+        {
+          "name": "瑞銀",
+          "buy": 4,
+          "buy_avg": 29.4,
+          "sell": 188,
+          "sell_avg": 29.63,
+          "net": -184
+        },
+        {
+          "name": "美林",
+          "buy": 6,
+          "buy_avg": 29.4,
+          "sell": 45,
+          "sell_avg": 29.64,
+          "net": -39
+        },
+        {
+          "name": "摩根大通",
+          "buy": 67,
+          "buy_avg": 29.58,
+          "sell": 84,
+          "sell_avg": 29.57,
+          "net": -17
+        }
+      ]
     }
   ]
 }
