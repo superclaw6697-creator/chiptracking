@@ -1,7 +1,7 @@
 {
   "stockId": "2352",
   "startDate": "2026-05-21",
-  "endDate": "2026-09-30",
+  "endDate": "2026-10-01",
   "prices": [
     {
       "date": "2026-05-21",
@@ -730,6 +730,14 @@
       "low": 29.25,
       "close": 29.65,
       "volume": 5731705
+    },
+    {
+      "date": "2026-10-01",
+      "open": 29.7,
+      "high": 29.75,
+      "low": 29.1,
+      "close": 29.1,
+      "volume": 3305366
     }
   ],
   "chips": [
@@ -7251,6 +7259,82 @@
         }
       ],
       "top_foreign_sellers": []
+    },
+    {
+      "date": "2026-10-01",
+      "foreign_buy": 938,
+      "foreign_buy_avg": 29.25,
+      "foreign_sell": 924,
+      "foreign_sell_avg": 29.28,
+      "foreign_net": 14,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 309,
+          "buy_avg": 29.23,
+          "sell": 196,
+          "sell_avg": 29.23,
+          "net": 113
+        },
+        {
+          "name": "摩根大通",
+          "buy": 85,
+          "buy_avg": 29.33,
+          "sell": 12,
+          "sell_avg": 29.28,
+          "net": 73
+        },
+        {
+          "name": "花旗環球",
+          "buy": 33,
+          "buy_avg": 29.19,
+          "sell": 1,
+          "sell_avg": 29.2,
+          "net": 32
+        },
+        {
+          "name": "上海匯豐",
+          "buy": 8,
+          "buy_avg": 29.24,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 8
+        },
+        {
+          "name": "群益高盛",
+          "buy": 3,
+          "buy_avg": 29.28,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 3
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "美商高盛",
+          "buy": 332,
+          "buy_avg": 29.25,
+          "sell": 443,
+          "sell_avg": 29.28,
+          "net": -111
+        },
+        {
+          "name": "瑞銀",
+          "buy": 84,
+          "buy_avg": 29.22,
+          "sell": 161,
+          "sell_avg": 29.43,
+          "net": -77
+        },
+        {
+          "name": "美林",
+          "buy": 84,
+          "buy_avg": 29.24,
+          "sell": 111,
+          "sell_avg": 29.15,
+          "net": -27
+        }
+      ]
     }
   ]
 }
