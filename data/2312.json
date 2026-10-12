@@ -1,7 +1,7 @@
 {
   "stockId": "2312",
   "startDate": "2026-04-01",
-  "endDate": "2026-10-08",
+  "endDate": "2026-10-12",
   "prices": [
     {
       "date": "2026-04-01",
@@ -1042,6 +1042,14 @@
       "low": 30.6,
       "close": 30.65,
       "volume": 4780638
+    },
+    {
+      "date": "2026-10-12",
+      "open": 31,
+      "high": 32.45,
+      "low": 31,
+      "close": 31.45,
+      "volume": 15499980
     }
   ],
   "chips": [
@@ -10732,6 +10740,74 @@
           "sell": 13,
           "sell_avg": 30.73,
           "net": -13
+        }
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "foreign_buy": 4088,
+      "foreign_buy_avg": 31.79,
+      "foreign_sell": 1605,
+      "foreign_sell_avg": 31.5,
+      "foreign_net": 2483,
+      "top_foreign": [
+        {
+          "name": "摩根大通",
+          "buy": 916,
+          "buy_avg": 31.93,
+          "sell": 176,
+          "sell_avg": 31.38,
+          "net": 740
+        },
+        {
+          "name": "瑞銀",
+          "buy": 716,
+          "buy_avg": 31.86,
+          "sell": 121,
+          "sell_avg": 31.59,
+          "net": 595
+        },
+        {
+          "name": "美林",
+          "buy": 534,
+          "buy_avg": 31.85,
+          "sell": 31,
+          "sell_avg": 31.56,
+          "net": 503
+        },
+        {
+          "name": "美商高盛",
+          "buy": 952,
+          "buy_avg": 31.67,
+          "sell": 618,
+          "sell_avg": 31.55,
+          "net": 334
+        },
+        {
+          "name": "港商野村",
+          "buy": 312,
+          "buy_avg": 31.6,
+          "sell": 56,
+          "sell_avg": 31.39,
+          "net": 256
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 644,
+          "buy_avg": 31.76,
+          "sell": 526,
+          "sell_avg": 31.46,
+          "net": 118
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "花旗環球",
+          "buy": 4,
+          "buy_avg": 31.45,
+          "sell": 67,
+          "sell_avg": 31.52,
+          "net": -63
         }
       ]
     }
