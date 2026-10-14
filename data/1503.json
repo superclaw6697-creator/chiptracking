@@ -1,7 +1,7 @@
 {
   "stockId": "1503",
   "startDate": "2026-04-29",
-  "endDate": "2026-10-13",
+  "endDate": "2026-10-14",
   "prices": [
     {
       "date": "2026-04-29",
@@ -914,6 +914,14 @@
       "low": 198,
       "close": 198.5,
       "volume": 1736744
+    },
+    {
+      "date": "2026-10-14",
+      "open": 200.5,
+      "high": 204,
+      "low": 199.5,
+      "close": 203,
+      "volume": 1139507
     }
   ],
   "chips": [
@@ -8706,6 +8714,81 @@
           "net": -33
         }
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "foreign_buy": 513,
+      "foreign_buy_avg": 202.83,
+      "foreign_sell": 43,
+      "foreign_sell_avg": 202.34,
+      "foreign_net": 470,
+      "top_foreign": [
+        {
+          "name": "美商高盛",
+          "buy": 161,
+          "buy_avg": 202.63,
+          "sell": 6,
+          "sell_avg": 202.75,
+          "net": 155
+        },
+        {
+          "name": "摩根大通",
+          "buy": 128,
+          "buy_avg": 203.17,
+          "sell": 8,
+          "sell_avg": 202.56,
+          "net": 120
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 107,
+          "buy_avg": 202.71,
+          "sell": 21,
+          "sell_avg": 202.36,
+          "net": 86
+        },
+        {
+          "name": "美林",
+          "buy": 66,
+          "buy_avg": 203.05,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 66
+        },
+        {
+          "name": "瑞銀",
+          "buy": 28,
+          "buy_avg": 202.3,
+          "sell": 8,
+          "sell_avg": 201.75,
+          "net": 20
+        },
+        {
+          "name": "花旗環球",
+          "buy": 16,
+          "buy_avg": 202.69,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 16
+        },
+        {
+          "name": "港商野村",
+          "buy": 7,
+          "buy_avg": 203.5,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 7
+        },
+        {
+          "name": "群益高盛",
+          "buy": 1,
+          "buy_avg": 203,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": []
     }
   ]
 }
