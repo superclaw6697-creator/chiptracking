@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-10-14",
+  "endDate": "2026-10-15",
   "prices": [
     {
       "date": "2026-04-01",
@@ -1066,6 +1066,14 @@
       "low": 163.5,
       "close": 169.5,
       "volume": 13133098
+    },
+    {
+      "date": "2026-10-15",
+      "open": 163,
+      "high": 165,
+      "low": 155.5,
+      "close": 156.5,
+      "volume": 9293348
     }
   ],
   "chips": [
@@ -10143,6 +10151,74 @@
           "sell": 62,
           "sell_avg": 165.5,
           "net": -62
+        }
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "foreign_buy": 2468,
+      "foreign_buy_avg": 159.71,
+      "foreign_sell": 2401,
+      "foreign_sell_avg": 160.12,
+      "foreign_net": 68,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 508,
+          "buy_avg": 159.19,
+          "sell": 373,
+          "sell_avg": 159.35,
+          "net": 135
+        },
+        {
+          "name": "花旗環球",
+          "buy": 73,
+          "buy_avg": 159.19,
+          "sell": 0,
+          "sell_avg": 0,
+          "net": 73
+        },
+        {
+          "name": "摩根大通",
+          "buy": 361,
+          "buy_avg": 159.15,
+          "sell": 300,
+          "sell_avg": 159.6,
+          "net": 61
+        },
+        {
+          "name": "美林",
+          "buy": 47,
+          "buy_avg": 160.16,
+          "sell": 42,
+          "sell_avg": 162.41,
+          "net": 5
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "瑞銀",
+          "buy": 486,
+          "buy_avg": 159.41,
+          "sell": 660,
+          "sell_avg": 160.73,
+          "net": -174
+        },
+        {
+          "name": "港商野村",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 20,
+          "sell_avg": 162.5,
+          "net": -20
+        },
+        {
+          "name": "美商高盛",
+          "buy": 991,
+          "buy_avg": 160.35,
+          "sell": 1003,
+          "sell_avg": 160.02,
+          "net": -12
         }
       ]
     }
