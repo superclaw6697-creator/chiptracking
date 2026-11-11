@@ -1,7 +1,7 @@
 {
   "stockId": "2352",
   "startDate": "2026-05-21",
-  "endDate": "2026-11-10",
+  "endDate": "2026-11-11",
   "prices": [
     {
       "date": "2026-05-21",
@@ -938,6 +938,14 @@
       "low": 28.65,
       "close": 29.9,
       "volume": 17174297
+    },
+    {
+      "date": "2026-11-11",
+      "open": 29.8,
+      "high": 30,
+      "low": 28.8,
+      "close": 28.9,
+      "volume": 9981474
     }
   ],
   "chips": [
@@ -9440,6 +9448,82 @@
         }
       ],
       "top_foreign_sellers": []
+    },
+    {
+      "date": "2026-11-11",
+      "foreign_buy": 1431,
+      "foreign_buy_avg": 29.11,
+      "foreign_sell": 2903,
+      "foreign_sell_avg": 29.18,
+      "foreign_net": -1472,
+      "top_foreign": [
+        {
+          "name": "花旗環球",
+          "buy": 22,
+          "buy_avg": 29.14,
+          "sell": 10,
+          "sell_avg": 29.45,
+          "net": 12
+        },
+        {
+          "name": "群益高盛",
+          "buy": 3,
+          "buy_avg": 28.93,
+          "sell": 1,
+          "sell_avg": 29,
+          "net": 2
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "摩根大通",
+          "buy": 176,
+          "buy_avg": 29.1,
+          "sell": 792,
+          "sell_avg": 29.22,
+          "net": -616
+        },
+        {
+          "name": "美商高盛",
+          "buy": 499,
+          "buy_avg": 29.18,
+          "sell": 1015,
+          "sell_avg": 29.15,
+          "net": -516
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 91,
+          "buy_avg": 29.42,
+          "sell": 250,
+          "sell_avg": 28.98,
+          "net": -159
+        },
+        {
+          "name": "美林",
+          "buy": 16,
+          "buy_avg": 28.99,
+          "sell": 105,
+          "sell_avg": 29.24,
+          "net": -89
+        },
+        {
+          "name": "瑞銀",
+          "buy": 614,
+          "buy_avg": 29.01,
+          "sell": 697,
+          "sell_avg": 29.25,
+          "net": -83
+        },
+        {
+          "name": "港麥格理",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 23,
+          "sell_avg": 28.93,
+          "net": -23
+        }
+      ]
     }
   ]
 }
