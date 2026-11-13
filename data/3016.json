@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-11-12",
+  "endDate": "2026-11-13",
   "prices": [
     {
       "date": "2026-04-01",
@@ -1218,6 +1218,14 @@
       "low": 115.5,
       "close": 117.5,
       "volume": 8890700
+    },
+    {
+      "date": "2026-11-13",
+      "open": 121,
+      "high": 124.5,
+      "low": 120,
+      "close": 122,
+      "volume": 4770910
     }
   ],
   "chips": [
@@ -11731,6 +11739,74 @@
           "sell": 30,
           "sell_avg": 123.2,
           "net": -7
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "foreign_buy": 976,
+      "foreign_buy_avg": 122.64,
+      "foreign_sell": 606,
+      "foreign_sell_avg": 122.28,
+      "foreign_net": 370,
+      "top_foreign": [
+        {
+          "name": "瑞銀",
+          "buy": 268,
+          "buy_avg": 122.6,
+          "sell": 50,
+          "sell_avg": 122.46,
+          "net": 218
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 280,
+          "buy_avg": 122.94,
+          "sell": 87,
+          "sell_avg": 121.84,
+          "net": 193
+        },
+        {
+          "name": "摩根大通",
+          "buy": 302,
+          "buy_avg": 122.44,
+          "sell": 187,
+          "sell_avg": 122.29,
+          "net": 115
+        },
+        {
+          "name": "美林",
+          "buy": 67,
+          "buy_avg": 122.37,
+          "sell": 66,
+          "sell_avg": 122.08,
+          "net": 1
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "港商野村",
+          "buy": 50,
+          "buy_avg": 122.68,
+          "sell": 147,
+          "sell_avg": 122.55,
+          "net": -97
+        },
+        {
+          "name": "美商高盛",
+          "buy": 0,
+          "buy_avg": 0,
+          "sell": 49,
+          "sell_avg": 121.98,
+          "net": -49
+        },
+        {
+          "name": "群益高盛",
+          "buy": 7,
+          "buy_avg": 123.79,
+          "sell": 18,
+          "sell_avg": 123.17,
+          "net": -11
         }
       ]
     }
