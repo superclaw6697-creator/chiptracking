@@ -1,7 +1,7 @@
 {
   "stockId": "3016",
   "startDate": "2026-04-01",
-  "endDate": "2026-11-13",
+  "endDate": "2026-11-16",
   "prices": [
     {
       "date": "2026-04-01",
@@ -1226,6 +1226,14 @@
       "low": 120,
       "close": 122,
       "volume": 4770910
+    },
+    {
+      "date": "2026-11-16",
+      "open": 121.5,
+      "high": 122,
+      "low": 110,
+      "close": 110,
+      "volume": 5090700
     }
   ],
   "chips": [
@@ -11807,6 +11815,74 @@
           "sell": 18,
           "sell_avg": 123.17,
           "net": -11
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "foreign_buy": 1047,
+      "foreign_buy_avg": 113.89,
+      "foreign_sell": 995,
+      "foreign_sell_avg": 114.44,
+      "foreign_net": 52,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 435,
+          "buy_avg": 114.19,
+          "sell": 229,
+          "sell_avg": 114.51,
+          "net": 206
+        },
+        {
+          "name": "摩根大通",
+          "buy": 176,
+          "buy_avg": 113.37,
+          "sell": 90,
+          "sell_avg": 114.27,
+          "net": 86
+        },
+        {
+          "name": "瑞銀",
+          "buy": 358,
+          "buy_avg": 113.87,
+          "sell": 286,
+          "sell_avg": 115.73,
+          "net": 72
+        },
+        {
+          "name": "花旗環球",
+          "buy": 7,
+          "buy_avg": 111.14,
+          "sell": 1,
+          "sell_avg": 114,
+          "net": 6
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "港商野村",
+          "buy": 23,
+          "buy_avg": 112.74,
+          "sell": 177,
+          "sell_avg": 112.69,
+          "net": -154
+        },
+        {
+          "name": "美商高盛",
+          "buy": 2,
+          "buy_avg": 113.5,
+          "sell": 93,
+          "sell_avg": 116.42,
+          "net": -91
+        },
+        {
+          "name": "美林",
+          "buy": 43,
+          "buy_avg": 114.33,
+          "sell": 116,
+          "sell_avg": 112.32,
+          "net": -73
         }
       ]
     }
