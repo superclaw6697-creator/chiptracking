@@ -1,7 +1,7 @@
 {
   "stockId": "1503",
   "startDate": "2026-04-29",
-  "endDate": "2026-11-18",
+  "endDate": "2026-11-19",
   "prices": [
     {
       "date": "2026-04-29",
@@ -1106,6 +1106,14 @@
       "low": 159,
       "close": 165.5,
       "volume": 1636047
+    },
+    {
+      "date": "2026-11-19",
+      "open": 165,
+      "high": 171.5,
+      "low": 159,
+      "close": 159.5,
+      "volume": 1843128
     }
   ],
   "chips": [
@@ -10454,6 +10462,74 @@
           "sell": 12,
           "sell_avg": 163,
           "net": -3
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "foreign_buy": 625,
+      "foreign_buy_avg": 163.14,
+      "foreign_sell": 488,
+      "foreign_sell_avg": 163.65,
+      "foreign_net": 136,
+      "top_foreign": [
+        {
+          "name": "摩根大通",
+          "buy": 140,
+          "buy_avg": 164.26,
+          "sell": 42,
+          "sell_avg": 162.61,
+          "net": 98
+        },
+        {
+          "name": "港商野村",
+          "buy": 53,
+          "buy_avg": 162.94,
+          "sell": 14,
+          "sell_avg": 162.46,
+          "net": 39
+        },
+        {
+          "name": "台灣摩根",
+          "buy": 225,
+          "buy_avg": 162.4,
+          "sell": 187,
+          "sell_avg": 163.22,
+          "net": 38
+        },
+        {
+          "name": "花旗環球",
+          "buy": 33,
+          "buy_avg": 163.27,
+          "sell": 10,
+          "sell_avg": 162.35,
+          "net": 23
+        },
+        {
+          "name": "美商高盛",
+          "buy": 98,
+          "buy_avg": 163.21,
+          "sell": 92,
+          "sell_avg": 164.11,
+          "net": 6
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "瑞銀",
+          "buy": 36,
+          "buy_avg": 163.63,
+          "sell": 92,
+          "sell_avg": 165.1,
+          "net": -56
+        },
+        {
+          "name": "美林",
+          "buy": 39,
+          "buy_avg": 162.99,
+          "sell": 52,
+          "sell_avg": 163.22,
+          "net": -13
         }
       ]
     }

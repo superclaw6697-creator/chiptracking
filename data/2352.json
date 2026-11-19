@@ -1,7 +1,7 @@
 {
   "stockId": "2352",
   "startDate": "2026-05-21",
-  "endDate": "2026-11-18",
+  "endDate": "2026-11-19",
   "prices": [
     {
       "date": "2026-05-21",
@@ -986,6 +986,14 @@
       "low": 25.4,
       "close": 26.6,
       "volume": 7524474
+    },
+    {
+      "date": "2026-11-19",
+      "open": 26.5,
+      "high": 26.75,
+      "low": 24.95,
+      "close": 25.15,
+      "volume": 8450384
     }
   ],
   "chips": [
@@ -9882,6 +9890,73 @@
           "sell": 172,
           "sell_avg": 26.22,
           "net": -30
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "foreign_buy": 1513,
+      "foreign_buy_avg": 25.65,
+      "foreign_sell": 3120,
+      "foreign_sell_avg": 25.67,
+      "foreign_net": -1607,
+      "top_foreign": [],
+      "top_foreign_sellers": [
+        {
+          "name": "台灣摩根",
+          "buy": 240,
+          "buy_avg": 25.74,
+          "sell": 716,
+          "sell_avg": 25.39,
+          "net": -476
+        },
+        {
+          "name": "摩根大通",
+          "buy": 408,
+          "buy_avg": 25.56,
+          "sell": 702,
+          "sell_avg": 25.56,
+          "net": -294
+        },
+        {
+          "name": "花旗環球",
+          "buy": 39,
+          "buy_avg": 26.12,
+          "sell": 313,
+          "sell_avg": 25.83,
+          "net": -274
+        },
+        {
+          "name": "美商高盛",
+          "buy": 337,
+          "buy_avg": 25.55,
+          "sell": 555,
+          "sell_avg": 25.88,
+          "net": -218
+        },
+        {
+          "name": "美林",
+          "buy": 41,
+          "buy_avg": 25.78,
+          "sell": 207,
+          "sell_avg": 25.64,
+          "net": -166
+        },
+        {
+          "name": "港商野村",
+          "buy": 15,
+          "buy_avg": 26.4,
+          "sell": 119,
+          "sell_avg": 25.75,
+          "net": -104
+        },
+        {
+          "name": "瑞銀",
+          "buy": 433,
+          "buy_avg": 25.67,
+          "sell": 508,
+          "sell_avg": 25.91,
+          "net": -75
         }
       ]
     }
