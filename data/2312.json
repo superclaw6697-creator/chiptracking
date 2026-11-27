@@ -1,7 +1,7 @@
 {
   "stockId": "2312",
   "startDate": "2026-04-01",
-  "endDate": "2026-11-26",
+  "endDate": "2026-11-27",
   "prices": [
     {
       "date": "2026-04-01",
@@ -1298,6 +1298,14 @@
       "low": 21.5,
       "close": 22.5,
       "volume": 5847565
+    },
+    {
+      "date": "2026-11-27",
+      "open": 22.7,
+      "high": 23.1,
+      "low": 22.5,
+      "close": 22.65,
+      "volume": 7885600
     }
   ],
   "chips": [
@@ -13208,6 +13216,74 @@
           "sell": 12,
           "sell_avg": 21.34,
           "net": -12
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "foreign_buy": 1664,
+      "foreign_buy_avg": 22.79,
+      "foreign_sell": 2005,
+      "foreign_sell_avg": 22.78,
+      "foreign_net": -341,
+      "top_foreign": [
+        {
+          "name": "台灣摩根",
+          "buy": 342,
+          "buy_avg": 22.7,
+          "sell": 115,
+          "sell_avg": 22.83,
+          "net": 227
+        },
+        {
+          "name": "花旗環球",
+          "buy": 46,
+          "buy_avg": 22.83,
+          "sell": 5,
+          "sell_avg": 22.85,
+          "net": 41
+        },
+        {
+          "name": "瑞銀",
+          "buy": 456,
+          "buy_avg": 22.76,
+          "sell": 441,
+          "sell_avg": 22.76,
+          "net": 15
+        }
+      ],
+      "top_foreign_sellers": [
+        {
+          "name": "摩根大通",
+          "buy": 118,
+          "buy_avg": 22.76,
+          "sell": 548,
+          "sell_avg": 22.77,
+          "net": -430
+        },
+        {
+          "name": "美商高盛",
+          "buy": 549,
+          "buy_avg": 22.89,
+          "sell": 665,
+          "sell_avg": 22.78,
+          "net": -116
+        },
+        {
+          "name": "美林",
+          "buy": 94,
+          "buy_avg": 22.76,
+          "sell": 149,
+          "sell_avg": 22.78,
+          "net": -55
+        },
+        {
+          "name": "港商野村",
+          "buy": 56,
+          "buy_avg": 22.7,
+          "sell": 80,
+          "sell_avg": 22.84,
+          "net": -24
         }
       ]
     }
